@@ -1,0 +1,27 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    background: var(--color-fondo);
+    font-family: var(--funte-texto);
+    line-height: var(--interlineado);
+    color: var(--color-texto);
+}
+
+h1, h2, h3 {
+    font-family: var(--funte-titulos);
+    line-height: 1.2;
+    overflow-wrap: anywhere;
+}
+
+h1 {font-size: var(--texto-titulo);}
+h2 {font-size: var(--texto-subtitulo);}
+a {color: var(--color-primario);}
+a:hover {color: var(--color-primario-hover);}
+
+.contenedor{
+    max-width: var(--ancho-contenido);
+    margin-inline: auto;
+    width: calc(100% -2rem);
+}
+
