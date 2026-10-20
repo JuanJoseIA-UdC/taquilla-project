@@ -1,33 +1,63 @@
+/*
+ * Navbar de Taquilla.
+ * 1. Estilos comunes.
+ * 2. Vista móvil: menos de 80rem.
+ * 3. Vista de escritorio: desde 80rem.
+ * 4. Espaciado de escritorio por ancho.
+ *
+ * Orden de propiedades: distribución, medidas, bordes, colores y tipografía.
+ * Los colores, espacios y radios se toman de tokens.css.
+ */
+
+/* 1. Estilos comunes
+   Estructura, marca e iconos */
 .navbar {
-    background: var(--color-superficie);
-    border-bottom: 1px solid var(--color-borde);
+    border-bottom: 1px solid var(--borde-sutil);
+    background: var(--fondo-superficie);
 }
 
 .navbar-interior {
     display: flex;
-    flex-wrap: wrap;
     align-items: center;
-    gap: 0 var(--espacio-2);
     min-height: 72px;
-    padding-block: 14px;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+}
+
+.navbar-panel {
+    display: flex;
+    min-width: 0;
 }
 
 .navbar-marca {
     display: inline-flex;
     align-items: center;
-    gap: var(--espacio-1);
-    color: var(--color_texto);
-    font-size: 1.125rem;
-    font-weight: 700;
-    letter-spacing: 0.02em;
+    color: var(--texto-principal);
     text-decoration: none;
     white-space: nowrap;
 }
 
+.navbar-logo {
+    display: block;
+}
+
+.navbar svg {
+    display: block;
+    flex-shrink: 0;
+}
+
+.navbar-icono {
+    display: grid;
+    flex-shrink: 0;
+    place-items: center;
+    padding: 0;
+    border: 0;
+    border-radius: var(--radio-completo);
+}
+
+/* Enlaces de navegación */
 .navbar-enlaces {
     display: flex;
-    flex-direction: column;
-    gap: var(--espacio-1);
     margin: 0;
     padding: 0;
     list-style: none;
@@ -36,89 +66,495 @@
 .navbar-enlaces a {
     display: flex;
     align-items: center;
-    min-height: 44px;
-    padding-inline: var(--espacio-1);
-    color: var(--color_texto-suave);
-    font-size: var(--texto-pequeno);
-    font-weight: 500;
+    color: var(--texto-secundario);
+    font: inherit;
     text-decoration: none;
 }
 
-.navbar-enlaces a:hover {
-    color: var(--color-primario-hover);
-    text-decoration: underline;
-    text-underline-offset: 2px;
+/* Buscador */
+.navbar-buscador {
+    display: flex;
+    align-items: center;
+    min-width: 0;
+    padding-inline-end: var(--espacio-3);
+    border-radius: var(--radio-completo);
 }
 
-.navbar-simbolo {
+.navbar-buscador button {
     display: grid;
     place-items: center;
-    flex-shrink: 0;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    color: var(--color-sobre-primario);
-    background: var(--color-primario);
-    font-size: 1rem;
+    padding: 0;
+    border: 0;
+    border-radius: var(--radio-completo);
+    background: transparent;
+    color: inherit;
 }
 
-.navbar-panel {
-    display: flex;
-    flex-direction: column;
-    gap: var(--espacio-2);
-    width: 100%;
-    padding-top: var(--espacio-2);
+.navbar-buscador input {
+    flex: 1;
+    min-width: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    font: inherit;
+}
 
+.navbar-buscador input::placeholder {
+    opacity: 1;
+}
+
+/* Venta de eventos, idioma e ingreso */
+.navbar-utilidades {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-vender {
+    align-items: center;
+    text-decoration: none;
+}
+
+.navbar-idioma {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--espacio-2);
+    padding-inline: var(--espacio-3);
+    border-radius: var(--radio-completo);
+}
+
+.navbar-idioma select {
+    align-self: stretch;
+    min-width: 0;
+    border: 0;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
 }
 
 .navbar-accion {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    align-self: flex-start;
-    min-height: 44px;
-    padding: var(--espacio-1) var(--espacio-3);
-    border-radius: 999px;
-    color: var(--color-sobre-primario);
-    background: var(--color-primario);
-    font-size: var(--texto-pequeno);
-    font-weight: 700;
+    padding: var(--espacio-2) calc(var(--espacio-4) + var(--espacio-1));
+    background: var(--marca-primario);
+    color: var(--texto-inverso);
+    font: inherit;
     text-decoration: none;
     white-space: nowrap;
 }
 
-.navbar-accion:hover {
-    background: var(--color-primario-hover);
-    color: var(--color-sobre-primario);
+/* 2. Vista móvil */
+@media (width < 80rem) {
+    /* Variables de la variante clara y de la variante oscura */
+    .navbar {
+        --navbar-movil-fondo: var(--fondo-superficie);
+        --navbar-movil-texto: var(--texto-principal);
+        --navbar-movil-suave: var(--texto-secundario);
+        --navbar-movil-borde: var(--borde-sutil);
+        --navbar-movil-control: var(--fondo-sutil);
+        --navbar-movil-objetivo: calc(var(--espacio-8) + var(--espacio-3));
+
+        border-color: var(--navbar-movil-borde);
+        background: var(--navbar-movil-fondo);
+        color: var(--navbar-movil-texto);
+    }
+
+    .navbar[data-variante-movil="oscura"] {
+        --navbar-movil-fondo: var(--fondo-inverso);
+        --navbar-movil-texto: var(--texto-inverso);
+        --navbar-movil-suave: var(--texto-inverso-suave);
+        --navbar-movil-borde: var(--borde-inverso);
+        --navbar-movil-control: var(--fondo-inverso-2);
+
+        color-scheme: dark;
+    }
+
+    /* Cabecera: marca, búsqueda, ingreso y menú */
+    .navbar-interior {
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr);
+        column-gap: var(--espacio-1);
+        min-height: calc(var(--espacio-12) + var(--espacio-3));
+        padding: var(--espacio-2) calc(var(--espacio-4) + var(--espacio-1));
+    }
+
+    .navbar-movil-acciones {
+        display: flex;
+        align-items: center;
+        justify-self: end;
+        gap: var(--espacio-3);
+        margin-inline-end: calc(-1 * var(--espacio-2));
+    }
+
+    .navbar-icono {
+        width: var(--navbar-movil-objetivo);
+        height: var(--navbar-movil-objetivo);
+        background: transparent;
+        color: var(--navbar-movil-texto);
+    }
+
+    .navbar-buscar-movil-icono {
+        width: calc(var(--espacio-4) + var(--espacio-1));
+        height: calc(var(--espacio-4) + var(--espacio-1));
+    }
+
+    .navbar-ingresar-movil {
+        display: inline-flex;
+        align-items: center;
+        min-height: var(--navbar-movil-objetivo);
+        color: var(--navbar-movil-texto);
+        font: inherit;
+        text-decoration: none;
+        white-space: nowrap;
+    }
+
+    /* Panel desplegable y categorías */
+    .navbar-panel {
+        display: none;
+        grid-column: 1 / -1;
+        flex-direction: column;
+        gap: var(--espacio-4);
+        margin-top: var(--espacio-2);
+        padding-block: var(--espacio-4) var(--espacio-2);
+        border-top: 1px solid var(--navbar-movil-borde);
+    }
+
+    .navbar-panel.is-abierto {
+        display: flex;
+    }
+
+    .navbar-enlaces {
+        flex-direction: column;
+        gap: var(--espacio-1);
+    }
+
+    .navbar-enlaces a {
+        min-height: var(--navbar-movil-objetivo);
+        padding-inline: var(--espacio-3);
+        border-radius: var(--radio-md);
+        color: var(--navbar-movil-suave);
+    }
+
+    .navbar-enlaces a[aria-current="page"],
+    .navbar-enlaces a.is-inicio {
+        background: var(--navbar-movil-control);
+        color: var(--navbar-movil-texto);
+    }
+
+    /* Buscador */
+    .navbar-buscador {
+        order: -1;
+        min-height: var(--navbar-movil-objetivo);
+        background: var(--navbar-movil-control);
+        color: var(--navbar-movil-texto);
+    }
+
+    .navbar-buscador button {
+        flex: 0 0 var(--navbar-movil-objetivo);
+        height: var(--navbar-movil-objetivo);
+    }
+
+    .navbar-buscador input {
+        color: inherit;
+    }
+
+    .navbar-buscador input::placeholder {
+        color: var(--navbar-movil-suave);
+    }
+
+    /* Venta de eventos, idioma y accesibilidad */
+    .navbar-utilidades {
+        flex-wrap: wrap;
+        gap: var(--espacio-3);
+    }
+
+    .navbar-vender {
+        display: flex;
+        flex-basis: 100%;
+        min-height: var(--navbar-movil-objetivo);
+        color: var(--navbar-movil-texto);
+    }
+
+    .navbar-idioma {
+        min-height: var(--navbar-movil-objetivo);
+        border: 1px solid var(--navbar-movil-borde);
+        color: var(--navbar-movil-texto);
+    }
+
+    .navbar-idioma > .navbar-idioma-flecha {
+        display: none;
+    }
+
+    .navbar-accesibilidad {
+        border: 1px solid var(--navbar-movil-borde);
+    }
+
+    .navbar-accesibilidad[aria-pressed="true"] {
+        background: var(--navbar-movil-control);
+    }
+
+    /* En móvil, el enlace de ingreso está en la cabecera. */
+    .navbar-accion {
+        display: none;
+    }
+
+    /* Foco: mantener las excepciones después de la regla general. */
+    .navbar :is(a, button, input, select):focus-visible {
+        outline: 2px solid var(--navbar-movil-texto);
+        outline-offset: var(--espacio-1);
+    }
+
+    .navbar-buscador:focus-within,
+    .navbar-idioma:focus-within {
+        outline: 2px solid var(--navbar-movil-texto);
+        outline-offset: -2px;
+    }
+
+    .navbar-buscador :is(input, button):focus,
+    .navbar-idioma select:focus {
+        outline: none;
+    }
+
+    .navbar-buscador button:focus-visible {
+        box-shadow: inset 0 0 0 1px var(--navbar-movil-texto);
+    }
+
+    /* Mensajes de carga y error */
+    .navbar-estado {
+        margin: 0;
+        color: var(--navbar-movil-texto);
+    }
+
+    .navbar-estado button {
+        min-height: var(--navbar-movil-objetivo);
+        padding-inline: var(--espacio-3);
+        border: 1px solid var(--navbar-movil-borde);
+        border-radius: var(--radio-md);
+        background: var(--navbar-movil-control);
+        color: inherit;
+    }
 }
 
-@media (min-width: 768px) {
+/* 3. Vista de escritorio */
+@media (min-width: 80rem) {
+    /* El hover del navbar solo se aplica en esta vista. */
+    :where(.navbar) a:hover {
+        color: var(--texto-secundario);
+    }
+
+    /* Contenedor y distribución horizontal */
     .navbar-interior {
+        --navbar-alto-control: calc(var(--espacio-8) + var(--espacio-2));
+
         flex-wrap: nowrap;
-        gap: 40px;
+        gap: var(--navbar-espacio-marca);
+        width: calc(100% - 2 * (var(--espacio-16) + var(--espacio-4)));
+        max-width: 1280px;
+        margin-inline: auto;
+        padding-block: var(--espacio-4);
+    }
+
+    .navbar-movil-acciones {
+        display: none;
     }
 
     .navbar-panel {
         flex: 1;
         flex-direction: row;
         align-items: center;
-        justify-content: space-between;
-        gap: var(--espacio-3);
-        width: auto;
-        padding-top: 0;
+        justify-content: flex-start;
+        gap: var(--navbar-espacio-panel);
     }
 
-    .navbar-enlaces{
+    /* Categorías */
+    .navbar-enlaces {
         flex-direction: row;
-        gap: var(--espacio-3);  
+        flex-shrink: 0;
+        gap: var(--navbar-espacio-categorias);
     }
 
-    .navbar-enlaces a{
-        padding-inline: 0;
+    .navbar-enlaces a {
+        min-height: var(--navbar-alto-control);
+        white-space: nowrap;
     }
 
-    .navbar-accion{
-        align-self: auto;
+    .navbar-enlaces a:hover {
+        color: var(--texto-principal);
+        text-decoration: underline;
+        text-underline-offset: 2px;
     }
 
+    .navbar-enlaces a[aria-current="page"],
+    .navbar-enlaces a.is-inicio {
+        color: var(--texto-principal);
+    }
+
+    /* Buscador */
+    .navbar-buscador {
+        flex: 0 0 230px;
+        min-height: var(--navbar-alto-control);
+        margin-inline-start: auto;
+        background: var(--fondo-sutil);
+        color: var(--texto-secundario);
+    }
+
+    .navbar-buscador button {
+        flex: 0 0 var(--navbar-alto-control);
+        min-height: var(--navbar-alto-control);
+    }
+
+    .navbar-buscador input {
+        color: var(--texto-principal);
+    }
+
+    .navbar-buscador input::placeholder {
+        color: var(--texto-terciario);
+    }
+
+    /* El campo vacío no reserva espacio para el botón de borrar. */
+    .navbar-buscador input:placeholder-shown::-webkit-search-cancel-button {
+        display: none;
+    }
+
+    /* Venta de eventos */
+    .navbar-utilidades {
+        flex-shrink: 0;
+        gap: var(--navbar-espacio-utilidades);
+        margin-inline-start: 0;
+    }
+
+    .navbar-vender {
+        display: inline-flex;
+        min-height: var(--navbar-alto-control);
+        color: var(--texto-secundario);
+        font: inherit;
+        white-space: nowrap;
+    }
+
+    .navbar-vender:hover {
+        color: var(--texto-principal);
+        text-decoration: underline;
+        text-underline-offset: var(--espacio-1);
+    }
+
+    /* Selector de idioma */
+    .navbar-idioma {
+        position: relative;
+        min-height: var(--navbar-alto-control);
+        border: 1px solid var(--borde-fuerte);
+        background: var(--fondo-superficie);
+        color: var(--texto-principal);
+    }
+
+    .navbar-idioma:hover {
+        background: var(--fondo-sutil);
+    }
+
+    .navbar-idioma select {
+        padding: 0;
+        padding-inline-end: calc(var(--espacio-4) + var(--espacio-1));
+        appearance: none;
+    }
+
+    /* La flecha se centra sobre el espacio reservado en el select. */
+    .navbar-idioma > .navbar-idioma-flecha {
+        position: absolute;
+        inset-block: 0;
+        inset-inline-end: var(--espacio-3);
+        width: var(--espacio-4);
+        height: var(--espacio-4);
+        margin-block: auto;
+        color: var(--texto-secundario);
+        pointer-events: none;
+    }
+
+    /* Accesibilidad e ingreso */
+    .navbar-icono.navbar-accesibilidad {
+        width: var(--navbar-alto-control);
+        height: var(--navbar-alto-control);
+        border: 1px solid var(--borde-fuerte);
+        background: var(--fondo-superficie);
+        color: var(--texto-principal);
+    }
+
+    .navbar-accesibilidad:hover {
+        background: var(--fondo-sutil);
+    }
+
+    .navbar-accesibilidad[aria-pressed="true"] {
+        border-color: var(--texto-principal);
+        background: var(--marca-primario-suave);
+    }
+
+    .navbar-accion {
+        min-height: var(--navbar-alto-control);
+        border-radius: var(--radio-md);
+    }
+
+    .navbar-accion:hover {
+        background: var(--marca-primario-hover);
+        color: var(--texto-inverso);
+    }
+
+    /* Foco: el buscador y el idioma dibujan el contorno en su contenedor. */
+    .navbar :is(a, button):focus-visible {
+        outline: 2px solid var(--texto-principal);
+        outline-offset: var(--espacio-1);
+    }
+
+    .navbar-buscador:focus-within {
+        background: var(--fondo-superficie);
+        outline: 2px solid var(--texto-principal);
+        outline-offset: -2px;
+    }
+
+    .navbar-idioma:focus-within {
+        background: var(--fondo-sutil);
+        outline: 2px solid var(--texto-principal);
+        outline-offset: -2px;
+    }
+
+    .navbar-buscador :is(input, button):focus,
+    .navbar-idioma select:focus {
+        outline: none;
+    }
+
+    .navbar-buscador button:focus-visible {
+        background: var(--fondo-sutil);
+        color: var(--texto-principal);
+    }
+}
+
+/* 4. Espaciado de escritorio: solo se activa un rango a la vez. */
+@media (80rem <= width <= 85rem) {
+    .navbar-interior {
+        --navbar-espacio-marca: var(--espacio-4);
+        --navbar-espacio-categorias: var(--espacio-4);
+        --navbar-espacio-panel: var(--espacio-2);
+        --navbar-espacio-utilidades: var(--espacio-2);
+    }
+
+    /* Conserva la separación de categorías cuando se amplía el texto. */
+    .navbar-interior:has(.navbar-accesibilidad[aria-pressed="true"]) {
+        width: calc(100% - 2 * var(--espacio-16));
+    }
+}
+
+@media (85rem < width < 90rem) {
+    .navbar-interior {
+        --navbar-espacio-marca: var(--espacio-6);
+        --navbar-espacio-categorias: var(--espacio-6);
+        --navbar-espacio-panel: var(--espacio-3);
+        --navbar-espacio-utilidades: var(--espacio-2);
+    }
+}
+
+@media (width >= 90rem) {
+    .navbar-interior {
+        --navbar-espacio-marca: calc(var(--espacio-8) + var(--espacio-2));
+        --navbar-espacio-categorias: calc(var(--espacio-6) + var(--espacio-1));
+        --navbar-espacio-panel: var(--espacio-4);
+        --navbar-espacio-utilidades: var(--espacio-3);
+    }
 }

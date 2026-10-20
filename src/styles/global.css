@@ -1,27 +1,37 @@
-*{
+/* Base de Taquilla. Los tokens y estilos tipográficos están en tokens.css. */
+
+/* Modelo de caja */
+* {
     box-sizing: border-box;
 }
-body{
-    background: var(--color-fondo);
-    font-family: var(--funte-texto);
-    line-height: var(--interlineado);
-    color: var(--color-texto);
+
+/* Página */
+body {
+    margin: 0;
+    background: var(--fondo-pagina);
+    color: var(--texto-principal);
+    font-family: var(--fuente-instrument-sans);
+    font-size: 1rem;
+    line-height: 1.5;
 }
 
-h1, h2, h3 {
-    font-family: var(--funte-titulos);
-    line-height: 1.2;
-    overflow-wrap: anywhere;
+/* Enlaces */
+a {
+    color: var(--texto-principal);
 }
 
-h1 {font-size: var(--texto-titulo);}
-h2 {font-size: var(--texto-subtitulo);}
-a {color: var(--color-primario);}
-a:hover {color: var(--color-primario-hover);}
-
-.contenedor{
-    max-width: var(--ancho-contenido);
-    margin-inline: auto;
-    width: calc(100% -2rem);
+/* El navbar controla el hover según su vista en Navbar.css. */
+a:not(:where(.navbar a)):hover {
+    color: var(--texto-secundario);
 }
 
+/* Controles de formulario */
+button,
+input,
+select {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
