@@ -92,3 +92,8 @@ $RECYCLE.BIN/
 *.lnk
 dist/
 # End of https://www.toptal.com/developers/gitignore/api/react,windows,macos,linux
+
+# Configuración de entorno
+.env
+.env.*
+!.env.example

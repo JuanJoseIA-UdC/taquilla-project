@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const API = "https://yanethm-taquilla-api.fly.dev/api/v1/textos";
+const API = `${import.meta.env.VITE_API_URL}/textos`;
 const CLAVES_MENU = [
     "explorar",
     "conciertos",
