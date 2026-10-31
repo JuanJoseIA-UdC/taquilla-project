@@ -1,7 +1,13 @@
 import { useEffect, useState } from "react";
 
 const API = "https://yanethm-taquilla-api.fly.dev/api/v1/textos";
-const CLAVES_MENU = ["explorar", "conciertos", "teatro", "deportes", "festivales"];
+const CLAVES_MENU = [
+    "explorar",
+    "conciertos",
+    "teatro",
+    "deportes",
+    "festivales",
+];
 
 function validarTextos(datos) {
     const textos = datos?.textos;
@@ -19,7 +25,9 @@ function validarTextos(datos) {
         textos?.menuMovil?.cerrar,
     ];
 
-    if (!etiquetas.every((valor) => typeof valor === "string" && valor.trim())) {
+    if (
+        !etiquetas.every((valor) => typeof valor === "string" && valor.trim())
+    ) {
         throw new Error("La respuesta no contiene los textos del navbar.");
     }
     return textos;
