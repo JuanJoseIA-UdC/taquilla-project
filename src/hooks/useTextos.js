@@ -26,41 +26,55 @@ function validarTextos(datos) {
 }
 
 export function useTextos(idioma) {
-    const [textos, setTextos] = useState(null);
-    const [cargando, setCargando] = useState(true);
-    const [error, setError] = useState(false);
+    const [resultado, setResultado] = useState(null);
     const [intento, setIntento] = useState(0);
+
+    const corresponde =
+        resultado?.idioma === idioma && resultado?.intento === intento;
 
     useEffect(() => {
         const controlador = new AbortController();
         const limite = setTimeout(() => controlador.abort(), 12000);
         let vigente = true;
-        setCargando(true);
-        setError(false);
-        setTextos(null);
 
         async function cargarTextosNavbar() {
             try {
                 const respuesta = await fetch(`${API}?idioma=${idioma}`, {
                     signal: controlador.signal,
                 });
-                if (!respuesta.ok) throw new Error(`HTTP ${respuesta.status}`);
-                //Si si respondio los datos correctamente
+
+                if (!respuesta.ok) {
+                    throw new Error(`HTTP ${respuesta.status}`);
+                }
+
                 const datos = await respuesta.json();
-                const nuevosTextos = validarTextos(datos);
-                if (vigente) setTextos(nuevosTextos);
+                const textos = validarTextos(datos);
+
+                if (vigente) {
+                    setResultado({
+                        idioma,
+                        intento,
+                        textos,
+                        error: false,
+                    });
+                }
             } catch (error) {
                 if (vigente) {
                     console.error("Error al cargar los textos:", error);
-                    setError(true);
+                    setResultado({
+                        idioma,
+                        intento,
+                        textos: null,
+                        error: true,
+                    });
                 }
             } finally {
                 clearTimeout(limite);
-                if (vigente) setCargando(false);
             }
         }
 
         cargarTextosNavbar();
+
         return () => {
             vigente = false;
             clearTimeout(limite);
@@ -69,9 +83,9 @@ export function useTextos(idioma) {
     }, [idioma, intento]);
 
     return {
-        textos,
-        cargando,
-        error,
+        textos: corresponde ? resultado.textos : null,
+        cargando: !corresponde,
+        error: corresponde ? resultado.error : false,
         recargar: () => setIntento((valor) => valor + 1),
     };
 }
