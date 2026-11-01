@@ -1,13 +1,7 @@
 import { useEffect, useState } from "react";
 
 const API = `${import.meta.env.VITE_API_URL}/textos`;
-const CLAVES_MENU = [
-    "explorar",
-    "conciertos",
-    "teatro",
-    "deportes",
-    "festivales",
-];
+const CLAVES_MENU = ["inicio", "explorar"];
 
 function validarTextos(datos) {
     const textos = datos?.textos;
@@ -20,7 +14,6 @@ function validarTextos(datos) {
         nav?.buscador?.aria,
         nav?.aria?.idioma,
         nav?.botones?.ingresar,
-        nav?.enlaces?.venderEventos,
         textos?.menuMovil?.abrir,
         textos?.menuMovil?.cerrar,
     ];
