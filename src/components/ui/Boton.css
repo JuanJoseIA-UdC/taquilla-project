@@ -36,12 +36,18 @@
     border: 1px solid var(--borde-fuerte);
 }
 
+.boton--fantasma {
+    background-color: transparent;
+    color: var(--texto-principal);
+}
+
 @media (hover: hover) {
     .boton--primario:not(:disabled):hover {
         background-color: var(--marca-primario-hover);
     }
 
-    .boton--secundario:not(:disabled):hover {
+    .boton--secundario:not(:disabled):hover,
+    .boton--fantasma:not(:disabled):hover {
         background-color: var(--fondo-sutil);
     }
 }
@@ -50,7 +56,8 @@
     background-color: var(--marca-primario-presionado);
 }
 
-.boton--secundario:not(:disabled):active {
+.boton--secundario:not(:disabled):active,
+.boton--fantasma:not(:disabled):active {
     background-color: var(--fondo-presionado);
 }
 
