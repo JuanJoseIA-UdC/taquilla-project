@@ -2,6 +2,7 @@ import "./Boton.css";
 
 export default function Boton({
     children,
+    tamano = "m",
     type = "button",
     disabled = false,
     ...props
@@ -11,7 +12,7 @@ export default function Boton({
             {...props}
             type={type}
             disabled={disabled}
-            className="boton boton--primario boton--m"
+            className={`boton boton--primario boton--${tamano}`}
         >
             {children}
         </button>
