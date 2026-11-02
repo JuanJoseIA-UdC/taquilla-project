@@ -41,6 +41,11 @@
     color: var(--texto-principal);
 }
 
+.boton--inverso {
+    background-color: var(--fondo-inverso);
+    color: var(--texto-inverso);
+}
+
 @media (hover: hover) {
     .boton--primario:not(:disabled):hover {
         background-color: var(--marca-primario-hover);
@@ -49,6 +54,10 @@
     .boton--secundario:not(:disabled):hover,
     .boton--fantasma:not(:disabled):hover {
         background-color: var(--fondo-sutil);
+    }
+
+    .boton--inverso:not(:disabled):hover {
+        background-color: var(--fondo-inverso-2);
     }
 }
 
@@ -59,6 +68,10 @@
 .boton--secundario:not(:disabled):active,
 .boton--fantasma:not(:disabled):active {
     background-color: var(--fondo-presionado);
+}
+
+.boton--inverso:not(:disabled):active {
+    background-color: var(--fondo-inverso-presionado);
 }
 
 .boton:disabled {
