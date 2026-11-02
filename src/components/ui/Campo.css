@@ -30,3 +30,22 @@
     line-height: 1.5rem;
     letter-spacing: 0;
 }
+
+.campo-entrada:focus {
+    border: 2px solid var(--fondo-inverso);
+    color: var(--texto-principal);
+}
+
+.campo-entrada[aria-invalid="true"] {
+    border: 2px solid var(--estado-error);
+    color: var(--texto-principal);
+}
+
+.campo-error {
+    margin: 0;
+    color: var(--estado-error);
+    font-size: 0.75rem;
+    font-weight: 400;
+    line-height: 1rem;
+    letter-spacing: 0;
+}
