@@ -1,0 +1,118 @@
+.tarjeta-evento {
+    width: 312px;
+    max-width: 100%;
+    border: 1px solid var(--borde-sutil);
+    border-radius: var(--radio-lg);
+    background-color: var(--fondo-superficie);
+    font-family: var(--fuente-instrument-sans);
+    transition:
+        border-color 150ms ease-out,
+        box-shadow 150ms ease-out;
+}
+
+.tarjeta-evento-imagen {
+    height: 176px;
+    border-radius: calc(var(--radio-lg) - 1px) calc(var(--radio-lg) - 1px) 0 0;
+}
+
+.tarjeta-evento-contenido {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: var(--espacio-4);
+}
+
+.tarjeta-evento-titulo {
+    margin: 0;
+    color: var(--texto-principal);
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 1.625rem;
+    letter-spacing: -0.01em;
+    overflow-wrap: anywhere;
+}
+
+.tarjeta-evento-dato {
+    display: flex;
+    align-items: center;
+    gap: var(--espacio-2);
+    color: var(--texto-secundario);
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.25rem;
+    overflow-wrap: anywhere;
+}
+
+.tarjeta-evento-icono {
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+}
+
+.tarjeta-evento-pie {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-top: var(--espacio-3);
+}
+
+.tarjeta-evento-precio {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.tarjeta-evento-desde {
+    color: var(--texto-terciario);
+    font-size: 0.75rem;
+    font-weight: 400;
+    line-height: 1rem;
+}
+
+.tarjeta-evento-importe {
+    color: var(--texto-principal);
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.5rem;
+}
+
+.tarjeta-evento-enlace {
+    text-decoration: none;
+    transition:
+        background-color 150ms ease-out,
+        border-color 150ms ease-out,
+        color 150ms ease-out;
+}
+
+@media (hover: hover) {
+    .tarjeta-evento:hover {
+        border-color: var(--borde-fuerte);
+        box-shadow: var(--sombra-flotante);
+    }
+
+    .tarjeta-evento:hover .tarjeta-evento-enlace {
+        border-color: var(--marca-primario);
+        background-color: var(--marca-primario);
+        color: var(--texto-inverso);
+    }
+}
+
+.tarjeta-evento:active,
+.tarjeta-evento:focus-within {
+    border-color: var(--borde-fuerte);
+    box-shadow: var(--sombra-flotante);
+}
+
+.tarjeta-evento:active .tarjeta-evento-enlace,
+.tarjeta-evento:focus-within .tarjeta-evento-enlace {
+    border-color: var(--marca-primario);
+    background-color: var(--marca-primario);
+    color: var(--texto-inverso);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .tarjeta-evento,
+    .tarjeta-evento-enlace {
+        transition: none;
+    }
+}

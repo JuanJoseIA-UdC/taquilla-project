@@ -1,0 +1,51 @@
+.campo {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    width: 320px;
+    max-width: 100%;
+    font-family: var(--fuente-instrument-sans);
+}
+
+.campo-etiqueta {
+    color: var(--texto-principal);
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1.25rem;
+    letter-spacing: 0;
+}
+
+.campo-entrada {
+    width: 100%;
+    min-width: 0;
+    height: 3rem;
+    padding: 0 14px;
+    border: 1px solid var(--borde-fuerte);
+    border-radius: var(--radio-md);
+    background-color: var(--fondo-superficie);
+    color: var(--texto-terciario);
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5rem;
+    letter-spacing: 0;
+}
+
+.campo-entrada:focus {
+    border: 2px solid var(--fondo-inverso);
+    color: var(--texto-principal);
+}
+
+.campo-entrada[aria-invalid="true"] {
+    border: 2px solid var(--estado-error);
+    color: var(--texto-principal);
+}
+
+.campo-error {
+    margin: 0;
+    color: var(--estado-error);
+    font-size: 0.75rem;
+    font-weight: 400;
+    line-height: 1rem;
+    letter-spacing: 0;
+}

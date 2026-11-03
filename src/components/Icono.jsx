@@ -4,6 +4,8 @@ import Accesibilidad from "../assets/iconos/person.svg?react";
 import FlechaAbajo from "../assets/iconos/chevd.svg?react";
 import Menu from "../assets/iconos/menu.svg?react";
 import Cerrar from "../assets/iconos/x.svg?react";
+import Calendario from "../assets/iconos/calendar.svg?react";
+import Ubicacion from "../assets/iconos/pin.svg?react";
 
 const ICONOS = {
     buscar: Buscar,
@@ -12,6 +14,8 @@ const ICONOS = {
     flechaAbajo: FlechaAbajo,
     menu: Menu,
     cerrar: Cerrar,
+    calendario: Calendario,
+    ubicacion: Ubicacion,
 };
 
 export default function Icono({ nombre, className }) {
