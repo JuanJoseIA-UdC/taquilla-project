@@ -62,12 +62,12 @@ export function useTextos(idioma) {
             } catch (error) {
                 if (vigente) {
                     console.error("Error al cargar los textos:", error);
-                    setResultado({
+                    setResultado((anterior) => ({
                         idioma,
                         intento,
-                        textos: null,
+                        textos: anterior?.textos ?? null,
                         error: true,
-                    });
+                    }));
                 }
             } finally {
                 clearTimeout(limite);
@@ -84,7 +84,7 @@ export function useTextos(idioma) {
     }, [idioma, intento]);
 
     return {
-        textos: corresponde ? resultado.textos : null,
+        textos: resultado?.textos ?? null,
         cargando: !corresponde,
         error: corresponde ? resultado.error : false,
         recargar: () => setIntento((valor) => valor + 1),
