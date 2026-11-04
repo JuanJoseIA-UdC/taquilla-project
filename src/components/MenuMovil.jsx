@@ -12,8 +12,7 @@ export default function MenuMovil({
     textos,
     idioma,
     cambiarIdioma,
-    textoGrande,
-    alternarTexto,
+    onAbrirAccesibilidad,
 }) {
     const dialogoRef = useRef(null);
     const nav = textos.navbar;
@@ -139,11 +138,12 @@ export default function MenuMovil({
                     <button
                         type="button"
                         className="menu-movil-accesibilidad"
-                        aria-label={
-                            ingles ? "Enlarge text" : "Aumentar tamaño de texto"
-                        }
-                        aria-pressed={textoGrande}
-                        onClick={alternarTexto}
+                        aria-label={nav.aria.accesibilidad}
+                        aria-haspopup="dialog"
+                        onClick={() => {
+                            onCerrar();
+                            onAbrirAccesibilidad();
+                        }}
                     >
                         <Icono nombre="accesibilidad" />
                     </button>

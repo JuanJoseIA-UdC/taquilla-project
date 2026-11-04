@@ -5,7 +5,6 @@ import LayoutPublico from "./components/layout/LayoutPublico.jsx";
 
 export default function App() {
     const [idioma, setIdioma] = useState("es");
-    const [textoGrande, setTextoGrande] = useState(false);
     const datos = useTextos(idioma);
     const nav = datos.textos?.navbar;
 
@@ -13,22 +12,8 @@ export default function App() {
         document.documentElement.lang = idioma;
     }, [idioma]);
 
-    useEffect(() => {
-        document.documentElement.style.fontSize = textoGrande ? "112%" : "";
-
-        return () => {
-            document.documentElement.style.fontSize = "";
-        };
-    }, [textoGrande]);
-
     return (
-        <LayoutPublico
-            datos={datos}
-            idioma={idioma}
-            cambiarIdioma={setIdioma}
-            textoGrande={textoGrande}
-            alternarTexto={() => setTextoGrande((valor) => !valor)}
-        >
+        <LayoutPublico datos={datos} idioma={idioma} cambiarIdioma={setIdioma}>
             <Routes>
                 <Route path="/" element={<h1>{nav?.enlaces.inicio}</h1>} />
                 <Route
@@ -42,6 +27,25 @@ export default function App() {
                 <Route
                     path="/registro"
                     element={<h1>{nav?.botones.crearCuenta}</h1>}
+                />
+                <Route
+                    path="/registro/terminos"
+                    element={
+                        <h1>
+                            {
+                                datos.textos?.footer.columnas.legal.enlaces
+                                    .terminos
+                            }
+                        </h1>
+                    }
+                />
+                <Route
+                    path="/accesibilidad"
+                    element={
+                        <h1>
+                            {datos.textos?.accesibilidad.enlaces.declaracion}
+                        </h1>
+                    }
                 />
             </Routes>
         </LayoutPublico>

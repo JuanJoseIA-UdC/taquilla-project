@@ -1,14 +1,27 @@
+import { useCallback, useState } from "react";
+import { useAccesibilidad } from "../../hooks/useAccesibilidad.js";
 import Navbar from "../Navbar.jsx";
+import PanelAccesibilidad from "../accessibility/PanelAccesibilidad.jsx";
+import Footer from "./Footer.jsx";
+import "./LayoutPublico.css";
 
 export default function LayoutPublico({
     datos,
     idioma,
     cambiarIdioma,
-    textoGrande,
-    alternarTexto,
     children,
 }) {
     const ingles = idioma === "en";
+    const accesibilidad = useAccesibilidad();
+    const [panelAbierto, setPanelAbierto] = useState(false);
+
+    const abrirAccesibilidad = useCallback(() => {
+        setPanelAbierto(true);
+    }, []);
+
+    const cerrarAccesibilidad = useCallback(() => {
+        setPanelAbierto(false);
+    }, []);
 
     return (
         <div className="layout-publico">
@@ -16,8 +29,7 @@ export default function LayoutPublico({
                 {...datos}
                 idioma={idioma}
                 cambiarIdioma={cambiarIdioma}
-                textoGrande={textoGrande}
-                alternarTexto={alternarTexto}
+                onAbrirAccesibilidad={abrirAccesibilidad}
             />
 
             <main id="contenido" tabIndex={-1}>
@@ -38,6 +50,20 @@ export default function LayoutPublico({
                     children
                 )}
             </main>
+
+            <Footer
+                textos={datos.textos}
+                onAccesibilidad={abrirAccesibilidad}
+            />
+
+            {datos.textos && (
+                <PanelAccesibilidad
+                    abierto={panelAbierto}
+                    onCerrar={cerrarAccesibilidad}
+                    textos={datos.textos}
+                    accesibilidad={accesibilidad}
+                />
+            )}
         </div>
     );
 }

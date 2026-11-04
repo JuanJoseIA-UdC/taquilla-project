@@ -10,8 +10,7 @@ export default function Navbar({
     textos,
     idioma,
     cambiarIdioma,
-    textoGrande,
-    alternarTexto,
+    onAbrirAccesibilidad,
 }) {
     const [consulta, setConsulta] = useState("");
     const [menuAbierto, setMenuAbierto] = useState(false);
@@ -21,7 +20,6 @@ export default function Navbar({
     }, []);
     const navigate = useNavigate();
     const nav = textos?.navbar;
-    const ingles = idioma === "en";
 
     function buscar(evento) {
         evento.preventDefault();
@@ -128,11 +126,9 @@ export default function Navbar({
                     <button
                         type="button"
                         className="navbar-accesibilidad"
-                        aria-label={
-                            ingles ? "Enlarge text" : "Aumentar tamaño de texto"
-                        }
-                        aria-pressed={textoGrande}
-                        onClick={alternarTexto}
+                        aria-label={nav.aria.accesibilidad}
+                        aria-haspopup="dialog"
+                        onClick={onAbrirAccesibilidad}
                     >
                         <Icono nombre="accesibilidad" />
                     </button>
@@ -165,8 +161,7 @@ export default function Navbar({
                 textos={textos}
                 idioma={idioma}
                 cambiarIdioma={cambiarIdioma}
-                textoGrande={textoGrande}
-                alternarTexto={alternarTexto}
+                onAbrirAccesibilidad={onAbrirAccesibilidad}
             />
         </header>
     );

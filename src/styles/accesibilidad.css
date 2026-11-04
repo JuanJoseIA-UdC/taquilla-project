@@ -1,0 +1,83 @@
+/* Refuerza el contraste conservando superficies claras y oscuras. */
+:root[data-alto-contraste="true"] {
+    --fondo-pagina: #ffffff;
+    --fondo-superficie: #ffffff;
+    --fondo-inverso: #000000;
+
+    --texto-principal: #000000;
+    --texto-secundario: #000000;
+    --texto-terciario: #000000;
+    --texto-marca: #000000;
+    --texto-inverso: #ffffff;
+    --texto-inverso-suave: #ffffff;
+
+    --borde-sutil: #525252;
+    --borde-fuerte: #525252;
+    --borde-inverso: #ffffff;
+
+    --marca-primario: #000000;
+}
+
+/* La preferencia prevalece sobre los estilos de cada componente. */
+:root[data-subrayar-enlaces="true"] a[href] {
+    text-decoration-line: underline !important;
+    text-underline-offset: 0.18em;
+    text-decoration-thickness: max(1px, 0.08em);
+}
+
+/* Desactiva animaciones, transiciones y desplazamiento suave. */
+:root[data-reducir-movimiento="true"],
+:root[data-reducir-movimiento="true"] *,
+:root[data-reducir-movimiento="true"] *::before,
+:root[data-reducir-movimiento="true"] *::after,
+:root[data-reducir-movimiento="true"] dialog::backdrop {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+}
+
+/* Amplía el espaciado del texto, incluidos los controles. */
+:root[data-espaciado-lectura="true"]
+    :where(
+        p,
+        li,
+        a,
+        button,
+        input,
+        select,
+        textarea,
+        label,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        span,
+        output
+    ) {
+    line-height: 1.5 !important;
+    letter-spacing: 0.12em !important;
+    word-spacing: 0.16em !important;
+}
+
+/* Añade separación después de los párrafos. */
+:root[data-espaciado-lectura="true"] p {
+    margin-block-end: 2em !important;
+}
+
+/* Permite que los textos del footer se distribuyan en varias líneas. */
+:root[data-espaciado-lectura="true"] .footer-columnas {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+:root[data-espaciado-lectura="true"] .footer-columna {
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+@media (min-width: 768px) {
+    :root[data-espaciado-lectura="true"] .footer-columnas {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}

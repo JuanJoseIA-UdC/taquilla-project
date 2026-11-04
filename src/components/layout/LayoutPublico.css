@@ -1,0 +1,16 @@
+.layout-publico {
+    display: flex;
+    flex-direction: column;
+    min-height: 100dvh;
+}
+
+.layout-publico > main {
+    flex: 1;
+    min-width: 0;
+}
+
+/* Mantiene inmóvil la página mientras hay un diálogo abierto. */
+html:has(dialog[open]),
+body:has(dialog[open]) {
+    overflow: hidden;
+}
