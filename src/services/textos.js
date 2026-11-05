@@ -45,6 +45,8 @@ const CAMPOS_REQUERIDOS = [
     "paginas.noEncontrado.contenido.texto",
     "paginas.noEncontrado.contenido.botones.volverInicio",
 
+    "general.aria.saltarAlContenido",
+
     ...OPCIONES_ACCESIBILIDAD.flatMap((opcion) => [
         `accesibilidad.${opcion}.nombre`,
         `accesibilidad.${opcion}.descripcion`,

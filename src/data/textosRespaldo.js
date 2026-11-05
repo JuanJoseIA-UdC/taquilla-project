@@ -76,6 +76,7 @@ export const TEXTOS_RESPALDO = {
         general: {
             aria: {
                 cerrarDialogo: "Cerrar el diálogo",
+                saltarAlContenido: "Saltar al contenido principal",
             },
         },
         accesibilidad: {
@@ -186,6 +187,7 @@ export const TEXTOS_RESPALDO = {
         general: {
             aria: {
                 cerrarDialogo: "Close the dialog",
+                saltarAlContenido: "Skip to main content",
             },
         },
         accesibilidad: {

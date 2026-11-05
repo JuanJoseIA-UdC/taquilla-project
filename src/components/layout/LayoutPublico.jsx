@@ -25,6 +25,9 @@ export default function LayoutPublico({
 
     return (
         <div className="layout-publico">
+            <a className="saltar-contenido" href="#contenido">
+                {datos.textos.general.aria.saltarAlContenido}
+            </a>
             <Navbar
                 textos={datos.textos}
                 idioma={idioma}
