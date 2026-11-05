@@ -1,14 +1,9 @@
-import { useEffect, useId, useRef } from "react";
+import { useId } from "react";
 import { Link } from "react-router";
-import Icono from "../Icono.jsx";
+import { OPCIONES_ACCESIBILIDAD } from "../../config/accesibilidad.js";
+import { useDialogo } from "../../hooks/useDialogo.js";
+import Icono from "../ui/Icono.jsx";
 import "./PanelAccesibilidad.css";
-
-const OPCIONES = [
-    "altoContraste",
-    "reducirMovimiento",
-    "subrayarEnlaces",
-    "espaciadoLectura",
-];
 
 export default function PanelAccesibilidad({
     abierto,
@@ -16,7 +11,7 @@ export default function PanelAccesibilidad({
     textos,
     accesibilidad,
 }) {
-    const dialogoRef = useRef(null);
+    const dialogoRef = useDialogo(abierto);
     const id = useId();
     const t = textos.accesibilidad;
 
@@ -29,16 +24,6 @@ export default function PanelAccesibilidad({
         puedeAumentar,
         puedeDisminuir,
     } = accesibilidad;
-
-    useEffect(() => {
-        const dialogo = dialogoRef.current;
-
-        if (abierto && !dialogo.open) {
-            dialogo.showModal();
-        } else if (!abierto && dialogo.open) {
-            dialogo.close();
-        }
-    }, [abierto]);
 
     return (
         <dialog
@@ -108,7 +93,7 @@ export default function PanelAccesibilidad({
             </div>
 
             <div className="panel-accesibilidad-opciones">
-                {OPCIONES.map((opcion) => {
+                {OPCIONES_ACCESIBILIDAD.map((opcion) => {
                     const nombreId = `${id}-${opcion}-nombre`;
                     const descripcionId = `${id}-${opcion}-descripcion`;
 

@@ -1,5 +1,6 @@
 .selector-idioma {
     display: inline-flex;
+    flex-shrink: 0;
     align-items: center;
     gap: 2px;
     width: fit-content;
@@ -16,8 +17,8 @@
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    width: 44px;
-    height: 32px;
+    min-width: 44px;
+    min-height: 32px;
     border-radius: var(--radio-completo);
     background-color: transparent;
     color: var(--texto-principal);

@@ -124,15 +124,15 @@
     cursor: pointer;
 }
 
+.menu-movil-fila > span {
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
 .menu-movil-accesibilidad svg {
     display: block;
     width: 20px;
     height: 20px;
-}
-
-.menu-movil-accesibilidad[aria-pressed="true"] {
-    background-color: var(--fondo-sutil);
-    border-color: var(--texto-principal);
 }
 
 .menu-movil-sesion {

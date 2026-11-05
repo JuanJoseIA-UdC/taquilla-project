@@ -1,30 +1,5 @@
 import { useEffect, useState } from "react";
-
-const API = `${import.meta.env.VITE_API_URL}/textos`;
-const CLAVES_MENU = ["inicio", "explorar"];
-
-function validarTextos(datos) {
-    const textos = datos?.textos;
-    const nav = textos?.navbar;
-    const etiquetas = [
-        nav?.logo?.texto,
-        nav?.logo?.aria,
-        ...CLAVES_MENU.map((clave) => nav?.enlaces?.[clave]),
-        nav?.buscador?.placeholder,
-        nav?.buscador?.aria,
-        nav?.aria?.idioma,
-        nav?.botones?.ingresar,
-        textos?.menuMovil?.abrir,
-        textos?.menuMovil?.cerrar,
-    ];
-
-    if (
-        !etiquetas.every((valor) => typeof valor === "string" && valor.trim())
-    ) {
-        throw new Error("La respuesta no contiene los textos del navbar.");
-    }
-    return textos;
-}
+import { obtenerTextos } from "../services/textos.js";
 
 export function useTextos(idioma) {
     const [resultado, setResultado] = useState(null);
@@ -38,18 +13,9 @@ export function useTextos(idioma) {
         const limite = setTimeout(() => controlador.abort(), 12000);
         let vigente = true;
 
-        async function cargarTextosNavbar() {
+        async function cargarTextos() {
             try {
-                const respuesta = await fetch(`${API}?idioma=${idioma}`, {
-                    signal: controlador.signal,
-                });
-
-                if (!respuesta.ok) {
-                    throw new Error(`HTTP ${respuesta.status}`);
-                }
-
-                const datos = await respuesta.json();
-                const textos = validarTextos(datos);
+                const textos = await obtenerTextos(idioma, controlador.signal);
 
                 if (vigente) {
                     setResultado({
@@ -74,7 +40,7 @@ export function useTextos(idioma) {
             }
         }
 
-        cargarTextosNavbar();
+        cargarTextos();
 
         return () => {
             vigente = false;

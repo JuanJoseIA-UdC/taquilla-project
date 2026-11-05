@@ -1,8 +1,9 @@
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import { Link, NavLink } from "react-router";
-import Icono from "./Icono.jsx";
-import SelectorIdioma from "./language/SelectorIdioma.jsx";
-import "./ui/Boton.css";
+import { useDialogo } from "../../hooks/useDialogo.js";
+import Icono from "../ui/Icono.jsx";
+import SelectorIdioma from "../language/SelectorIdioma.jsx";
+import "../ui/Boton.css";
 import "./MenuMovil.css";
 
 export default function MenuMovil({
@@ -14,26 +15,13 @@ export default function MenuMovil({
     cambiarIdioma,
     onAbrirAccesibilidad,
 }) {
-    const dialogoRef = useRef(null);
+    const dialogoRef = useDialogo(abierto);
     const nav = textos.navbar;
     const menu = textos.menuMovil;
     const ingles = idioma === "en";
 
     useEffect(() => {
-        const dialogo = dialogoRef.current;
-
-        if (abierto && !dialogo.open) {
-            dialogo.showModal();
-        } else if (!abierto && dialogo.open) {
-            dialogo.close();
-        }
-    }, [abierto]);
-
-    useEffect(() => {
         if (!abierto) return;
-
-        const overflowAnterior = document.body.style.overflow;
-        document.body.style.overflow = "hidden";
 
         const escritorio = window.matchMedia("(min-width: 1280px)");
 
@@ -46,7 +34,6 @@ export default function MenuMovil({
         escritorio.addEventListener("change", alCambiarAncho);
 
         return () => {
-            document.body.style.overflow = overflowAnterior;
             escritorio.removeEventListener("change", alCambiarAncho);
         };
     }, [abierto, onCerrar]);

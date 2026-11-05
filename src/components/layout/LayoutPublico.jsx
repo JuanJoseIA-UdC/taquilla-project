@@ -1,6 +1,6 @@
 import { useCallback, useState } from "react";
 import { useAccesibilidad } from "../../hooks/useAccesibilidad.js";
-import Navbar from "../Navbar.jsx";
+import Navbar from "../navigation/Navbar.jsx";
 import PanelAccesibilidad from "../accessibility/PanelAccesibilidad.jsx";
 import Footer from "./Footer.jsx";
 import "./LayoutPublico.css";
@@ -26,7 +26,7 @@ export default function LayoutPublico({
     return (
         <div className="layout-publico">
             <Navbar
-                {...datos}
+                textos={datos.textos}
                 idioma={idioma}
                 cambiarIdioma={cambiarIdioma}
                 onAbrirAccesibilidad={abrirAccesibilidad}

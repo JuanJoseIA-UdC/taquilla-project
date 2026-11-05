@@ -1,16 +1,12 @@
 import { useEffect, useState } from "react";
 
-const CLAVE_STORAGE = "taquilla.accesibilidad.v1";
-const TAMANO_MINIMO = 100;
-const TAMANO_MAXIMO = 200;
-const PASO_TAMANO = 10;
-
-const OPCIONES = [
-    "altoContraste",
-    "reducirMovimiento",
-    "subrayarEnlaces",
-    "espaciadoLectura",
-];
+import {
+    CLAVE_STORAGE,
+    TAMANO_MINIMO,
+    TAMANO_MAXIMO,
+    PASO_TAMANO,
+    OPCIONES_ACCESIBILIDAD,
+} from "../config/accesibilidad.js";
 
 function preferenciasDelSistema() {
     return {
@@ -45,7 +41,7 @@ function leerPreferencias() {
             preferencias.tamanoTexto = limitarTamano(guardadas.tamanoTexto);
         }
 
-        for (const opcion of OPCIONES) {
+        for (const opcion of OPCIONES_ACCESIBILIDAD) {
             if (typeof guardadas[opcion] === "boolean") {
                 preferencias[opcion] = guardadas[opcion];
             }
@@ -130,7 +126,10 @@ export function useAccesibilidad() {
     ]);
 
     function cambiarOpcion(opcion, activada) {
-        if (!OPCIONES.includes(opcion) || typeof activada !== "boolean") {
+        if (
+            !OPCIONES_ACCESIBILIDAD.includes(opcion) ||
+            typeof activada !== "boolean"
+        ) {
             return;
         }
 

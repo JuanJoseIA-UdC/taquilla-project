@@ -1,10 +1,10 @@
 import { useCallback, useId, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router";
-import Icono from "./Icono.jsx";
-import SelectorIdioma from "./language/SelectorIdioma.jsx";
-import "./ui/Boton.css";
-import "./Navbar.css";
+import Icono from "../ui/Icono.jsx";
+import SelectorIdioma from "../language/SelectorIdioma.jsx";
 import MenuMovil from "./MenuMovil.jsx";
+import "../ui/Boton.css";
+import "./Navbar.css";
 
 export default function Navbar({
     textos,

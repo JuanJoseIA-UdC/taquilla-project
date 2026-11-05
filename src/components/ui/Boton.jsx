@@ -6,6 +6,7 @@ export default function Boton({
     tamano = "m",
     type = "button",
     disabled = false,
+    className = "",
     ...props
 }) {
     return (
@@ -13,7 +14,14 @@ export default function Boton({
             {...props}
             type={type}
             disabled={disabled}
-            className={`boton boton--${variante} boton--${tamano}`}
+            className={[
+                "boton",
+                `boton--${variante}`,
+                `boton--${tamano}`,
+                className,
+            ]
+                .filter(Boolean)
+                .join(" ")}
         >
             {children}
         </button>

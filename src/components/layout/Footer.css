@@ -48,12 +48,14 @@
 
 .footer-columnas {
     display: grid;
-    grid-template-columns: repeat(2, max-content);
+    grid-template-columns: repeat(2, minmax(0, max-content));
     column-gap: 32px;
     row-gap: 24px;
 }
 
 .footer-columna {
+    min-width: 0;
+    overflow-wrap: anywhere;
     display: flex;
     flex-direction: column;
     gap: 12px;
@@ -134,7 +136,7 @@
     }
 
     .footer-columnas {
-        grid-template-columns: repeat(3, max-content);
+        grid-template-columns: repeat(3, minmax(0, max-content));
         column-gap: 48px;
     }
 

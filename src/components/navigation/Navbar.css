@@ -8,6 +8,8 @@
 
 .navbar-interior {
     display: flex;
+    flex-wrap: wrap;
+    gap: 12px 24px;
     align-items: center;
     justify-content: space-between;
     min-height: 71px;
@@ -55,8 +57,11 @@
 
 .navbar-utilidades {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    min-width: 0;
     align-items: center;
-    flex-shrink: 0;
+    flex: 0 1 auto;
     gap: var(--espacio-4);
 }
 
@@ -66,7 +71,7 @@
     flex-shrink: 0;
     gap: 10px;
     width: 230px;
-    height: 40px;
+    min-height: 40px;
     padding-inline: var(--espacio-4);
     border-radius: var(--radio-completo);
     background-color: var(--fondo-sutil);
@@ -124,11 +129,6 @@
     display: block;
     width: 20px;
     height: 20px;
-}
-
-.navbar-accesibilidad[aria-pressed="true"] {
-    background-color: var(--fondo-sutil);
-    border-color: var(--texto-principal);
 }
 
 .navbar-cuenta {

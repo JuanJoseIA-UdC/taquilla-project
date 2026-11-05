@@ -71,11 +71,6 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
-:root[data-espaciado-lectura="true"] .footer-columna {
-    min-width: 0;
-    overflow-wrap: anywhere;
-}
-
 @media (min-width: 768px) {
     :root[data-espaciado-lectura="true"] .footer-columnas {
         grid-template-columns: repeat(3, minmax(0, 1fr));
