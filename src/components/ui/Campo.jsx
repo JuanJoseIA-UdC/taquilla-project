@@ -1,11 +1,12 @@
-import "./Campo.css";
 import { useId } from "react";
+import "./Campo.css";
 
 export default function Campo({
     etiqueta,
     id,
     type = "text",
     error,
+    className = "",
     "aria-describedby": descripcion,
     "aria-invalid": invalido,
     ...props
@@ -27,7 +28,9 @@ export default function Campo({
                 {...props}
                 id={campoId}
                 type={type}
-                className="campo-entrada"
+                className={["campo-entrada", className]
+                    .filter(Boolean)
+                    .join(" ")}
                 aria-invalid={tieneError ? true : invalido}
                 aria-describedby={descripcionId}
             />

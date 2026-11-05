@@ -1,5 +1,5 @@
 import Etiqueta from "../ui/Etiqueta.jsx";
-import Icono from "../Icono.jsx";
+import Icono from "../ui/Icono.jsx";
 import "../ui/Boton.css";
 import "./TarjetaEvento.css";
 

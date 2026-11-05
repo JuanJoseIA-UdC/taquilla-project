@@ -97,3 +97,6 @@ dist/
 .env
 .env.*
 !.env.example
+
+docs
+README.md
