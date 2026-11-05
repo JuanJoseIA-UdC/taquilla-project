@@ -41,6 +41,10 @@ const CAMPOS_REQUERIDOS = [
     "accesibilidad.aria.aumentarTexto",
     "accesibilidad.aria.disminuirTexto",
 
+    "paginas.noEncontrado.contenido.titulo",
+    "paginas.noEncontrado.contenido.texto",
+    "paginas.noEncontrado.contenido.botones.volverInicio",
+
     ...OPCIONES_ACCESIBILIDAD.flatMap((opcion) => [
         `accesibilidad.${opcion}.nombre`,
         `accesibilidad.${opcion}.descripcion`,

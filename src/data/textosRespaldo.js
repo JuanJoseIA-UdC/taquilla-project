@@ -32,6 +32,17 @@ export const TEXTOS_RESPALDO = {
                 accesibilidad: "Accesibilidad",
             },
         },
+        paginas: {
+            noEncontrado: {
+                contenido: {
+                    titulo: "No encontramos esta página",
+                    texto: "Puede que el evento ya no exista o que la dirección esté mal escrita.",
+                    botones: {
+                        volverInicio: "Volver al inicio",
+                    },
+                },
+            },
+        },
         footer: {
             lema: "Conciertos, teatro, deportes y festivales en un solo lugar. Explora eventos y consulta sus detalles.",
             columnas: {
@@ -129,6 +140,17 @@ export const TEXTOS_RESPALDO = {
             secciones: {
                 idioma: "Language",
                 accesibilidad: "Accessibility",
+            },
+        },
+        paginas: {
+            noEncontrado: {
+                contenido: {
+                    titulo: "We couldn't find this page",
+                    texto: "The event may no longer exist or the address may be misspelled.",
+                    botones: {
+                        volverInicio: "Back to home",
+                    },
+                },
             },
         },
         footer: {

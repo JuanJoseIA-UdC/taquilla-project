@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Route, Routes } from "react-router";
 import { useTextos } from "./hooks/useTextos.js";
 import LayoutPublico from "./components/layout/LayoutPublico.jsx";
+import NoEncontrado from "./pages/NoEncontrado.jsx";
 
 export default function App() {
     const [idioma, setIdioma] = useState("es");
@@ -46,6 +47,10 @@ export default function App() {
                             {datos.textos?.accesibilidad.enlaces.declaracion}
                         </h1>
                     }
+                />
+                <Route
+                    path="*"
+                    element={<NoEncontrado textos={datos.textos} />}
                 />
             </Routes>
         </LayoutPublico>
