@@ -33,22 +33,25 @@ export default function LayoutPublico({
             />
 
             <main id="contenido" tabIndex={-1}>
-                {datos.cargando ? (
+                {datos.cargando && (
                     <p role="status">{ingles ? "Loading…" : "Cargando…"}</p>
-                ) : datos.error ? (
+                )}
+
+                {datos.error && (
                     <div role="alert">
                         <p>
                             {ingles
-                                ? "We could not load the interface."
-                                : "No pudimos cargar la interfaz."}
+                                ? "We could not update the interface texts. You can continue browsing and try again."
+                                : "No pudimos actualizar los textos de la interfaz. Puedes seguir navegando e intentarlo de nuevo."}
                         </p>
+
                         <button type="button" onClick={datos.recargar}>
                             {ingles ? "Try again" : "Reintentar"}
                         </button>
                     </div>
-                ) : (
-                    children
                 )}
+
+                {children}
             </main>
 
             <Footer

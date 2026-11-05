@@ -1,12 +1,16 @@
 import { useEffect, useState } from "react";
+import { TEXTOS_RESPALDO } from "../data/textosRespaldo.js";
 import { obtenerTextos } from "../services/textos.js";
 
 export function useTextos(idioma) {
     const [resultado, setResultado] = useState(null);
     const [intento, setIntento] = useState(0);
 
-    const corresponde =
-        resultado?.idioma === idioma && resultado?.intento === intento;
+    const mismoIdioma = resultado?.idioma === idioma;
+    const corresponde = mismoIdioma && resultado?.intento === intento;
+
+    const textos =
+        (mismoIdioma ? resultado.textos : null) ?? TEXTOS_RESPALDO[idioma];
 
     useEffect(() => {
         const controlador = new AbortController();
@@ -15,23 +19,30 @@ export function useTextos(idioma) {
 
         async function cargarTextos() {
             try {
-                const textos = await obtenerTextos(idioma, controlador.signal);
+                const nuevosTextos = await obtenerTextos(
+                    idioma,
+                    controlador.signal,
+                );
 
                 if (vigente) {
                     setResultado({
                         idioma,
                         intento,
-                        textos,
+                        textos: nuevosTextos,
                         error: false,
                     });
                 }
             } catch (error) {
                 if (vigente) {
                     console.error("Error al cargar los textos:", error);
+
                     setResultado((anterior) => ({
                         idioma,
                         intento,
-                        textos: anterior?.textos ?? null,
+                        textos:
+                            anterior?.idioma === idioma
+                                ? anterior.textos
+                                : null,
                         error: true,
                     }));
                 }
@@ -50,7 +61,7 @@ export function useTextos(idioma) {
     }, [idioma, intento]);
 
     return {
-        textos: resultado?.textos ?? null,
+        textos,
         cargando: !corresponde,
         error: corresponde ? resultado.error : false,
         recargar: () => setIntento((valor) => valor + 1),
