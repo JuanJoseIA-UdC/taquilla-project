@@ -41,6 +41,10 @@ const CAMPOS_REQUERIDOS = [
     "accesibilidad.aria.aumentarTexto",
     "accesibilidad.aria.disminuirTexto",
 
+    "paginas.inicio.hero.etiquetas.temporada",
+    "paginas.inicio.hero.titulo",
+    "paginas.inicio.hero.subtitulo",
+
     "paginas.noEncontrado.contenido.titulo",
     "paginas.noEncontrado.contenido.texto",
     "paginas.noEncontrado.contenido.botones.volverInicio",

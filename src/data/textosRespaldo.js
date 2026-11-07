@@ -1,4 +1,4 @@
-// Respaldo de la interfaz compartida de H2.
+// Respaldo de la interfaz compartida y de las secciones de Inicio implementadas.
 // No contiene datos del catálogo ni sustituye las respuestas válidas de la API.
 export const TEXTOS_RESPALDO = {
     es: {
@@ -33,6 +33,16 @@ export const TEXTOS_RESPALDO = {
             },
         },
         paginas: {
+            inicio: {
+                hero: {
+                    etiquetas: {
+                        temporada: "Temporada nov – dic 2026",
+                    },
+                    titulo: "Tu próxima noche empieza aquí",
+                    subtitulo:
+                        "Conciertos, teatro, deportes y festivales. Busca por categoría, fecha o ciudad y consulta todos los detalles de cada evento.",
+                },
+            },
             noEncontrado: {
                 contenido: {
                     titulo: "No encontramos esta página",
@@ -144,6 +154,16 @@ export const TEXTOS_RESPALDO = {
             },
         },
         paginas: {
+            inicio: {
+                hero: {
+                    etiquetas: {
+                        temporada: "Season Nov – Dec 2026",
+                    },
+                    titulo: "Your next night out starts here",
+                    subtitulo:
+                        "Concerts, theater, sports and festivals. Search by category, date or city and see every detail of each event.",
+                },
+            },
             noEncontrado: {
                 contenido: {
                     titulo: "We couldn't find this page",
