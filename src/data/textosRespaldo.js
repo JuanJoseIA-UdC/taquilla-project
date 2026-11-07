@@ -41,6 +41,23 @@ export const TEXTOS_RESPALDO = {
                     titulo: "Tu próxima noche empieza aquí",
                     subtitulo:
                         "Conciertos, teatro, deportes y festivales. Busca por categoría, fecha o ciudad y consulta todos los detalles de cada evento.",
+                    buscador: {
+                        etiquetas: {
+                            que: "Qué",
+                            donde: "Dónde",
+                            cuando: "Cuándo",
+                        },
+                        placeholders: {
+                            que: "Evento o artista",
+                            cuando: "Cualquier fecha",
+                            movil: "Evento, artista o lugar",
+                        },
+                        resumenMovil: "{ciudad} · {fecha}",
+                        populares: "Populares:",
+                        botones: {
+                            buscar: "Buscar",
+                        },
+                    },
                 },
             },
             noEncontrado: {
@@ -162,6 +179,23 @@ export const TEXTOS_RESPALDO = {
                     titulo: "Your next night out starts here",
                     subtitulo:
                         "Concerts, theater, sports and festivals. Search by category, date or city and see every detail of each event.",
+                    buscador: {
+                        etiquetas: {
+                            que: "What",
+                            donde: "Where",
+                            cuando: "When",
+                        },
+                        placeholders: {
+                            que: "Event or artist",
+                            cuando: "Any date",
+                            movil: "Event, artist or venue",
+                        },
+                        resumenMovil: "{ciudad} · {fecha}",
+                        populares: "Popular:",
+                        botones: {
+                            buscar: "Search",
+                        },
+                    },
                 },
             },
             noEncontrado: {
