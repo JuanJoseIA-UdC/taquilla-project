@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router";
 import { useTextos } from "./hooks/useTextos.js";
 import LayoutPublico from "./components/layout/LayoutPublico.jsx";
 import NoEncontrado from "./pages/NoEncontrado.jsx";
+import Inicio from "./pages/Inicio.jsx";
 
 export default function App() {
     const [idioma, setIdioma] = useState("es");
@@ -16,7 +17,7 @@ export default function App() {
     return (
         <LayoutPublico datos={datos} idioma={idioma} cambiarIdioma={setIdioma}>
             <Routes>
-                <Route path="/" element={<h1>{nav?.enlaces.inicio}</h1>} />
+                <Route path="/" element={<Inicio textos={datos.textos} />} />
                 <Route
                     path="/explorar"
                     element={<h1>{nav?.enlaces.explorar}</h1>}
