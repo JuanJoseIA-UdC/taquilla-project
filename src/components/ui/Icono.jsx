@@ -6,6 +6,7 @@ import Menu from "../../assets/iconos/menu.svg?react";
 import Cerrar from "../../assets/iconos/x.svg?react";
 import Calendario from "../../assets/iconos/calendar.svg?react";
 import Ubicacion from "../../assets/iconos/pin.svg?react";
+import Filtros from "../../assets/iconos/sliders.svg?react";
 
 const ICONOS = {
     buscar: Buscar,
@@ -16,6 +17,7 @@ const ICONOS = {
     cerrar: Cerrar,
     calendario: Calendario,
     ubicacion: Ubicacion,
+    filtros: Filtros,
 };
 
 export default function Icono({ nombre, className }) {
