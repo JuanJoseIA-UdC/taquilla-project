@@ -53,6 +53,16 @@ const CAMPOS_REQUERIDOS = [
     "paginas.inicio.hero.buscador.resumenMovil",
     "paginas.inicio.hero.buscador.populares",
     "paginas.inicio.hero.buscador.botones.buscar",
+    "paginas.inicio.hero.destacado.etiqueta",
+    "paginas.inicio.hero.destacado.desde",
+    "paginas.inicio.hero.destacado.botones.verEvento",
+
+    "estados.cargando.indicador",
+    "estados.vacio.titulo",
+    "estados.vacio.texto",
+    "estados.error.titulo",
+    "estados.error.texto",
+    "estados.error.botones.reintentar",
 
     "paginas.noEncontrado.contenido.titulo",
     "paginas.noEncontrado.contenido.texto",

@@ -2,7 +2,7 @@ import Etiqueta from "../ui/Etiqueta.jsx";
 import "./HeroTaquilla.css";
 import BuscadorHero from "./BuscadorHero.jsx";
 
-export default function HeroTaquilla({ textos }) {
+export default function HeroTaquilla({ textos, children }) {
     return (
         <section className="hero-taquilla" aria-labelledby="inicio-titulo">
             <div className="hero-taquilla-interior">
@@ -20,6 +20,7 @@ export default function HeroTaquilla({ textos }) {
                     </p>
                     <BuscadorHero textos={textos.buscador} />
                 </div>
+                {children}
             </div>
         </section>
     );

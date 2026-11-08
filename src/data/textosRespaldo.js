@@ -58,6 +58,13 @@ export const TEXTOS_RESPALDO = {
                             buscar: "Buscar",
                         },
                     },
+                    destacado: {
+                        etiqueta: "Destacado",
+                        desde: "Desde {precio}",
+                        botones: {
+                            verEvento: "Ver evento",
+                        },
+                    },
                 },
             },
             noEncontrado: {
@@ -138,6 +145,22 @@ export const TEXTOS_RESPALDO = {
                 disminuirTexto: "Disminuir el tamaño del texto",
             },
         },
+        estados: {
+            cargando: {
+                indicador: "Cargando…",
+            },
+            vacio: {
+                titulo: "No hay nada por aquí",
+                texto: "Cuando haya información la verás en este lugar.",
+            },
+            error: {
+                titulo: "Algo salió mal",
+                texto: "Revisa tu conexión e inténtalo de nuevo.",
+                botones: {
+                    reintentar: "Reintentar",
+                },
+            },
+        },
     },
     en: {
         navbar: {
@@ -194,6 +217,13 @@ export const TEXTOS_RESPALDO = {
                         populares: "Popular:",
                         botones: {
                             buscar: "Search",
+                        },
+                    },
+                    destacado: {
+                        etiqueta: "Featured",
+                        desde: "From {precio}",
+                        botones: {
+                            verEvento: "See event",
                         },
                     },
                 },
@@ -274,6 +304,22 @@ export const TEXTOS_RESPALDO = {
             aria: {
                 aumentarTexto: "Increase text size",
                 disminuirTexto: "Decrease text size",
+            },
+        },
+        estados: {
+            cargando: {
+                indicador: "Loading…",
+            },
+            vacio: {
+                titulo: "Nothing here yet",
+                texto: "When there is information you will see it here.",
+            },
+            error: {
+                titulo: "Something went wrong",
+                texto: "Check your connection and try again.",
+                botones: {
+                    reintentar: "Try again",
+                },
             },
         },
     },

@@ -17,7 +17,10 @@ export default function App() {
     return (
         <LayoutPublico datos={datos} idioma={idioma} cambiarIdioma={setIdioma}>
             <Routes>
-                <Route path="/" element={<Inicio textos={datos.textos} />} />
+                <Route
+                    path="/"
+                    element={<Inicio textos={datos.textos} idioma={idioma} />}
+                />
                 <Route
                     path="/explorar"
                     element={<h1>{nav?.enlaces.explorar}</h1>}
