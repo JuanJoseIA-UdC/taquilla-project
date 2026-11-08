@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import Etiqueta from "../ui/Etiqueta.jsx";
 import Icono from "../ui/Icono.jsx";
 import "../ui/Boton.css";
@@ -13,10 +14,25 @@ export default function TarjetaEvento({
     textoDesde,
     textoVerEvento,
     href,
+    afiche,
 }) {
+    const estiloAfiche = afiche
+        ? {
+              backgroundImage: `linear-gradient(
+                  135deg,
+                  ${afiche.color1} 0%,
+                  ${afiche.color2} 71.43%
+              )`,
+          }
+        : undefined;
+
     return (
         <article className="tarjeta-evento">
-            <div className="tarjeta-evento-imagen" />
+            <div
+                className="tarjeta-evento-imagen"
+                style={estiloAfiche}
+                aria-hidden="true"
+            />
 
             <div className="tarjeta-evento-contenido">
                 <Etiqueta tono="marca">{categoria}</Etiqueta>
@@ -47,12 +63,13 @@ export default function TarjetaEvento({
                         <span className="tarjeta-evento-importe">{precio}</span>
                     </div>
 
-                    <a
+                    <Link
                         className="boton boton--secundario boton--m tarjeta-evento-enlace"
-                        href={href}
+                        to={href}
+                        aria-label={`${textoVerEvento}: ${titulo}`}
                     >
                         {textoVerEvento}
-                    </a>
+                    </Link>
                 </div>
             </div>
         </article>

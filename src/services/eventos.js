@@ -16,6 +16,7 @@ function esEventoValido(evento) {
         evento?.id,
         evento?.slug,
         evento?.titulo,
+        evento?.categoria,
         evento?.fecha,
         evento?.recinto?.nombre,
         evento?.recinto?.ciudad,
