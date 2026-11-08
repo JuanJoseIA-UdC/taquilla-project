@@ -28,6 +28,17 @@
     color: var(--texto-inverso);
 }
 
+a.chip,
+a.chip:hover {
+    color: var(--texto-principal);
+    text-decoration: none;
+}
+
+a.chip--activo,
+a.chip--activo:hover {
+    color: var(--texto-inverso);
+}
+
 @media (hover: hover) and (pointer: fine) {
     .chip:not(.chip--activo):not(:disabled):hover {
         border-color: var(--borde-fuerte);

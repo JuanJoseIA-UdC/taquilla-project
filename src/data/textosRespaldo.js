@@ -66,6 +66,15 @@ export const TEXTOS_RESPALDO = {
                         },
                     },
                 },
+                categorias: {
+                    eventos: {
+                        uno: "{cantidad} evento",
+                        otro: "{cantidad} eventos",
+                    },
+                },
+                filtrosMovil: {
+                    todos: "Todos",
+                },
             },
             noEncontrado: {
                 contenido: {
@@ -226,6 +235,15 @@ export const TEXTOS_RESPALDO = {
                             verEvento: "See event",
                         },
                     },
+                },
+                categorias: {
+                    eventos: {
+                        uno: "{cantidad} event",
+                        otro: "{cantidad} events",
+                    },
+                },
+                filtrosMovil: {
+                    todos: "All",
                 },
             },
             noEncontrado: {

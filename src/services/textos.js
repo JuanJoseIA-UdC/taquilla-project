@@ -57,6 +57,10 @@ const CAMPOS_REQUERIDOS = [
     "paginas.inicio.hero.destacado.desde",
     "paginas.inicio.hero.destacado.botones.verEvento",
 
+    "paginas.inicio.categorias.eventos.uno",
+    "paginas.inicio.categorias.eventos.otro",
+    "paginas.inicio.filtrosMovil.todos",
+
     "estados.cargando.indicador",
     "estados.vacio.titulo",
     "estados.vacio.texto",
