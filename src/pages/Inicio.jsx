@@ -7,7 +7,7 @@ export default function Inicio({ textos, idioma }) {
     const hero = textos.paginas.inicio.hero;
 
     return (
-        <HeroTaquilla textos={hero}>
+        <HeroTaquilla textos={hero} idioma={idioma}>
             <EventoDestacadoHero
                 datos={destacados}
                 textos={hero.destacado}
