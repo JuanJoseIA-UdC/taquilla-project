@@ -1,5 +1,6 @@
 import Etiqueta from "../ui/Etiqueta.jsx";
 import "./HeroTaquilla.css";
+import BuscadorHero from "./BuscadorHero.jsx";
 
 export default function HeroTaquilla({ textos }) {
     return (
@@ -17,6 +18,7 @@ export default function HeroTaquilla({ textos }) {
                     <p className="hero-taquilla-descripcion">
                         {textos.subtitulo}
                     </p>
+                    <BuscadorHero textos={textos.buscador} />
                 </div>
             </div>
         </section>
