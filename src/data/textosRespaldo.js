@@ -93,6 +93,7 @@ export const TEXTOS_RESPALDO = {
                 filtrosMovil: {
                     todos: "Todos",
                     destacados: "Destacados",
+                    finDeSemana: "Este fin de semana",
                 },
             },
             noEncontrado: {
@@ -282,6 +283,7 @@ export const TEXTOS_RESPALDO = {
                 filtrosMovil: {
                     todos: "All",
                     destacados: "Featured",
+                    finDeSemana: "This weekend",
                 },
             },
             noEncontrado: {

@@ -6,12 +6,18 @@ import { useCategorias } from "../hooks/useCategorias.js";
 import DestacadosInicio from "../components/home/DestacadosInicio.jsx";
 import ProximosInicio from "../components/home/ProximosInicio.jsx";
 import { useProximosEventos } from "../hooks/useProximosEventos.js";
+import FinDeSemanaInicio from "../components/home/FinDeSemanaInicio.jsx";
+import { useEventosFinDeSemana } from "../hooks/useEventosFinDeSemana.js";
 
 export default function Inicio({ textos, idioma }) {
+    const ciudadSeleccionada = "Manizales";
+
     const destacados = useEventosDestacados();
     const categorias = useCategorias();
+    const proximos = useProximosEventos(ciudadSeleccionada);
+    const finDeSemana = useEventosFinDeSemana(ciudadSeleccionada);
+
     const inicio = textos.paginas.inicio;
-    const proximos = useProximosEventos();
 
     return (
         <>
@@ -43,6 +49,15 @@ export default function Inicio({ textos, idioma }) {
                 datos={proximos}
                 categorias={categorias.categorias}
                 textos={inicio.proximos}
+                textoVerTodos={inicio.destacados.enlaces.verTodos}
+                textosTarjeta={inicio.tarjeta}
+                estados={textos.estados}
+                idioma={idioma}
+            />
+            <FinDeSemanaInicio
+                datos={finDeSemana}
+                ciudad={ciudadSeleccionada}
+                titulo={inicio.filtrosMovil.finDeSemana}
                 textoVerTodos={inicio.destacados.enlaces.verTodos}
                 textosTarjeta={inicio.tarjeta}
                 estados={textos.estados}

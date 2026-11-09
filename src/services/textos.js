@@ -68,6 +68,7 @@ const CAMPOS_REQUERIDOS = [
     "paginas.inicio.tarjeta.botones.verEvento",
     "paginas.inicio.filtrosMovil.todos",
     "paginas.inicio.filtrosMovil.destacados",
+    "paginas.inicio.filtrosMovil.finDeSemana",
 
     "estados.cargando.indicador",
     "estados.vacio.titulo",

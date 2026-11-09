@@ -1,3 +1,5 @@
+import { obtenerRangoFinDeSemana } from "../utils/finDeSemana.js";
+
 const API = `${import.meta.env.VITE_API_URL}/eventos`;
 
 function esTexto(valor) {
@@ -54,22 +56,23 @@ export async function obtenerEventosDestacados(signal) {
     return contenido.datos;
 }
 
-export async function obtenerProximosEventos(ciudad, signal) {
+async function obtenerEventosEnIntervalo(
+    ciudad,
+    signal,
+    { cantidad, desde = -Infinity, hasta = Infinity },
+) {
     if (!esTexto(ciudad)) {
-        throw new Error(
-            "Se necesita una ciudad para consultar próximos eventos.",
-        );
+        throw new Error("Se necesita una ciudad para consultar eventos.");
     }
 
     const ciudadSeleccionada = ciudad.trim();
     const ciudadNormalizada = ciudadSeleccionada.toLocaleLowerCase("es-CO");
     const ahora = Date.now();
-    const proximos = [];
-    const cantidad = 4;
+    const eventos = [];
     let pagina = 1;
     let paginas = 1;
 
-    while (pagina <= paginas && proximos.length < cantidad) {
+    while (pagina <= paginas && eventos.length < cantidad) {
         const parametros = new URLSearchParams({
             ciudad: ciudadSeleccionada,
             orden: "fecha",
@@ -107,16 +110,48 @@ export async function obtenerProximosEventos(ciudad, signal) {
             throw new Error("La respuesta contiene una paginación inválida.");
         }
 
-        const futuros = contenido.datos.filter(
-            (evento) =>
+        const coincidencias = contenido.datos.filter((evento) => {
+            const fecha = Date.parse(evento.fecha);
+            const mismaCiudad =
                 evento.recinto.ciudad.trim().toLocaleLowerCase("es-CO") ===
-                    ciudadNormalizada && Date.parse(evento.fecha) > ahora,
+                ciudadNormalizada;
+
+            return (
+                mismaCiudad && fecha > ahora && fecha >= desde && fecha < hasta
+            );
+        });
+
+        eventos.push(...coincidencias);
+
+        // La API entrega los eventos ordenados por fecha ascendente.
+        // Si alcanzamos el final del intervalo, no necesitamos más páginas.
+        const alcanzoLimite = contenido.datos.some(
+            (evento) => Date.parse(evento.fecha) >= hasta,
         );
 
-        proximos.push(...futuros);
+        if (alcanzoLimite) {
+            break;
+        }
+
         paginas = paginacion.paginas;
         pagina += 1;
     }
 
-    return proximos.slice(0, cantidad);
+    return eventos.slice(0, cantidad);
+}
+
+export async function obtenerProximosEventos(ciudad, signal) {
+    return obtenerEventosEnIntervalo(ciudad, signal, {
+        cantidad: 4,
+    });
+}
+
+export async function obtenerEventosFinDeSemana(ciudad, signal) {
+    const rango = obtenerRangoFinDeSemana();
+
+    return obtenerEventosEnIntervalo(ciudad, signal, {
+        cantidad: 3,
+        desde: Date.parse(rango.desde),
+        hasta: Date.parse(rango.hasta),
+    });
 }
