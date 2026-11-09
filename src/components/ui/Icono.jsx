@@ -13,6 +13,7 @@ import Trofeo from "../../assets/iconos/trophy.svg?react";
 import Bandera from "../../assets/iconos/flag.svg?react";
 import Sonrisa from "../../assets/iconos/smile.svg?react";
 import Personas from "../../assets/iconos/users.svg?react";
+import FlechaDerecha from "../../assets/iconos/arrowr.svg?react";
 
 const ICONOS = {
     buscar: Buscar,
@@ -30,6 +31,7 @@ const ICONOS = {
     bandera: Bandera,
     sonrisa: Sonrisa,
     personas: Personas,
+    flechaDerecha: FlechaDerecha,
 };
 
 export default function Icono({ nombre, className }) {

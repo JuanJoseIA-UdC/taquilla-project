@@ -59,7 +59,13 @@ const CAMPOS_REQUERIDOS = [
 
     "paginas.inicio.categorias.eventos.uno",
     "paginas.inicio.categorias.eventos.otro",
+    "paginas.inicio.destacados.titulo",
+    "paginas.inicio.destacados.subtitulo",
+    "paginas.inicio.destacados.enlaces.verTodos",
+    "paginas.inicio.tarjeta.desde",
+    "paginas.inicio.tarjeta.botones.verEvento",
     "paginas.inicio.filtrosMovil.todos",
+    "paginas.inicio.filtrosMovil.destacados",
 
     "estados.cargando.indicador",
     "estados.vacio.titulo",

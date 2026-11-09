@@ -72,8 +72,23 @@ export const TEXTOS_RESPALDO = {
                         otro: "{cantidad} eventos",
                     },
                 },
+                destacados: {
+                    titulo: "Destacados de la semana",
+                    subtitulo:
+                        "Los eventos con más entradas vendidas en los últimos 7 días",
+                    enlaces: {
+                        verTodos: "Ver todos",
+                    },
+                },
+                tarjeta: {
+                    desde: "Desde",
+                    botones: {
+                        verEvento: "Ver evento",
+                    },
+                },
                 filtrosMovil: {
                     todos: "Todos",
+                    destacados: "Destacados",
                 },
             },
             noEncontrado: {
@@ -242,8 +257,23 @@ export const TEXTOS_RESPALDO = {
                         otro: "{cantidad} events",
                     },
                 },
+                destacados: {
+                    titulo: "This week's highlights",
+                    subtitulo:
+                        "The events with the most tickets sold in the last 7 days",
+                    enlaces: {
+                        verTodos: "See all",
+                    },
+                },
+                tarjeta: {
+                    desde: "From",
+                    botones: {
+                        verEvento: "See event",
+                    },
+                },
                 filtrosMovil: {
                     todos: "All",
+                    destacados: "Featured",
                 },
             },
             noEncontrado: {
