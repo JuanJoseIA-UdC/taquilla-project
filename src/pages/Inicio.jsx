@@ -4,11 +4,14 @@ import CategoriasInicio from "../components/home/CategoriasInicio.jsx";
 import { useEventosDestacados } from "../hooks/useEventosDestacados.js";
 import { useCategorias } from "../hooks/useCategorias.js";
 import DestacadosInicio from "../components/home/DestacadosInicio.jsx";
+import ProximosInicio from "../components/home/ProximosInicio.jsx";
+import { useProximosEventos } from "../hooks/useProximosEventos.js";
 
 export default function Inicio({ textos, idioma }) {
     const destacados = useEventosDestacados();
     const categorias = useCategorias();
     const inicio = textos.paginas.inicio;
+    const proximos = useProximosEventos();
 
     return (
         <>
@@ -32,6 +35,15 @@ export default function Inicio({ textos, idioma }) {
                 categorias={categorias.categorias}
                 textos={inicio.destacados}
                 tituloMovil={inicio.filtrosMovil.destacados}
+                textosTarjeta={inicio.tarjeta}
+                estados={textos.estados}
+                idioma={idioma}
+            />
+            <ProximosInicio
+                datos={proximos}
+                categorias={categorias.categorias}
+                textos={inicio.proximos}
+                textoVerTodos={inicio.destacados.enlaces.verTodos}
                 textosTarjeta={inicio.tarjeta}
                 estados={textos.estados}
                 idioma={idioma}

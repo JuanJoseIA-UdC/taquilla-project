@@ -80,6 +80,10 @@ export const TEXTOS_RESPALDO = {
                         verTodos: "Ver todos",
                     },
                 },
+                proximos: {
+                    titulo: "Próximamente en {ciudad}",
+                    subtitulo: "Cambia la ciudad desde el buscador",
+                },
                 tarjeta: {
                     desde: "Desde",
                     botones: {
@@ -264,6 +268,10 @@ export const TEXTOS_RESPALDO = {
                     enlaces: {
                         verTodos: "See all",
                     },
+                },
+                proximos: {
+                    titulo: "Coming soon in {ciudad}",
+                    subtitulo: "Change the city from the search bar",
                 },
                 tarjeta: {
                     desde: "From",

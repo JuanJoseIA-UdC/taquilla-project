@@ -62,6 +62,8 @@ const CAMPOS_REQUERIDOS = [
     "paginas.inicio.destacados.titulo",
     "paginas.inicio.destacados.subtitulo",
     "paginas.inicio.destacados.enlaces.verTodos",
+    "paginas.inicio.proximos.titulo",
+    "paginas.inicio.proximos.subtitulo",
     "paginas.inicio.tarjeta.desde",
     "paginas.inicio.tarjeta.botones.verEvento",
     "paginas.inicio.filtrosMovil.todos",
