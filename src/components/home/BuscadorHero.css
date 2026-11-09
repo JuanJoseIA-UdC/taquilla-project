@@ -81,12 +81,6 @@
     border-radius: var(--radio-sm);
 }
 
-.buscador-hero-web .buscador-hero-enviar[aria-disabled="true"] {
-    background-color: var(--marca-primario);
-    color: var(--texto-inverso);
-    cursor: default;
-}
-
 .buscador-hero-enviar:focus-visible {
     outline: 2px solid var(--texto-principal);
     outline-offset: 2px;
