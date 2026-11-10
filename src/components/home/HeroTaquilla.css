@@ -82,6 +82,23 @@
     overflow-wrap: anywhere;
 }
 
+a.hero-taquilla-popular,
+a.hero-taquilla-popular:hover {
+    color: var(--texto-inverso);
+    text-decoration: none;
+}
+
+a.hero-taquilla-popular:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.hero-taquilla-popular:focus-visible {
+    outline: 2px solid var(--texto-inverso);
+    outline-offset: 3px;
+    border-radius: var(--radio-sm);
+}
+
 @media (width < 1280px) {
     .hero-taquilla {
         padding-block: var(--espacio-2) 28px;

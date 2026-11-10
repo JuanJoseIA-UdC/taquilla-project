@@ -21,7 +21,11 @@ export default function Inicio({ textos, idioma }) {
 
     return (
         <>
-            <HeroTaquilla textos={inicio.hero} idioma={idioma}>
+            <HeroTaquilla
+                textos={inicio.hero}
+                idioma={idioma}
+                ciudad={ciudadSeleccionada}
+            >
                 <EventoDestacadoHero
                     datos={destacados}
                     textos={inicio.hero.destacado}

@@ -102,6 +102,17 @@
     color: var(--texto-principal);
 }
 
+a.buscador-hero-movil,
+a.buscador-hero-movil:hover {
+    color: var(--texto-secundario);
+    text-decoration: none;
+}
+
+.buscador-hero-movil:focus-visible {
+    outline: 2px solid var(--texto-inverso);
+    outline-offset: 3px;
+}
+
 @media (width < 1280px) {
     .buscador-hero-web {
         display: none;

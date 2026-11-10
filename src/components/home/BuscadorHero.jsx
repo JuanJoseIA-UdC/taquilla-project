@@ -1,29 +1,23 @@
 import { Fragment, useState } from "react";
-import { useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 import Boton from "../ui/Boton.jsx";
 import Campo from "../ui/Campo.jsx";
 import Icono from "../ui/Icono.jsx";
+import { crearRutaExplorar } from "../../utils/rutas.js";
 import "./BuscadorHero.css";
 
 export default function BuscadorHero({ textos, ciudad = "" }) {
-
     const [consulta, setConsulta] = useState("");
     const navigate = useNavigate();
 
+    const rutaExplorar = crearRutaExplorar({
+        q: consulta,
+        ciudad,
+    });
+
     function buscar(evento) {
         evento.preventDefault();
-
-        const termino = consulta.trim();
-        const parametros = new URLSearchParams();
-
-        if (termino) {
-            parametros.set("q", termino);
-        }
-
-        navigate({
-            pathname: "/explorar",
-            search: parametros.toString(),
-        });
+        navigate(rutaExplorar);
     }
 
     const campos = [
@@ -50,8 +44,8 @@ export default function BuscadorHero({ textos, ciudad = "" }) {
 
     const resumenMovil = ciudad
         ? textos.resumenMovil
-            .replace("{ciudad}", () => ciudad)
-            .replace("{fecha}", () => textos.placeholders.cuando)
+              .replace("{ciudad}", () => ciudad)
+              .replace("{fecha}", () => textos.placeholders.cuando)
         : textos.placeholders.cuando;
 
     return (
@@ -79,12 +73,15 @@ export default function BuscadorHero({ textos, ciudad = "" }) {
 
                             <Campo
                                 etiqueta={campo.etiqueta}
-                                type={campo.nombre === "que" ? "search" : "text"}
+                                type={
+                                    campo.nombre === "que" ? "search" : "text"
+                                }
                                 value={campo.valor}
                                 placeholder={campo.placeholder}
                                 onChange={
                                     campo.nombre === "que"
-                                        ? (evento) => setConsulta(evento.target.value)
+                                        ? (evento) =>
+                                              setConsulta(evento.target.value)
                                         : undefined
                                 }
                                 readOnly={campo.nombre !== "que"}
@@ -103,12 +100,12 @@ export default function BuscadorHero({ textos, ciudad = "" }) {
                 </Boton>
             </form>
 
-            <div className="buscador-hero-movil">
+            <Link to={rutaExplorar} className="buscador-hero-movil">
                 <Icono nombre="buscar" className="buscador-hero-icono" />
 
                 <div className="buscador-hero-movil-textos">
                     <span className="buscador-hero-movil-consulta">
-                        {textos.placeholders.movil}
+                        {consulta.trim() || textos.placeholders.movil}
                     </span>
 
                     <span className="buscador-hero-movil-resumen">
@@ -119,7 +116,7 @@ export default function BuscadorHero({ textos, ciudad = "" }) {
                 <span className="buscador-hero-filtros" aria-hidden="true">
                     <Icono nombre="filtros" className="buscador-hero-icono" />
                 </span>
-            </div>
+            </Link>
         </div>
     );
 }

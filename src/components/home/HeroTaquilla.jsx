@@ -1,10 +1,13 @@
+import { Link } from "react-router";
 import Etiqueta from "../ui/Etiqueta.jsx";
-import "./HeroTaquilla.css";
 import BuscadorHero from "./BuscadorHero.jsx";
 import { BUSQUEDAS_POPULARES } from "../../data/busquedasPopulares.js";
+import { crearRutaExplorar } from "../../utils/rutas.js";
+import "./HeroTaquilla.css";
 
-export default function HeroTaquilla({ textos, idioma, children }) {
+export default function HeroTaquilla({ textos, idioma, ciudad, children }) {
     const sugerencias = BUSQUEDAS_POPULARES[idioma] ?? BUSQUEDAS_POPULARES.es;
+
     return (
         <section className="hero-taquilla" aria-labelledby="inicio-titulo">
             <div className="hero-taquilla-interior">
@@ -20,7 +23,9 @@ export default function HeroTaquilla({ textos, idioma, children }) {
                     <p className="hero-taquilla-descripcion">
                         {textos.subtitulo}
                     </p>
-                    <BuscadorHero textos={textos.buscador} />
+
+                    <BuscadorHero textos={textos.buscador} ciudad={ciudad} />
+
                     <div className="hero-taquilla-populares">
                         <span className="hero-taquilla-populares-etiqueta">
                             {textos.buscador.populares}
@@ -28,11 +33,22 @@ export default function HeroTaquilla({ textos, idioma, children }) {
 
                         <ul className="hero-taquilla-populares-lista">
                             {sugerencias.map((sugerencia) => (
-                                <li key={sugerencia}>{sugerencia}</li>
+                                <li key={sugerencia}>
+                                    <Link
+                                        to={crearRutaExplorar({
+                                            q: sugerencia,
+                                            ciudad,
+                                        })}
+                                        className="hero-taquilla-popular"
+                                    >
+                                        {sugerencia}
+                                    </Link>
+                                </li>
                             ))}
                         </ul>
                     </div>
                 </div>
+
                 {children}
             </div>
         </section>
