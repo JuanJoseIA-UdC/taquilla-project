@@ -2,6 +2,7 @@ import { Link } from "react-router";
 import TarjetaEventoCompacta from "../events/TarjetaEventoCompacta.jsx";
 import Boton from "../ui/Boton.jsx";
 import "./FinDeSemanaInicio.css";
+import { crearFormateadoresEvento } from "../../utils/formatoEventos.js";
 
 export default function FinDeSemanaInicio({
     datos,
@@ -51,28 +52,8 @@ export default function FinDeSemanaInicio({
             </div>
         );
     } else {
-        const locale = idioma === "en" ? "en-US" : "es-CO";
-
-        const formatoFecha = new Intl.DateTimeFormat(locale, {
-            timeZone: "America/Bogota",
-            weekday: "short",
-            day: "numeric",
-            month: "short",
-        });
-
-        const formatoHora = new Intl.DateTimeFormat(locale, {
-            timeZone: "America/Bogota",
-            hour: "numeric",
-            minute: "2-digit",
-            hour12: true,
-        });
-
-        const formatoPrecio = new Intl.NumberFormat(locale, {
-            style: "currency",
-            currency: "COP",
-            minimumFractionDigits: 0,
-            maximumFractionDigits: 0,
-        });
+        const { formatoFecha, formatoHora, formatoPrecio } =
+            crearFormateadoresEvento(idioma);
 
         contenido = (
             <ul className="fin-semana-inicio-lista">

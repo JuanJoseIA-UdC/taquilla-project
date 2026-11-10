@@ -2,6 +2,7 @@ import { Link } from "react-router";
 import Boton from "../ui/Boton.jsx";
 import Etiqueta from "../ui/Etiqueta.jsx";
 import "./EventoDestacadoHero.css";
+import { crearFormateadoresEvento } from "../../utils/formatoEventos.js";
 
 export default function EventoDestacadoHero({
     datos,
@@ -53,22 +54,10 @@ export default function EventoDestacadoHero({
         );
     }
 
-    const locale = idioma === "en" ? "en-US" : "es-CO";
+    const { formatoFecha, formatoPrecio } = crearFormateadoresEvento(idioma);
 
-    const fecha = new Intl.DateTimeFormat(locale, {
-        timeZone: "America/Bogota",
-        weekday: "short",
-        day: "numeric",
-        month: "short",
-    }).format(new Date(evento.fecha));
-
-    const precio = new Intl.NumberFormat(locale, {
-        style: "currency",
-        currency: "COP",
-        minimumFractionDigits: 0,
-        maximumFractionDigits: 0,
-    }).format(evento.precioDesde);
-
+    const fecha = formatoFecha.format(new Date(evento.fecha));
+    const precio = formatoPrecio.format(evento.precioDesde);
     const textoPrecio = textos.desde.replace("{precio}", () => precio);
 
     return (

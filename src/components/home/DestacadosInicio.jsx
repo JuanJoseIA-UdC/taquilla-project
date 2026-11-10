@@ -3,6 +3,7 @@ import TarjetaEvento from "../events/TarjetaEvento.jsx";
 import Boton from "../ui/Boton.jsx";
 import Icono from "../ui/Icono.jsx";
 import "./DestacadosInicio.css";
+import { crearFormateadoresEvento } from "../../utils/formatoEventos.js";
 
 export default function DestacadosInicio({
     datos,
@@ -46,28 +47,8 @@ export default function DestacadosInicio({
             </div>
         );
     } else {
-        const locale = idioma === "en" ? "en-US" : "es-CO";
-
-        const formatoFecha = new Intl.DateTimeFormat(locale, {
-            timeZone: "America/Bogota",
-            weekday: "short",
-            day: "numeric",
-            month: "short",
-        });
-
-        const formatoHora = new Intl.DateTimeFormat(locale, {
-            timeZone: "America/Bogota",
-            hour: "numeric",
-            minute: "2-digit",
-            hour12: true,
-        });
-
-        const formatoPrecio = new Intl.NumberFormat(locale, {
-            style: "currency",
-            currency: "COP",
-            minimumFractionDigits: 0,
-            maximumFractionDigits: 0,
-        });
+        const { formatoFecha, formatoHora, formatoPrecio } =
+            crearFormateadoresEvento(idioma);
 
         const nombresCategorias = new Map(
             categorias.map((categoria) => [categoria.id, categoria.nombre]),
