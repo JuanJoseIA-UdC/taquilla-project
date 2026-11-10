@@ -1,9 +1,9 @@
 import { Link } from "react-router";
 import TarjetaEvento from "../events/TarjetaEvento.jsx";
-import Boton from "../ui/Boton.jsx";
 import Icono from "../ui/Icono.jsx";
 import "./ProximosInicio.css";
 import { crearFormateadoresEvento } from "../../utils/formatoEventos.js";
+import EstadoContenido from "../ui/EstadoContenido.jsx";
 
 export default function ProximosInicio({
     datos,
@@ -21,37 +21,26 @@ export default function ProximosInicio({
         orden: "fecha",
     });
 
-    let contenido;
+    let tipoEstado = null;
 
     if (datos.cargando) {
-        contenido = (
-            <div className="proximos-inicio-estado" role="status">
-                <p>{estados.cargando.indicador}</p>
-            </div>
-        );
+        tipoEstado = "cargando";
     } else if (datos.error) {
-        contenido = (
-            <div className="proximos-inicio-estado">
-                <div role="alert">
-                    <p>
-                        <strong>{estados.error.titulo}</strong>
-                    </p>
-                    <p>{estados.error.texto}</p>
-                </div>
-
-                <Boton variante="secundario" onClick={datos.recargar}>
-                    {estados.error.botones.reintentar}
-                </Boton>
-            </div>
-        );
+        tipoEstado = "error";
     } else if (datos.eventos.length === 0) {
+        tipoEstado = "vacio";
+    }
+
+    let contenido;
+
+    if (tipoEstado) {
         contenido = (
-            <div className="proximos-inicio-estado" role="status">
-                <p>
-                    <strong>{estados.vacio.titulo}</strong>
-                </p>
-                <p>{estados.vacio.texto}</p>
-            </div>
+            <EstadoContenido
+                tipo={tipoEstado}
+                textos={estados}
+                onReintentar={datos.recargar}
+                className="proximos-inicio-estado"
+            />
         );
     } else {
         const { formatoFecha, formatoHora, formatoPrecio } =

@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 import TarjetaEvento from "../events/TarjetaEvento.jsx";
-import Boton from "../ui/Boton.jsx";
+import EstadoContenido from "../ui/EstadoContenido.jsx";
 import Icono from "../ui/Icono.jsx";
 import "./DestacadosInicio.css";
 import { crearFormateadoresEvento } from "../../utils/formatoEventos.js";
@@ -14,37 +14,26 @@ export default function DestacadosInicio({
     estados,
     idioma,
 }) {
-    let contenido;
+    let tipoEstado = null;
 
     if (datos.cargando) {
-        contenido = (
-            <div className="destacados-inicio-estado" role="status">
-                <p>{estados.cargando.indicador}</p>
-            </div>
-        );
+        tipoEstado = "cargando";
     } else if (datos.error) {
-        contenido = (
-            <div className="destacados-inicio-estado">
-                <div role="alert">
-                    <p>
-                        <strong>{estados.error.titulo}</strong>
-                    </p>
-                    <p>{estados.error.texto}</p>
-                </div>
-
-                <Boton variante="secundario" onClick={datos.recargar}>
-                    {estados.error.botones.reintentar}
-                </Boton>
-            </div>
-        );
+        tipoEstado = "error";
     } else if (datos.eventos.length === 0) {
+        tipoEstado = "vacio";
+    }
+
+    let contenido;
+
+    if (tipoEstado) {
         contenido = (
-            <div className="destacados-inicio-estado" role="status">
-                <p>
-                    <strong>{estados.vacio.titulo}</strong>
-                </p>
-                <p>{estados.vacio.texto}</p>
-            </div>
+            <EstadoContenido
+                tipo={tipoEstado}
+                textos={estados}
+                onReintentar={datos.recargar}
+                className="destacados-inicio-estado"
+            />
         );
     } else {
         const { formatoFecha, formatoHora, formatoPrecio } =

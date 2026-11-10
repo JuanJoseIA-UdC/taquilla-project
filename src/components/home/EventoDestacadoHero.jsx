@@ -1,8 +1,8 @@
 import { Link } from "react-router";
-import Boton from "../ui/Boton.jsx";
 import Etiqueta from "../ui/Etiqueta.jsx";
 import "./EventoDestacadoHero.css";
 import { crearFormateadoresEvento } from "../../utils/formatoEventos.js";
+import EstadoContenido from "../ui/EstadoContenido.jsx";
 
 export default function EventoDestacadoHero({
     datos,
@@ -10,47 +10,25 @@ export default function EventoDestacadoHero({
     estados,
     idioma,
 }) {
-    if (datos.cargando) {
-        return (
-            <div
-                className="evento-destacado-hero evento-destacado-hero--estado"
-                role="status"
-            >
-                <p>{estados.cargando.indicador}</p>
-            </div>
-        );
-    }
-
-    if (datos.error) {
-        return (
-            <div className="evento-destacado-hero evento-destacado-hero--estado">
-                <div role="alert">
-                    <p>
-                        <strong>{estados.error.titulo}</strong>
-                    </p>
-                    <p>{estados.error.texto}</p>
-                </div>
-
-                <Boton variante="secundario" onClick={datos.recargar}>
-                    {estados.error.botones.reintentar}
-                </Boton>
-            </div>
-        );
-    }
-
     const evento = datos.eventos[0];
+    let tipoEstado = null;
 
-    if (!evento) {
+    if (datos.cargando) {
+        tipoEstado = "cargando";
+    } else if (datos.error) {
+        tipoEstado = "error";
+    } else if (!evento) {
+        tipoEstado = "vacio";
+    }
+
+    if (tipoEstado) {
         return (
-            <div
+            <EstadoContenido
+                tipo={tipoEstado}
+                textos={estados}
+                onReintentar={datos.recargar}
                 className="evento-destacado-hero evento-destacado-hero--estado"
-                role="status"
-            >
-                <p>
-                    <strong>{estados.vacio.titulo}</strong>
-                </p>
-                <p>{estados.vacio.texto}</p>
-            </div>
+            />
         );
     }
 

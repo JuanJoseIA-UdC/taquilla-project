@@ -1,8 +1,8 @@
 import { Link } from "react-router";
-import Boton from "../ui/Boton.jsx";
 import Chip from "../ui/Chip.jsx";
 import Icono from "../ui/Icono.jsx";
 import "./CategoriasInicio.css";
+import EstadoContenido from "../ui/EstadoContenido.jsx";
 
 const ICONOS_CATEGORIAS = {
     conciertos: "musica",
@@ -30,37 +30,26 @@ export default function CategoriasInicio({
     textoTodos,
     estados,
 }) {
-    let contenido;
+    let tipoEstado = null;
 
     if (datos.cargando) {
-        contenido = (
-            <p className="categorias-inicio-estado" role="status">
-                {estados.cargando.indicador}
-            </p>
-        );
+        tipoEstado = "cargando";
     } else if (datos.error) {
-        contenido = (
-            <div className="categorias-inicio-estado">
-                <div role="alert">
-                    <p>
-                        <strong>{estados.error.titulo}</strong>
-                    </p>
-                    <p>{estados.error.texto}</p>
-                </div>
-
-                <Boton variante="secundario" onClick={datos.recargar}>
-                    {estados.error.botones.reintentar}
-                </Boton>
-            </div>
-        );
+        tipoEstado = "error";
     } else if (datos.categorias.length === 0) {
+        tipoEstado = "vacio";
+    }
+
+    let contenido;
+
+    if (tipoEstado) {
         contenido = (
-            <div className="categorias-inicio-estado" role="status">
-                <p>
-                    <strong>{estados.vacio.titulo}</strong>
-                </p>
-                <p>{estados.vacio.texto}</p>
-            </div>
+            <EstadoContenido
+                tipo={tipoEstado}
+                textos={estados}
+                onReintentar={datos.recargar}
+                className="categorias-inicio-estado"
+            />
         );
     } else {
         contenido = (
