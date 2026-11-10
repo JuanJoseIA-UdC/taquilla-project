@@ -1,8 +1,8 @@
 import { Link } from "react-router";
 import TarjetaEventoCompacta from "../events/TarjetaEventoCompacta.jsx";
 import EstadoContenido from "../ui/EstadoContenido.jsx";
-import "./FinDeSemanaInicio.css";
 import { crearFormateadoresEvento } from "../../utils/formatoEventos.js";
+import "./FinDeSemanaInicio.css";
 
 export default function FinDeSemanaInicio({
     datos,

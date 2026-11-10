@@ -1,8 +1,8 @@
 import { Link } from "react-router";
 import Chip from "../ui/Chip.jsx";
 import Icono from "../ui/Icono.jsx";
-import "./CategoriasInicio.css";
 import EstadoContenido from "../ui/EstadoContenido.jsx";
+import "./CategoriasInicio.css";
 
 const ICONOS_CATEGORIAS = {
     conciertos: "musica",

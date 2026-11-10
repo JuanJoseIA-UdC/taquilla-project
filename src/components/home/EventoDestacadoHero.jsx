@@ -1,8 +1,8 @@
 import { Link } from "react-router";
 import Etiqueta from "../ui/Etiqueta.jsx";
-import "./EventoDestacadoHero.css";
 import { crearFormateadoresEvento } from "../../utils/formatoEventos.js";
 import EstadoContenido from "../ui/EstadoContenido.jsx";
+import "./EventoDestacadoHero.css";
 
 export default function EventoDestacadoHero({
     datos,

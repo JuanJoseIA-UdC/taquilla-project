@@ -68,19 +68,6 @@
     height: 16px;
 }
 
-.destacados-inicio-lista {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: var(--espacio-6);
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
-
-.destacados-inicio-lista .tarjeta-evento {
-    width: 100%;
-}
-
 .destacados-inicio-estado {
     display: flex;
     flex-direction: column;
@@ -105,10 +92,6 @@
 .destacados-inicio-estado button:focus-visible {
     outline: 2px solid var(--texto-principal);
     outline-offset: 3px;
-}
-
-.destacados-inicio-lista > li {
-    min-width: 0;
 }
 
 .destacados-inicio-estado p {
@@ -143,7 +126,7 @@
         display: inline;
     }
 
-    .destacados-inicio-lista {
+    .lista-eventos.destacados-inicio-lista {
         display: flex;
         gap: var(--espacio-3);
         margin-block: -5px;

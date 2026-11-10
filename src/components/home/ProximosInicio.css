@@ -71,23 +71,6 @@ a.proximos-inicio-enlace:hover {
     height: 16px;
 }
 
-.proximos-inicio-lista {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: var(--espacio-6);
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
-
-.proximos-inicio-lista > li {
-    min-width: 0;
-}
-
-.proximos-inicio-lista .tarjeta-evento {
-    width: 100%;
-}
-
 .proximos-inicio-estado {
     display: flex;
     flex-direction: column;

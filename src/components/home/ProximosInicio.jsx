@@ -1,9 +1,8 @@
 import { Link } from "react-router";
-import TarjetaEvento from "../events/TarjetaEvento.jsx";
+import EstadoContenido from "../ui/EstadoContenido.jsx";
+import ListaEventos from "../events/ListaEventos.jsx";
 import Icono from "../ui/Icono.jsx";
 import "./ProximosInicio.css";
-import { crearFormateadoresEvento } from "../../utils/formatoEventos.js";
-import EstadoContenido from "../ui/EstadoContenido.jsx";
 
 export default function ProximosInicio({
     datos,
@@ -43,41 +42,14 @@ export default function ProximosInicio({
             />
         );
     } else {
-        const { formatoFecha, formatoHora, formatoPrecio } =
-            crearFormateadoresEvento(idioma);
-
-        const nombresCategorias = new Map(
-            categorias.map((categoria) => [categoria.id, categoria.nombre]),
-        );
-
         contenido = (
-            <ul className="proximos-inicio-lista">
-                {datos.eventos.map((evento) => {
-                    const fecha = new Date(evento.fecha);
-
-                    return (
-                        <li key={evento.id}>
-                            <TarjetaEvento
-                                categoria={
-                                    nombresCategorias.get(evento.categoria) ??
-                                    evento.categoria
-                                }
-                                titulo={evento.titulo}
-                                fecha={`${formatoFecha.format(fecha)} · ${formatoHora.format(fecha)}`}
-                                fechaISO={evento.fecha}
-                                lugar={`${evento.recinto.nombre}, ${evento.recinto.ciudad}`}
-                                precio={formatoPrecio.format(
-                                    evento.precioDesde,
-                                )}
-                                textoDesde={textosTarjeta.desde}
-                                textoVerEvento={textosTarjeta.botones.verEvento}
-                                href={`/eventos/${encodeURIComponent(evento.slug)}`}
-                                afiche={evento.afiche}
-                            />
-                        </li>
-                    );
-                })}
-            </ul>
+            <ListaEventos
+                eventos={datos.eventos}
+                categorias={categorias}
+                textosTarjeta={textosTarjeta}
+                idioma={idioma}
+                className="proximos-inicio-lista"
+            />
         );
     }
 
