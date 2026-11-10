@@ -1,5 +1,5 @@
 import { obtenerPaginaEventos } from "./eventos.js";
-import { obtenerRangoFechasEventos } from "../utils/rangoFechasEventos";
+import { obtenerRangoFechasEventos } from "../utils/rangoFechasEventos.js";
 
 const EVENTOS_POR_PAGINA = 9;
 const TAMANO_LOTE = 20;
