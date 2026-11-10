@@ -1,0 +1,31 @@
+.explorar-contenido {
+    display: grid;
+    grid-template-columns: 288px minmax(0, 1fr);
+    align-items: start;
+    gap: var(--espacio-8);
+    width: 100%;
+    max-width: 1440px;
+    margin-inline: auto;
+    padding: 0 80px 72px;
+}
+
+.explorar-contenido-filtros {
+    grid-column: 1;
+    min-width: 0;
+}
+
+.explorar-resultados {
+    grid-column: 2;
+    min-width: 0;
+}
+
+@media (width < 1280px) {
+    .explorar-contenido {
+        grid-template-columns: minmax(0, 1fr);
+        padding: 0 20px 24px;
+    }
+
+    .explorar-resultados {
+        grid-column: 1;
+    }
+}

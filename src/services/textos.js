@@ -56,7 +56,6 @@ const CAMPOS_REQUERIDOS = [
     "paginas.inicio.hero.destacado.etiqueta",
     "paginas.inicio.hero.destacado.desde",
     "paginas.inicio.hero.destacado.botones.verEvento",
-
     "paginas.inicio.categorias.eventos.uno",
     "paginas.inicio.categorias.eventos.otro",
     "paginas.inicio.destacados.titulo",
@@ -69,6 +68,9 @@ const CAMPOS_REQUERIDOS = [
     "paginas.inicio.filtrosMovil.todos",
     "paginas.inicio.filtrosMovil.destacados",
     "paginas.inicio.filtrosMovil.finDeSemana",
+
+    "paginas.explorar.resultados.uno",
+    "paginas.explorar.resultados.otro",
 
     "estados.cargando.indicador",
     "estados.vacio.titulo",

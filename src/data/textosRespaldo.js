@@ -96,6 +96,12 @@ export const TEXTOS_RESPALDO = {
                     finDeSemana: "Este fin de semana",
                 },
             },
+            explorar: {
+                resultados: {
+                    uno: "{cantidad} evento coincide con tus filtros",
+                    otro: "{cantidad} eventos coinciden con tus filtros",
+                },
+            },
             noEncontrado: {
                 contenido: {
                     titulo: "No encontramos esta página",
@@ -284,6 +290,12 @@ export const TEXTOS_RESPALDO = {
                     todos: "All",
                     destacados: "Featured",
                     finDeSemana: "This weekend",
+                },
+            },
+            explorar: {
+                resultados: {
+                    uno: "{cantidad} event matches your filters",
+                    otro: "{cantidad} events match your filters",
                 },
             },
             noEncontrado: {

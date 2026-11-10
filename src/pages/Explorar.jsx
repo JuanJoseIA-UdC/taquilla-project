@@ -1,23 +1,14 @@
 import { useLocation } from "react-router";
 import { useEventosExplorar } from "../hooks/useEventosExplorar.js";
 import { useCategorias } from "../hooks/useCategorias.js";
-import ListaEventos from "../components/events/ListaEventos.jsx";
-import EstadoContenido from "../components/ui/EstadoContenido.jsx";
+import EncabezadoExplorar from "../components/explore/EncabezadoExplorar.jsx";
+import ContenidoExplorar from "../components/explore/ContenidoExplorar.jsx";
+import ResultadosExplorar from "../components/explore/ResultadosExplorar.jsx";
 
 export default function Explorar({ textos, idioma }) {
     const { search } = useLocation();
     const datos = useEventosExplorar(search);
     const categorias = useCategorias();
-
-    let tipoEstado = null;
-
-    if (datos.error || categorias.error) {
-        tipoEstado = "error";
-    } else if (datos.cargando || categorias.cargando) {
-        tipoEstado = "cargando";
-    } else if (datos.eventos.length === 0) {
-        tipoEstado = "vacio";
-    }
 
     function reintentar() {
         if (datos.error) {
@@ -29,28 +20,31 @@ export default function Explorar({ textos, idioma }) {
         }
     }
 
-    return (
-        <section className="explorar" aria-labelledby="explorar-titulo">
-            <h1 id="explorar-titulo">
-                {textos.footer.columnas.explora.enlaces.explorar}
-            </h1>
+    const resultados = {
+        eventos: datos.eventos,
+        cargando: datos.cargando || categorias.cargando,
+        error: datos.error || categorias.error,
+        recargar: reintentar,
+    };
 
-            {tipoEstado ? (
-                <EstadoContenido
-                    tipo={tipoEstado}
-                    textos={textos.estados}
-                    onReintentar={reintentar}
-                    className="explorar-estado"
-                />
-            ) : (
-                <ListaEventos
-                    eventos={datos.eventos}
+    const total =
+        resultados.cargando || resultados.error
+            ? null
+            : (datos.paginacion?.total ?? null);
+
+    return (
+        <section aria-labelledby="explorar-titulo">
+            <EncabezadoExplorar textos={textos} total={total} idioma={idioma} />
+
+            <ContenidoExplorar>
+                <ResultadosExplorar
+                    datos={resultados}
                     categorias={categorias.categorias}
                     textosTarjeta={textos.paginas.inicio.tarjeta}
+                    estados={textos.estados}
                     idioma={idioma}
-                    className="explorar-lista"
                 />
-            )}
+            </ContenidoExplorar>
         </section>
     );
 }
