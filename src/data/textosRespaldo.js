@@ -101,6 +101,13 @@ export const TEXTOS_RESPALDO = {
                     uno: "{cantidad} evento coincide con tus filtros",
                     otro: "{cantidad} eventos coinciden con tus filtros",
                 },
+                filtros: {
+                    titulo: "Filtros",
+                    categoria: "Categoría",
+                    botones: {
+                        limpiar: "Limpiar",
+                    },
+                },
             },
             noEncontrado: {
                 contenido: {
@@ -296,6 +303,13 @@ export const TEXTOS_RESPALDO = {
                 resultados: {
                     uno: "{cantidad} event matches your filters",
                     otro: "{cantidad} events match your filters",
+                },
+                filtros: {
+                    titulo: "Filters",
+                    categoria: "Category",
+                    botones: {
+                        limpiar: "Clear",
+                    },
                 },
             },
             noEncontrado: {

@@ -71,6 +71,9 @@ const CAMPOS_REQUERIDOS = [
 
     "paginas.explorar.resultados.uno",
     "paginas.explorar.resultados.otro",
+    "paginas.explorar.filtros.titulo",
+    "paginas.explorar.filtros.categoria",
+    "paginas.explorar.filtros.botones.limpiar",
 
     "estados.cargando.indicador",
     "estados.vacio.titulo",
