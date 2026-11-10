@@ -1,0 +1,79 @@
+.tarjeta-evento-compacta {
+    display: grid;
+    grid-template-columns: 72px minmax(0, 1fr);
+    align-items: center;
+    gap: var(--espacio-3);
+    width: 100%;
+    min-width: 0;
+    min-height: 98px;
+    padding: var(--espacio-3);
+    border: 1px solid var(--borde-sutil);
+    border-radius: var(--radio-lg);
+    background-color: var(--fondo-superficie);
+    transition: border-color 150ms ease-out;
+}
+
+a.tarjeta-evento-compacta,
+a.tarjeta-evento-compacta:hover {
+    color: var(--texto-principal);
+    text-decoration: none;
+}
+
+.tarjeta-evento-compacta-miniatura {
+    display: block;
+    width: 72px;
+    height: 72px;
+    border-radius: var(--radio-md);
+    background-color: var(--fondo-sutil);
+}
+
+.tarjeta-evento-compacta-contenido {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+}
+
+.tarjeta-evento-compacta-titulo {
+    margin: 0;
+    color: var(--texto-principal);
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+
+.tarjeta-evento-compacta-fecha {
+    color: var(--texto-secundario);
+    font-size: 0.75rem;
+    font-weight: 400;
+    line-height: 1.333333;
+    overflow-wrap: anywhere;
+}
+
+.tarjeta-evento-compacta-precio {
+    margin: 0;
+    color: var(--texto-principal);
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1.428571;
+    overflow-wrap: anywhere;
+}
+
+.tarjeta-evento-compacta:focus-visible {
+    border-color: var(--borde-fuerte);
+    outline: 2px solid var(--texto-principal);
+    outline-offset: 3px;
+}
+
+@media (hover: hover) {
+    .tarjeta-evento-compacta:hover {
+        border-color: var(--borde-fuerte);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .tarjeta-evento-compacta {
+        transition: none;
+    }
+}

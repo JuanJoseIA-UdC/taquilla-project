@@ -1,0 +1,137 @@
+.evento-destacado-hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    width: 100%;
+    min-width: 0;
+    min-height: 440px;
+    padding: 20px 20px 26px;
+    border-radius: var(--radio-lg);
+    background-color: var(--fondo-inverso-2);
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+}
+
+.evento-destacado-hero:not(.evento-destacado-hero--estado)::before,
+.evento-destacado-hero:not(.evento-destacado-hero--estado)::after {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.evento-destacado-hero:not(.evento-destacado-hero--estado)::before {
+    width: 336px;
+    height: 336px;
+    top: -120px;
+    left: 240px;
+    background-color: #ffffff1f;
+}
+
+.evento-destacado-hero:not(.evento-destacado-hero--estado)::after {
+    width: 216px;
+    height: 216px;
+    top: 320px;
+    left: -57.6px;
+    background-color: #00000026;
+}
+
+.evento-destacado-hero-ficha {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    width: 100%;
+    min-width: 0;
+    padding: 20px;
+    border-radius: var(--radio-lg);
+    background-color: var(--fondo-superficie);
+    color: var(--texto-principal);
+    box-shadow: var(--sombra-flotante);
+    position: relative;
+    z-index: 1;
+}
+
+.evento-destacado-hero-titulo {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1.25;
+    letter-spacing: -0.015em;
+    overflow-wrap: anywhere;
+}
+
+.evento-destacado-hero-pie {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: var(--espacio-4);
+    width: 100%;
+}
+
+.evento-destacado-hero-datos {
+    display: flex;
+    flex: 1 1 195px;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+.evento-destacado-hero-fecha {
+    margin: 0;
+    color: var(--texto-secundario);
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.428571;
+}
+
+.evento-destacado-hero-precio {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.5;
+}
+
+.evento-destacado-hero .evento-destacado-hero-enlace {
+    max-width: 100%;
+    color: var(--texto-inverso);
+    text-decoration: none;
+    overflow-wrap: anywhere;
+}
+
+.evento-destacado-hero :is(a, button):focus-visible {
+    outline: 2px solid var(--texto-principal);
+    outline-offset: 3px;
+}
+
+.evento-destacado-hero--estado {
+    align-items: center;
+    justify-content: center;
+    gap: var(--espacio-4);
+    color: var(--texto-inverso);
+    text-align: center;
+    overflow-wrap: anywhere;
+}
+
+.evento-destacado-hero--estado p {
+    margin: 0;
+}
+
+.evento-destacado-hero--estado [role="alert"] {
+    display: grid;
+    gap: var(--espacio-2);
+}
+
+.evento-destacado-hero--estado button:focus-visible {
+    outline-color: var(--texto-inverso);
+}
+
+@media (width < 1280px) {
+    .evento-destacado-hero {
+        display: none;
+    }
+}

@@ -1,4 +1,4 @@
-// Respaldo de la interfaz compartida de H2.
+// Respaldo de la interfaz compartida y de las secciones de Inicio implementadas.
 // No contiene datos del catálogo ni sustituye las respuestas válidas de la API.
 export const TEXTOS_RESPALDO = {
     es: {
@@ -33,6 +33,69 @@ export const TEXTOS_RESPALDO = {
             },
         },
         paginas: {
+            inicio: {
+                hero: {
+                    etiquetas: {
+                        temporada: "Temporada nov – dic 2026",
+                    },
+                    titulo: "Tu próxima noche empieza aquí",
+                    subtitulo:
+                        "Conciertos, teatro, deportes y festivales. Busca por categoría, fecha o ciudad y consulta todos los detalles de cada evento.",
+                    buscador: {
+                        etiquetas: {
+                            que: "Qué",
+                            donde: "Dónde",
+                            cuando: "Cuándo",
+                        },
+                        placeholders: {
+                            que: "Evento o artista",
+                            cuando: "Cualquier fecha",
+                            movil: "Evento, artista o lugar",
+                        },
+                        resumenMovil: "{ciudad} · {fecha}",
+                        populares: "Populares:",
+                        botones: {
+                            buscar: "Buscar",
+                        },
+                    },
+                    destacado: {
+                        etiqueta: "Destacado",
+                        desde: "Desde {precio}",
+                        botones: {
+                            verEvento: "Ver evento",
+                        },
+                    },
+                },
+                categorias: {
+                    eventos: {
+                        uno: "{cantidad} evento",
+                        otro: "{cantidad} eventos",
+                    },
+                },
+                destacados: {
+                    titulo: "Destacados de la semana",
+                    subtitulo:
+                        "Los eventos con más entradas vendidas en los últimos 7 días",
+                    enlaces: {
+                        verTodos: "Ver todos",
+                    },
+                },
+                proximos: {
+                    titulo: "Próximamente en {ciudad}",
+                    subtitulo: "Cambia la ciudad desde el buscador",
+                },
+                tarjeta: {
+                    desde: "Desde",
+                    botones: {
+                        verEvento: "Ver evento",
+                    },
+                },
+                filtrosMovil: {
+                    todos: "Todos",
+                    destacados: "Destacados",
+                    finDeSemana: "Este fin de semana",
+                },
+            },
             noEncontrado: {
                 contenido: {
                     titulo: "No encontramos esta página",
@@ -111,6 +174,22 @@ export const TEXTOS_RESPALDO = {
                 disminuirTexto: "Disminuir el tamaño del texto",
             },
         },
+        estados: {
+            cargando: {
+                indicador: "Cargando…",
+            },
+            vacio: {
+                titulo: "No hay nada por aquí",
+                texto: "Cuando haya información la verás en este lugar.",
+            },
+            error: {
+                titulo: "Algo salió mal",
+                texto: "Revisa tu conexión e inténtalo de nuevo.",
+                botones: {
+                    reintentar: "Reintentar",
+                },
+            },
+        },
     },
     en: {
         navbar: {
@@ -144,6 +223,69 @@ export const TEXTOS_RESPALDO = {
             },
         },
         paginas: {
+            inicio: {
+                hero: {
+                    etiquetas: {
+                        temporada: "Season Nov – Dec 2026",
+                    },
+                    titulo: "Your next night out starts here",
+                    subtitulo:
+                        "Concerts, theater, sports and festivals. Search by category, date or city and see every detail of each event.",
+                    buscador: {
+                        etiquetas: {
+                            que: "What",
+                            donde: "Where",
+                            cuando: "When",
+                        },
+                        placeholders: {
+                            que: "Event or artist",
+                            cuando: "Any date",
+                            movil: "Event, artist or venue",
+                        },
+                        resumenMovil: "{ciudad} · {fecha}",
+                        populares: "Popular:",
+                        botones: {
+                            buscar: "Search",
+                        },
+                    },
+                    destacado: {
+                        etiqueta: "Featured",
+                        desde: "From {precio}",
+                        botones: {
+                            verEvento: "See event",
+                        },
+                    },
+                },
+                categorias: {
+                    eventos: {
+                        uno: "{cantidad} event",
+                        otro: "{cantidad} events",
+                    },
+                },
+                destacados: {
+                    titulo: "This week's highlights",
+                    subtitulo:
+                        "The events with the most tickets sold in the last 7 days",
+                    enlaces: {
+                        verTodos: "See all",
+                    },
+                },
+                proximos: {
+                    titulo: "Coming soon in {ciudad}",
+                    subtitulo: "Change the city from the search bar",
+                },
+                tarjeta: {
+                    desde: "From",
+                    botones: {
+                        verEvento: "See event",
+                    },
+                },
+                filtrosMovil: {
+                    todos: "All",
+                    destacados: "Featured",
+                    finDeSemana: "This weekend",
+                },
+            },
             noEncontrado: {
                 contenido: {
                     titulo: "We couldn't find this page",
@@ -220,6 +362,22 @@ export const TEXTOS_RESPALDO = {
             aria: {
                 aumentarTexto: "Increase text size",
                 disminuirTexto: "Decrease text size",
+            },
+        },
+        estados: {
+            cargando: {
+                indicador: "Loading…",
+            },
+            vacio: {
+                titulo: "Nothing here yet",
+                texto: "When there is information you will see it here.",
+            },
+            error: {
+                titulo: "Something went wrong",
+                texto: "Check your connection and try again.",
+                botones: {
+                    reintentar: "Try again",
+                },
             },
         },
     },

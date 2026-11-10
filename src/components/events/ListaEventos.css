@@ -1,0 +1,16 @@
+.lista-eventos {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--espacio-6);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.lista-eventos > li {
+    min-width: 0;
+}
+
+.lista-eventos .tarjeta-evento {
+    width: 100%;
+}
