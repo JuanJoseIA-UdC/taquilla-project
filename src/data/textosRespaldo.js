@@ -107,6 +107,15 @@ export const TEXTOS_RESPALDO = {
                     botones: {
                         limpiar: "Limpiar",
                     },
+                    fecha: {
+                        titulo: "Fecha",
+                        hoy: "Hoy",
+                        finDeSemana: "Este fin de semana",
+                        mes: "Este mes",
+                        elegir: "Elegir fechas",
+                        inicial: "Fecha inicial",
+                        final: "Fecha final",
+                    },
                 },
             },
             noEncontrado: {
@@ -153,6 +162,9 @@ export const TEXTOS_RESPALDO = {
             aria: {
                 cerrarDialogo: "Cerrar el diálogo",
                 saltarAlContenido: "Saltar al contenido principal",
+            },
+            acciones: {
+                aplicar: "Aplicar",
             },
         },
         accesibilidad: {
@@ -310,6 +322,15 @@ export const TEXTOS_RESPALDO = {
                     botones: {
                         limpiar: "Clear",
                     },
+                    fecha: {
+                        titulo: "Date",
+                        hoy: "Today",
+                        finDeSemana: "This weekend",
+                        mes: "This month",
+                        elegir: "Choose dates",
+                        inicial: "Start date",
+                        final: "End date",
+                    },
                 },
             },
             noEncontrado: {
@@ -356,6 +377,9 @@ export const TEXTOS_RESPALDO = {
             aria: {
                 cerrarDialogo: "Close the dialog",
                 saltarAlContenido: "Skip to main content",
+            },
+            acciones: {
+                aplicar: "Apply",
             },
         },
         accesibilidad: {
