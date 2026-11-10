@@ -1,5 +1,6 @@
 import { useId } from "react";
 import Casilla from "../ui/Casilla.jsx";
+import FiltroFecha from "./FiltroFecha.jsx";
 import "./FiltrosExplorar.css";
 
 export default function FiltrosExplorar({
@@ -10,6 +11,9 @@ export default function FiltrosExplorar({
     onCambiarCategorias,
     onLimpiar,
     idioma,
+    filtros,
+    textoAplicar,
+    onCambiarFecha,
 }) {
     const tituloId = useId();
     const formatoCantidad = new Intl.NumberFormat(
@@ -69,6 +73,14 @@ export default function FiltrosExplorar({
                                     {categoria.nombre}
                                 </Casilla>
                             ))}
+                        </div>
+                        <div className="filtros-explorar-grupo">
+                            <FiltroFecha
+                                filtros={filtros}
+                                textos={textos.fecha}
+                                textoAplicar={textoAplicar}
+                                onCambiar={onCambiarFecha}
+                            />
                         </div>
                     </fieldset>
                 )}

@@ -23,6 +23,16 @@ export default function Explorar({ textos, idioma }) {
         );
     }
 
+    function cambiarFecha(cambios) {
+        navigate(
+            crearRutaExplorar({
+                ...datos.filtros,
+                ...cambios,
+                pagina: 1,
+            }),
+        );
+    }
+
     function limpiarFiltros() {
         navigate(
             crearRutaExplorar({
@@ -67,6 +77,9 @@ export default function Explorar({ textos, idioma }) {
                         onCambiarCategorias={cambiarCategorias}
                         onLimpiar={limpiarFiltros}
                         idioma={idioma}
+                        filtros={datos.filtros}
+                        textoAplicar={textos.general.acciones.aplicar}
+                        onCambiarFecha={cambiarFecha}
                     />
                 }
             >
