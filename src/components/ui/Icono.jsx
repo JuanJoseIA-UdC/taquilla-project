@@ -15,6 +15,7 @@ import Sonrisa from "../../assets/iconos/smile.svg?react";
 import Personas from "../../assets/iconos/users.svg?react";
 import FlechaDerecha from "../../assets/iconos/arrowr.svg?react";
 import ChevronDerecha from "../../assets/iconos/chevr.svg?react";
+import Check from "../../assets/iconos/check.svg?react";
 
 const ICONOS = {
     buscar: Buscar,
@@ -34,6 +35,7 @@ const ICONOS = {
     personas: Personas,
     flechaDerecha: FlechaDerecha,
     chevronDerecha: ChevronDerecha,
+    check: Check,
 };
 
 export default function Icono({ nombre, className }) {
