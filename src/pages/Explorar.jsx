@@ -1,14 +1,35 @@
-import { useLocation } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import { useEventosExplorar } from "../hooks/useEventosExplorar.js";
 import { useCategorias } from "../hooks/useCategorias.js";
 import EncabezadoExplorar from "../components/explore/EncabezadoExplorar.jsx";
 import ContenidoExplorar from "../components/explore/ContenidoExplorar.jsx";
 import ResultadosExplorar from "../components/explore/ResultadosExplorar.jsx";
+import FiltrosExplorar from "../components/explore/FiltrosExplorar.jsx";
+import { crearRutaExplorar } from "../utils/rutas.js";
 
 export default function Explorar({ textos, idioma }) {
     const { search } = useLocation();
+    const navigate = useNavigate();
     const datos = useEventosExplorar(search);
     const categorias = useCategorias();
+
+    function cambiarCategorias(seleccionadas) {
+        navigate(
+            crearRutaExplorar({
+                ...datos.filtros,
+                categorias: seleccionadas,
+                pagina: 1,
+            }),
+        );
+    }
+
+    function limpiarFiltros() {
+        navigate(
+            crearRutaExplorar({
+                orden: datos.filtros.orden,
+            }),
+        );
+    }
 
     function reintentar() {
         if (datos.error) {
@@ -36,7 +57,19 @@ export default function Explorar({ textos, idioma }) {
         <section aria-labelledby="explorar-titulo">
             <EncabezadoExplorar textos={textos} total={total} idioma={idioma} />
 
-            <ContenidoExplorar>
+            <ContenidoExplorar
+                filtros={
+                    <FiltrosExplorar
+                        categorias={categorias}
+                        seleccionadas={datos.filtros.categorias}
+                        textos={textos.paginas.explorar.filtros}
+                        estados={textos.estados}
+                        onCambiarCategorias={cambiarCategorias}
+                        onLimpiar={limpiarFiltros}
+                        idioma={idioma}
+                    />
+                }
+            >
                 <ResultadosExplorar
                     datos={resultados}
                     categorias={categorias.categorias}

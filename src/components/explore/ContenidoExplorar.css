@@ -25,6 +25,10 @@
         padding: 0 20px 24px;
     }
 
+    .explorar-contenido-filtros {
+        display: none;
+    }
+
     .explorar-resultados {
         grid-column: 1;
     }
