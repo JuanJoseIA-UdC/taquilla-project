@@ -155,3 +155,71 @@ export async function obtenerEventosFinDeSemana(ciudad, signal) {
         hasta: Date.parse(rango.hasta),
     });
 }
+
+export async function obtenerPaginaEventos(
+    {
+        categoria = "",
+        ciudad = "",
+        q = "",
+        orden = "fecha",
+        pagina = 1,
+        porPagina = 20,
+    } = {},
+    signal,
+) {
+    const parametros = new URLSearchParams({
+        orden,
+        pagina: String(pagina),
+        porPagina: String(porPagina),
+    });
+
+    for (const [nombre, valor] of Object.entries({ categoria, ciudad, q })) {
+        const texto = valor.trim();
+
+        if (texto) {
+            parametros.set(nombre, texto);
+        }
+    }
+
+    const respuesta = await fetch(`${API}?${parametros}`, { signal });
+
+    if (!respuesta.ok) {
+        throw new Error(`HTTP ${respuesta.status}`);
+    }
+
+    const contenido = await respuesta.json();
+
+    if (!Array.isArray(contenido?.datos)) {
+        throw new Error("La respuesta de eventos no contiene una lista.");
+    }
+
+    if (!contenido.datos.every(esEventoValido)) {
+        throw new Error(
+            "La respuesta contiene eventos incompletos o inválidos.",
+        );
+    }
+
+    const paginacion = contenido.paginacion;
+
+    if (
+        !Number.isSafeInteger(paginacion?.pagina) ||
+        paginacion.pagina < 1 ||
+        !Number.isSafeInteger(paginacion?.porPagina) ||
+        paginacion.porPagina < 1 ||
+        !Number.isSafeInteger(paginacion?.total) ||
+        paginacion.total < 0 ||
+        !Number.isSafeInteger(paginacion?.paginas) ||
+        paginacion.paginas < 0 ||
+        (paginacion.total > 0 && paginacion.paginas === 0) ||
+        (paginacion.paginas > 0 && paginacion.pagina > paginacion.paginas) ||
+        contenido.datos.length > paginacion.porPagina ||
+        contenido.datos.length > paginacion.total
+    ) {
+        throw new Error("La respuesta contiene una paginación inválida.");
+    }
+
+    return {
+        eventos: contenido.datos,
+        paginacion,
+    };
+}
