@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useId, useState } from "react";
 import { useLocation, useNavigate } from "react-router";
 import { useEventosExplorar } from "../hooks/useEventosExplorar.js";
 import { useCategorias } from "../hooks/useCategorias.js";
@@ -9,9 +9,10 @@ import FiltrosExplorar from "../components/explore/FiltrosExplorar.jsx";
 import { crearRutaExplorar } from "../utils/rutas.js";
 import { useCiudades } from "../hooks/useCiudades.js";
 import { useLimitesPrecio } from "../hooks/useLimitesPrecio.js";
+import PanelFiltrosMovil from "../components/explore/PanelFiltrosMovil.jsx";
 
 export default function Explorar({ textos, idioma }) {
-    const { search } = useLocation();
+    const { search, key: claveUbicacion } = useLocation();
     const navigate = useNavigate();
     const datos = useEventosExplorar(search);
     const categorias = useCategorias();
@@ -80,6 +81,27 @@ export default function Explorar({ textos, idioma }) {
         cambiarFiltros({ q });
     }
 
+    const panelFiltrosId = useId();
+    const [aperturaFiltros, setAperturaFiltros] = useState(null);
+
+    const filtrosAbiertos = aperturaFiltros?.clave === claveUbicacion;
+
+    function abrirFiltros() {
+        setAperturaFiltros({
+            clave: claveUbicacion,
+            filtros: datos.filtros,
+        });
+    }
+
+    function cerrarFiltros() {
+        setAperturaFiltros(null);
+    }
+
+    function aplicarFiltrosMoviles(filtros) {
+        cambiarFiltros(filtros);
+        cerrarFiltros();
+    }
+
     const resultados = {
         eventos: datos.eventos,
         paginacion: datos.paginacion,
@@ -101,6 +123,9 @@ export default function Explorar({ textos, idioma }) {
                 idioma={idioma}
                 consulta={datos.filtros.q}
                 onBuscar={buscarEventos}
+                panelFiltrosId={panelFiltrosId}
+                filtrosAbiertos={filtrosAbiertos}
+                onAbrirFiltros={abrirFiltros}
             />
 
             <ContenidoExplorar
@@ -135,6 +160,19 @@ export default function Explorar({ textos, idioma }) {
                     onCambiarPagina={cambiarPagina}
                 />
             </ContenidoExplorar>
+
+            <PanelFiltrosMovil
+                id={panelFiltrosId}
+                abierto={filtrosAbiertos}
+                onCerrar={cerrarFiltros}
+                onAplicar={aplicarFiltrosMoviles}
+                filtrosIniciales={aperturaFiltros?.filtros ?? datos.filtros}
+                categorias={categorias}
+                ciudades={ciudades}
+                limitesPrecio={limitesPrecio}
+                textos={textos}
+                idioma={idioma}
+            />
         </section>
     );
 }

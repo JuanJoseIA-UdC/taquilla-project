@@ -9,6 +9,9 @@ export default function EncabezadoExplorar({
     idioma,
     consulta,
     onBuscar,
+    panelFiltrosId,
+    filtrosAbiertos,
+    onAbrirFiltros,
 }) {
     const resultados = textos.paginas.explorar.resultados;
 
@@ -59,6 +62,17 @@ export default function EncabezadoExplorar({
                     etiqueta={textos.navbar.buscador.aria}
                     onBuscar={onBuscar}
                 />
+                <button
+                    type="button"
+                    className="explorar-abrir-filtros"
+                    aria-label={textos.paginas.explorar.filtros.titulo}
+                    aria-haspopup="dialog"
+                    aria-expanded={filtrosAbiertos}
+                    aria-controls={panelFiltrosId}
+                    onClick={onAbrirFiltros}
+                >
+                    <Icono nombre="filtros" />
+                </button>
             </div>
 
             <p className="explorar-resumen" role="status" aria-atomic="true">

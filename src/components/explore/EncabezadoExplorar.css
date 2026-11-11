@@ -84,6 +84,36 @@
     display: none;
 }
 
+.explorar-abrir-filtros {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    border: 0;
+    border-radius: var(--radio-md);
+    background-color: var(--fondo-inverso);
+    color: var(--texto-inverso);
+    cursor: pointer;
+}
+
+.explorar-abrir-filtros svg {
+    width: 18px;
+    height: 18px;
+}
+
+.explorar-abrir-filtros:focus-visible {
+    outline: 2px solid var(--texto-principal);
+    outline-offset: 3px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .explorar-abrir-filtros:hover {
+        background-color: var(--fondo-inverso-2);
+    }
+}
+
 @media (width < 1280px) {
     .explorar-encabezado {
         min-height: auto;
