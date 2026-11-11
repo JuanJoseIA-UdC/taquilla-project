@@ -2,6 +2,7 @@ import { useId } from "react";
 import Casilla from "../ui/Casilla.jsx";
 import FiltroFecha from "./FiltroFecha.jsx";
 import FiltroCiudad from "./FiltroCiudad.jsx";
+import FiltroPrecio from "./FiltroPrecio.jsx";
 import "./FiltrosExplorar.css";
 
 export default function FiltrosExplorar({
@@ -17,6 +18,8 @@ export default function FiltrosExplorar({
     onCambiarFecha,
     ciudades,
     onCambiarCiudad,
+    limitesPrecio,
+    onCambiarPrecio,
 }) {
     const tituloId = useId();
     const formatoCantidad = new Intl.NumberFormat(
@@ -95,6 +98,16 @@ export default function FiltrosExplorar({
                     textos={textos}
                     estados={estados}
                     onCambiar={onCambiarCiudad}
+                />
+            </div>
+            <div className="filtros-explorar-grupo">
+                <FiltroPrecio
+                    datos={limitesPrecio}
+                    filtros={filtros}
+                    textos={textos}
+                    estados={estados}
+                    idioma={idioma}
+                    onCambiar={onCambiarPrecio}
                 />
             </div>
         </aside>

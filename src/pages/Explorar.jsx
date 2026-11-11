@@ -7,6 +7,7 @@ import ResultadosExplorar from "../components/explore/ResultadosExplorar.jsx";
 import FiltrosExplorar from "../components/explore/FiltrosExplorar.jsx";
 import { crearRutaExplorar } from "../utils/rutas.js";
 import { useCiudades } from "../hooks/useCiudades.js";
+import { useLimitesPrecio } from "../hooks/useLimitesPrecio.js";
 
 export default function Explorar({ textos, idioma }) {
     const { search } = useLocation();
@@ -14,6 +15,7 @@ export default function Explorar({ textos, idioma }) {
     const datos = useEventosExplorar(search);
     const categorias = useCategorias();
     const ciudades = useCiudades();
+    const limitesPrecio = useLimitesPrecio();
 
     function cambiarFiltros(cambios) {
         navigate(
@@ -82,6 +84,8 @@ export default function Explorar({ textos, idioma }) {
                         onCambiarFecha={cambiarFiltros}
                         ciudades={ciudades}
                         onCambiarCiudad={cambiarCiudad}
+                        limitesPrecio={limitesPrecio}
+                        onCambiarPrecio={cambiarFiltros}
                     />
                 }
             >
