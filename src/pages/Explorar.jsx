@@ -76,6 +76,10 @@ export default function Explorar({ textos, idioma }) {
         }
     }
 
+    function buscarEventos(q) {
+        cambiarFiltros({ q });
+    }
+
     const resultados = {
         eventos: datos.eventos,
         paginacion: datos.paginacion,
@@ -91,7 +95,13 @@ export default function Explorar({ textos, idioma }) {
 
     return (
         <section aria-labelledby="explorar-titulo">
-            <EncabezadoExplorar textos={textos} total={total} idioma={idioma} />
+            <EncabezadoExplorar
+                textos={textos}
+                total={total}
+                idioma={idioma}
+                consulta={datos.filtros.q}
+                onBuscar={buscarEventos}
+            />
 
             <ContenidoExplorar
                 filtros={

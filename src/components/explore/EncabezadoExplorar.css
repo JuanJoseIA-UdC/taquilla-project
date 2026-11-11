@@ -80,6 +80,10 @@
     overflow-wrap: anywhere;
 }
 
+.explorar-busqueda-movil {
+    display: none;
+}
+
 @media (width < 1280px) {
     .explorar-encabezado {
         min-height: auto;
@@ -98,5 +102,12 @@
 
     .explorar-resumen {
         display: none;
+    }
+
+    .explorar-busqueda-movil {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 48px;
+        gap: 10px;
+        min-width: 0;
     }
 }
