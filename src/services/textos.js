@@ -91,6 +91,7 @@ const CAMPOS_REQUERIDOS = [
     "paginas.explorar.paginacion.siguiente",
     "paginas.explorar.resultadosCorto.uno",
     "paginas.explorar.resultadosCorto.otro",
+    "paginas.explorar.filtros.botones.verResultados",
 
     "estados.cargando.indicador",
     "estados.vacio.titulo",
@@ -148,6 +149,10 @@ export async function obtenerTextos(idioma, signal) {
         fecha: {
             ...filtrosRespaldo.fecha,
             ...filtrosAPI.fecha,
+        },
+        botones: {
+            ...filtrosRespaldo.botones,
+            ...filtrosAPI.botones,
         },
     };
 

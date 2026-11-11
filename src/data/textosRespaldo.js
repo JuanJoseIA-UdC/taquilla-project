@@ -106,6 +106,8 @@ export const TEXTOS_RESPALDO = {
                     categoria: "Categoría",
                     botones: {
                         limpiar: "Limpiar",
+                        verResultados: "Ver {cantidad} eventos",
+                        verResultado: "Ver {cantidad} evento",
                     },
                     fecha: {
                         titulo: "Fecha",
@@ -346,6 +348,8 @@ export const TEXTOS_RESPALDO = {
                     categoria: "Category",
                     botones: {
                         limpiar: "Clear",
+                        verResultados: "See {cantidad} events",
+                        verResultado: "See {cantidad} event",
                     },
                     fecha: {
                         titulo: "Date",
