@@ -81,6 +81,7 @@ const CAMPOS_REQUERIDOS = [
     "paginas.explorar.filtros.fecha.mes",
     "paginas.explorar.filtros.fecha.elegir",
     "general.acciones.aplicar",
+    "paginas.explorar.filtros.ciudad",
 
     "estados.cargando.indicador",
     "estados.vacio.titulo",
@@ -129,9 +130,16 @@ export async function obtenerTextos(idioma, signal) {
     }
     const textos = validarTextos(await respuesta.json());
 
-    textos.paginas.explorar.filtros.fecha = {
-        ...TEXTOS_RESPALDO[idioma].paginas.explorar.filtros.fecha,
-        ...textos.paginas.explorar.filtros.fecha,
+    const filtrosAPI = textos.paginas.explorar.filtros;
+    const filtrosRespaldo = TEXTOS_RESPALDO[idioma].paginas.explorar.filtros;
+
+    textos.paginas.explorar.filtros = {
+        ...filtrosRespaldo,
+        ...filtrosAPI,
+        fecha: {
+            ...filtrosRespaldo.fecha,
+            ...filtrosAPI.fecha,
+        },
     };
 
     return textos;

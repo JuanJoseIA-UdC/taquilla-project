@@ -116,6 +116,8 @@ export const TEXTOS_RESPALDO = {
                         inicial: "Fecha inicial",
                         final: "Fecha final",
                     },
+                    ciudad: "Ciudad",
+                    todasCiudades: "Todas las ciudades",
                 },
             },
             noEncontrado: {
@@ -331,6 +333,8 @@ export const TEXTOS_RESPALDO = {
                         inicial: "Start date",
                         final: "End date",
                     },
+                    ciudad: "City",
+                    todasCiudades: "All cities",
                 },
             },
             noEncontrado: {
