@@ -114,3 +114,53 @@ export async function obtenerEventosExplorar(filtros = {}, signal) {
         },
     };
 }
+
+export async function obtenerLimitesPrecio(signal) {
+    const primera = await obtenerPaginaEventos(
+        {
+            orden: "precio",
+            pagina: 1,
+            porPagina: 1,
+        },
+        signal,
+    );
+
+    if (primera.paginacion.total === 0) {
+        return {
+            minimo: 0,
+            maximo: 0,
+            hayEventos: false,
+        };
+    }
+
+    const ultima =
+        primera.paginacion.paginas === 1
+            ? primera
+            : await obtenerPaginaEventos(
+                  {
+                      orden: "precio",
+                      pagina: primera.paginacion.paginas,
+                      porPagina: 1,
+                  },
+                  signal,
+              );
+
+    signal?.throwIfAborted();
+
+    const eventoMasCaro = ultima.eventos.at(-1);
+
+    if (
+        !eventoMasCaro ||
+        ultima.paginacion.pagina !== ultima.paginacion.paginas
+    ) {
+        throw new Error(
+            "El catálogo cambió durante la consulta de precios. Intenta de nuevo.",
+        );
+    }
+
+    return {
+        minimo: 0,
+        maximo: eventoMasCaro.precioDesde,
+        hayEventos: true,
+    };
+}
