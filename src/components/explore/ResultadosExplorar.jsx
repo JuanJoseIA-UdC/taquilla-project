@@ -1,5 +1,7 @@
+import { useRef } from "react";
 import ListaEventos from "../events/ListaEventos.jsx";
 import EstadoContenido from "../ui/EstadoContenido.jsx";
+import Paginacion from "../ui/Paginacion.jsx";
 import BarraResultados from "./BarraResultados.jsx";
 import "./ResultadosExplorar.css";
 
@@ -12,7 +14,10 @@ export default function ResultadosExplorar({
     estados,
     idioma,
     onCambiarFiltros,
+    onCambiarPagina,
 }) {
+    const contenedorRef = useRef(null);
+
     let tipoEstado = null;
 
     if (datos.error) {
@@ -23,8 +28,19 @@ export default function ResultadosExplorar({
         tipoEstado = "vacio";
     }
 
+    function cambiarPagina(pagina) {
+        const contenedor = contenedorRef.current;
+
+        if (contenedor) {
+            contenedor.focus({ preventScroll: true });
+            contenedor.scrollIntoView({ block: "start" });
+        }
+
+        onCambiarPagina(pagina);
+    }
+
     return (
-        <div className="resultados-explorar">
+        <div ref={contenedorRef} className="resultados-explorar" tabIndex={-1}>
             <BarraResultados
                 filtros={filtros}
                 categorias={categorias}
@@ -47,6 +63,15 @@ export default function ResultadosExplorar({
                     textosTarjeta={textosTarjeta}
                     idioma={idioma}
                     className="explorar-lista"
+                />
+            )}
+
+            {!tipoEstado && datos.paginacion && (
+                <Paginacion
+                    pagina={datos.paginacion.pagina}
+                    paginas={datos.paginacion.paginas}
+                    textos={textos.paginacion}
+                    onCambiar={cambiarPagina}
                 />
             )}
         </div>

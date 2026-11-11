@@ -37,6 +37,11 @@
     outline-offset: 3px;
 }
 
+.resultados-explorar:focus-visible {
+    outline: 2px solid var(--texto-principal);
+    outline-offset: 4px;
+}
+
 @media (width < 1280px) {
     .lista-eventos.explorar-lista {
         grid-template-columns: minmax(0, 1fr);

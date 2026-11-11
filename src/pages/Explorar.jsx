@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router";
 import { useEventosExplorar } from "../hooks/useEventosExplorar.js";
 import { useCategorias } from "../hooks/useCategorias.js";
@@ -16,6 +17,28 @@ export default function Explorar({ textos, idioma }) {
     const categorias = useCategorias();
     const ciudades = useCiudades();
     const limitesPrecio = useLimitesPrecio();
+    const rutaCorregida =
+        datos.paginacion && datos.filtros.pagina !== datos.paginacion.pagina
+            ? crearRutaExplorar({
+                  ...datos.filtros,
+                  pagina: datos.paginacion.pagina,
+              })
+            : null;
+
+    useEffect(() => {
+        if (rutaCorregida) {
+            navigate(rutaCorregida, { replace: true });
+        }
+    }, [rutaCorregida, navigate]);
+
+    function cambiarPagina(pagina) {
+        navigate(
+            crearRutaExplorar({
+                ...datos.filtros,
+                pagina,
+            }),
+        );
+    }
 
     function cambiarFiltros(cambios) {
         navigate(
@@ -55,6 +78,7 @@ export default function Explorar({ textos, idioma }) {
 
     const resultados = {
         eventos: datos.eventos,
+        paginacion: datos.paginacion,
         cargando: datos.cargando || categorias.cargando,
         error: datos.error || categorias.error,
         recargar: reintentar,
@@ -98,6 +122,7 @@ export default function Explorar({ textos, idioma }) {
                     filtros={datos.filtros}
                     textos={textos.paginas.explorar}
                     onCambiarFiltros={cambiarFiltros}
+                    onCambiarPagina={cambiarPagina}
                 />
             </ContenidoExplorar>
         </section>
