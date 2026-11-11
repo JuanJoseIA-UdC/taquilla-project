@@ -87,6 +87,8 @@ const CAMPOS_REQUERIDOS = [
     "paginas.explorar.orden.opciones.fecha",
     "paginas.explorar.orden.opciones.precio",
     "paginas.explorar.orden.opciones.popularidad",
+    "paginas.explorar.paginacion.anterior",
+    "paginas.explorar.paginacion.siguiente",
 
     "estados.cargando.indicador",
     "estados.vacio.titulo",
@@ -145,6 +147,11 @@ export async function obtenerTextos(idioma, signal) {
             ...filtrosRespaldo.fecha,
             ...filtrosAPI.fecha,
         },
+    };
+
+    textos.paginas.explorar.paginacion = {
+        ...TEXTOS_RESPALDO[idioma].paginas.explorar.paginacion,
+        ...textos.paginas.explorar.paginacion,
     };
 
     return textos;

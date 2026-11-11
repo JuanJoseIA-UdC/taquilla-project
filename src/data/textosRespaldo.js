@@ -132,6 +132,12 @@ export const TEXTOS_RESPALDO = {
                         popularidad: "Más populares",
                     },
                 },
+                paginacion: {
+                    titulo: "Paginación de eventos",
+                    pagina: "Página {pagina}",
+                    anterior: "Página anterior",
+                    siguiente: "Página siguiente",
+                },
             },
             noEncontrado: {
                 contenido: {
@@ -361,6 +367,12 @@ export const TEXTOS_RESPALDO = {
                         precio: "Lowest price",
                         popularidad: "Most popular",
                     },
+                },
+                paginacion: {
+                    titulo: "Event pagination",
+                    pagina: "Page {pagina}",
+                    anterior: "Previous page",
+                    siguiente: "Next page",
                 },
             },
             noEncontrado: {
