@@ -74,16 +74,16 @@ export default function FiltrosExplorar({
                                 </Casilla>
                             ))}
                         </div>
-                        <div className="filtros-explorar-grupo">
-                            <FiltroFecha
-                                filtros={filtros}
-                                textos={textos.fecha}
-                                textoAplicar={textoAplicar}
-                                onCambiar={onCambiarFecha}
-                            />
-                        </div>
                     </fieldset>
                 )}
+            </div>
+            <div className="filtros-explorar-grupo">
+                <FiltroFecha
+                    filtros={filtros}
+                    textos={textos.fecha}
+                    textoAplicar={textoAplicar}
+                    onCambiar={onCambiarFecha}
+                />
             </div>
         </aside>
     );
