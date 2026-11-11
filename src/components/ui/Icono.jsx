@@ -16,6 +16,7 @@ import Personas from "../../assets/iconos/users.svg?react";
 import FlechaDerecha from "../../assets/iconos/arrowr.svg?react";
 import ChevronDerecha from "../../assets/iconos/chevr.svg?react";
 import Check from "../../assets/iconos/check.svg?react";
+import ChevronIzquierda from "../../assets/iconos/chevl.svg?react";
 
 const ICONOS = {
     buscar: Buscar,
@@ -36,6 +37,7 @@ const ICONOS = {
     flechaDerecha: FlechaDerecha,
     chevronDerecha: ChevronDerecha,
     check: Check,
+    chevronIzquierda: ChevronIzquierda,
 };
 
 export default function Icono({ nombre, className }) {
