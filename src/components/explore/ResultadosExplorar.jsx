@@ -47,6 +47,11 @@ export default function ResultadosExplorar({
                 textos={textos}
                 idioma={idioma}
                 onCambiarFiltros={onCambiarFiltros}
+                total={
+                    datos.cargando || datos.error
+                        ? null
+                        : (datos.paginacion?.total ?? null)
+                }
             />
 
             {tipoEstado ? (

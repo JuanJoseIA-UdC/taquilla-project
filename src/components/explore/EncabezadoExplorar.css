@@ -95,4 +95,8 @@
         line-height: 1.25;
         letter-spacing: -0.015em;
     }
+
+    .explorar-resumen {
+        display: none;
+    }
 }

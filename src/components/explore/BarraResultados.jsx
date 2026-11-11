@@ -10,6 +10,7 @@ export default function BarraResultados({
     categorias,
     textos,
     idioma,
+    total = null,
     onCambiarFiltros,
 }) {
     const ordenId = useId();
@@ -22,6 +23,21 @@ export default function BarraResultados({
         textos.filtros,
         idioma,
     );
+
+    let resumen = "";
+
+    if (total !== null) {
+        const plantilla =
+            total === 1
+                ? textos.resultadosCorto.uno
+                : textos.resultadosCorto.otro;
+
+        const cantidad = new Intl.NumberFormat(
+            idioma === "en" ? "en-US" : "es-CO",
+        ).format(total);
+
+        resumen = plantilla.replace("{cantidad}", cantidad);
+    }
 
     function quitarFiltro(activo, indice) {
         const botones = listaRef.current.querySelectorAll("button");
@@ -61,32 +77,42 @@ export default function BarraResultados({
                 ))}
             </ul>
 
-            <div className="barra-resultados-orden">
-                <label htmlFor={ordenId}>{textos.orden.etiqueta}</label>
+            <div className="barra-resultados-controles">
+                <p
+                    className="barra-resultados-conteo"
+                    role="status"
+                    aria-atomic="true"
+                >
+                    {resumen}
+                </p>
 
-                <div className="barra-resultados-selector">
-                    <select
-                        ref={ordenRef}
-                        id={ordenId}
-                        name="orden"
-                        value={filtros.orden}
-                        onChange={(evento) =>
-                            onCambiarFiltros({
-                                orden: evento.target.value,
-                            })
-                        }
-                    >
-                        {ORDENES.map((orden) => (
-                            <option key={orden} value={orden}>
-                                {textos.orden.opciones[orden]}
-                            </option>
-                        ))}
-                    </select>
+                <div className="barra-resultados-orden">
+                    <label htmlFor={ordenId}>{textos.orden.etiqueta}</label>
 
-                    <Icono
-                        nombre="flechaAbajo"
-                        className="barra-resultados-flecha"
-                    />
+                    <div className="barra-resultados-selector">
+                        <select
+                            ref={ordenRef}
+                            id={ordenId}
+                            name="orden"
+                            value={filtros.orden}
+                            onChange={(evento) =>
+                                onCambiarFiltros({
+                                    orden: evento.target.value,
+                                })
+                            }
+                        >
+                            {ORDENES.map((orden) => (
+                                <option key={orden} value={orden}>
+                                    {textos.orden.opciones[orden]}
+                                </option>
+                            ))}
+                        </select>
+
+                        <Icono
+                            nombre="flechaAbajo"
+                            className="barra-resultados-flecha"
+                        />
+                    </div>
                 </div>
             </div>
         </div>
