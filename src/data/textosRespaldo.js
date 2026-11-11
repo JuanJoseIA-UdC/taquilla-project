@@ -121,6 +121,16 @@ export const TEXTOS_RESPALDO = {
                     precio: "Precio",
                     precioMinimo: "Precio mínimo",
                     precioMaximo: "Precio máximo",
+                    activos: "Filtros activos",
+                    quitar: "Quitar filtro: {filtro}",
+                },
+                orden: {
+                    etiqueta: "Ordenar:",
+                    opciones: {
+                        fecha: "Fecha más próxima",
+                        precio: "Precio más bajo",
+                        popularidad: "Más populares",
+                    },
                 },
             },
             noEncontrado: {
@@ -341,6 +351,16 @@ export const TEXTOS_RESPALDO = {
                     precio: "Price",
                     precioMinimo: "Minimum price",
                     precioMaximo: "Maximum price",
+                    activos: "Active filters",
+                    quitar: "Remove filter: {filtro}",
+                },
+                orden: {
+                    etiqueta: "Sort:",
+                    opciones: {
+                        fecha: "Soonest date",
+                        precio: "Lowest price",
+                        popularidad: "Most popular",
+                    },
                 },
             },
             noEncontrado: {
