@@ -89,6 +89,8 @@ const CAMPOS_REQUERIDOS = [
     "paginas.explorar.orden.opciones.popularidad",
     "paginas.explorar.paginacion.anterior",
     "paginas.explorar.paginacion.siguiente",
+    "paginas.explorar.resultadosCorto.uno",
+    "paginas.explorar.resultadosCorto.otro",
 
     "estados.cargando.indicador",
     "estados.vacio.titulo",

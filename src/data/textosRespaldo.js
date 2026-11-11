@@ -138,6 +138,10 @@ export const TEXTOS_RESPALDO = {
                     anterior: "Página anterior",
                     siguiente: "Página siguiente",
                 },
+                resultadosCorto: {
+                    uno: "{cantidad} evento",
+                    otro: "{cantidad} eventos",
+                },
             },
             noEncontrado: {
                 contenido: {
@@ -373,6 +377,10 @@ export const TEXTOS_RESPALDO = {
                     pagina: "Page {pagina}",
                     anterior: "Previous page",
                     siguiente: "Next page",
+                },
+                resultadosCorto: {
+                    uno: "{cantidad} event",
+                    otro: "{cantidad} events",
                 },
             },
             noEncontrado: {
