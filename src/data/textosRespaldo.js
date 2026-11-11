@@ -118,6 +118,9 @@ export const TEXTOS_RESPALDO = {
                     },
                     ciudad: "Ciudad",
                     todasCiudades: "Todas las ciudades",
+                    precio: "Precio",
+                    precioMinimo: "Precio mínimo",
+                    precioMaximo: "Precio máximo",
                 },
             },
             noEncontrado: {
@@ -335,6 +338,9 @@ export const TEXTOS_RESPALDO = {
                     },
                     ciudad: "City",
                     todasCiudades: "All cities",
+                    precio: "Price",
+                    precioMinimo: "Minimum price",
+                    precioMaximo: "Maximum price",
                 },
             },
             noEncontrado: {

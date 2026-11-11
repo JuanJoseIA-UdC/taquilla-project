@@ -82,6 +82,7 @@ const CAMPOS_REQUERIDOS = [
     "paginas.explorar.filtros.fecha.elegir",
     "general.acciones.aplicar",
     "paginas.explorar.filtros.ciudad",
+    "paginas.explorar.filtros.precio",
 
     "estados.cargando.indicador",
     "estados.vacio.titulo",
