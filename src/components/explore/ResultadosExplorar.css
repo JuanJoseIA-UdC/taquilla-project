@@ -1,3 +1,9 @@
+.resultados-explorar {
+    display: grid;
+    gap: var(--espacio-6);
+    min-width: 0;
+}
+
 .lista-eventos.explorar-lista {
     grid-template-columns: repeat(3, minmax(0, 1fr));
 }

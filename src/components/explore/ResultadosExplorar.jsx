@@ -1,13 +1,17 @@
 import ListaEventos from "../events/ListaEventos.jsx";
 import EstadoContenido from "../ui/EstadoContenido.jsx";
+import BarraResultados from "./BarraResultados.jsx";
 import "./ResultadosExplorar.css";
 
 export default function ResultadosExplorar({
     datos,
     categorias,
+    filtros,
+    textos,
     textosTarjeta,
     estados,
     idioma,
+    onCambiarFiltros,
 }) {
     let tipoEstado = null;
 
@@ -19,24 +23,32 @@ export default function ResultadosExplorar({
         tipoEstado = "vacio";
     }
 
-    if (tipoEstado) {
-        return (
-            <EstadoContenido
-                tipo={tipoEstado}
-                textos={estados}
-                onReintentar={datos.recargar}
-                className="explorar-estado"
-            />
-        );
-    }
-
     return (
-        <ListaEventos
-            eventos={datos.eventos}
-            categorias={categorias}
-            textosTarjeta={textosTarjeta}
-            idioma={idioma}
-            className="explorar-lista"
-        />
+        <div className="resultados-explorar">
+            <BarraResultados
+                filtros={filtros}
+                categorias={categorias}
+                textos={textos}
+                idioma={idioma}
+                onCambiarFiltros={onCambiarFiltros}
+            />
+
+            {tipoEstado ? (
+                <EstadoContenido
+                    tipo={tipoEstado}
+                    textos={estados}
+                    onReintentar={datos.recargar}
+                    className="explorar-estado"
+                />
+            ) : (
+                <ListaEventos
+                    eventos={datos.eventos}
+                    categorias={categorias}
+                    textosTarjeta={textosTarjeta}
+                    idioma={idioma}
+                    className="explorar-lista"
+                />
+            )}
+        </div>
     );
 }

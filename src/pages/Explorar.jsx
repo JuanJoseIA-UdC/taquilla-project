@@ -95,6 +95,9 @@ export default function Explorar({ textos, idioma }) {
                     textosTarjeta={textos.paginas.inicio.tarjeta}
                     estados={textos.estados}
                     idioma={idioma}
+                    filtros={datos.filtros}
+                    textos={textos.paginas.explorar}
+                    onCambiarFiltros={cambiarFiltros}
                 />
             </ContenidoExplorar>
         </section>
