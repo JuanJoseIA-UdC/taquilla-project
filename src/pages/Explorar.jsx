@@ -6,24 +6,16 @@ import ContenidoExplorar from "../components/explore/ContenidoExplorar.jsx";
 import ResultadosExplorar from "../components/explore/ResultadosExplorar.jsx";
 import FiltrosExplorar from "../components/explore/FiltrosExplorar.jsx";
 import { crearRutaExplorar } from "../utils/rutas.js";
+import { useCiudades } from "../hooks/useCiudades.js";
 
 export default function Explorar({ textos, idioma }) {
     const { search } = useLocation();
     const navigate = useNavigate();
     const datos = useEventosExplorar(search);
     const categorias = useCategorias();
+    const ciudades = useCiudades();
 
-    function cambiarCategorias(seleccionadas) {
-        navigate(
-            crearRutaExplorar({
-                ...datos.filtros,
-                categorias: seleccionadas,
-                pagina: 1,
-            }),
-        );
-    }
-
-    function cambiarFecha(cambios) {
+    function cambiarFiltros(cambios) {
         navigate(
             crearRutaExplorar({
                 ...datos.filtros,
@@ -31,6 +23,14 @@ export default function Explorar({ textos, idioma }) {
                 pagina: 1,
             }),
         );
+    }
+
+    function cambiarCategorias(seleccionadas) {
+        cambiarFiltros({ categorias: seleccionadas });
+    }
+
+    function cambiarCiudad(ciudad) {
+        cambiarFiltros({ ciudad });
     }
 
     function limpiarFiltros() {
@@ -79,7 +79,9 @@ export default function Explorar({ textos, idioma }) {
                         idioma={idioma}
                         filtros={datos.filtros}
                         textoAplicar={textos.general.acciones.aplicar}
-                        onCambiarFecha={cambiarFecha}
+                        onCambiarFecha={cambiarFiltros}
+                        ciudades={ciudades}
+                        onCambiarCiudad={cambiarCiudad}
                     />
                 }
             >
