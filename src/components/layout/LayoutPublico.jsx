@@ -3,12 +3,14 @@ import { useAccesibilidad } from "../../hooks/useAccesibilidad.js";
 import Navbar from "../navigation/Navbar.jsx";
 import PanelAccesibilidad from "../accessibility/PanelAccesibilidad.jsx";
 import Footer from "./Footer.jsx";
+import GestorCookies from "../cookies/GestorCookies.jsx";
 import "./LayoutPublico.css";
 
 export default function LayoutPublico({
     datos,
     idioma,
     cambiarIdioma,
+    preferencias,
     children,
 }) {
     const accesibilidad = useAccesibilidad();
@@ -67,6 +69,7 @@ export default function LayoutPublico({
                     accesibilidad={accesibilidad}
                 />
             )}
+            <GestorCookies textos={datos.textos} preferencias={preferencias} />
         </div>
     );
 }

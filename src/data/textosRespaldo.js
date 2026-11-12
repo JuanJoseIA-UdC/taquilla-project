@@ -23,6 +23,26 @@ export const TEXTOS_RESPALDO = {
                 idioma: "Cambiar idioma",
                 accesibilidad: "Abrir el panel de accesibilidad",
             },
+            cookies: {
+                banner: {
+                    titulo: "Usamos cookies",
+                    texto: "Usamos solo las cookies necesarias para mantener tu sesión y recordar tu idioma. Puedes aceptarlas o rechazarlas.",
+                    botones: {
+                        rechazar: "Rechazar",
+                        aceptar: "Aceptar",
+                    },
+                },
+            },
+        },
+        cookies: {
+            banner: {
+                titulo: "Usamos cookies",
+                texto: "Usamos solo las cookies necesarias para mantener tu sesión y recordar tu idioma. Puedes aceptarlas o rechazarlas.",
+                botones: {
+                    rechazar: "Rechazar",
+                    aceptar: "Aceptar",
+                },
+            },
         },
         menuMovil: {
             abrir: "Abrir menú",
@@ -264,6 +284,16 @@ export const TEXTOS_RESPALDO = {
             aria: {
                 idioma: "Change language",
                 accesibilidad: "Open the accessibility panel",
+            },
+        },
+        cookies: {
+            banner: {
+                titulo: "We use cookies",
+                texto: "We only use the cookies needed to keep you logged in and remember your language. You can accept or reject them.",
+                botones: {
+                    rechazar: "Reject",
+                    aceptar: "Accept",
+                },
             },
         },
         menuMovil: {
