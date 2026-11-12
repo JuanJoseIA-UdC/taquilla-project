@@ -1,9 +1,11 @@
 .banner-cookies {
     display: flex;
     flex-direction: column;
-    gap: var(--espacio-4);
+    flex-shrink: 0;
+    gap: 16px;
     width: 100%;
     max-width: 1200px;
+    min-height: 188px;
     padding: 20px;
     border: 1px solid var(--borde-fuerte);
     border-radius: var(--radio-xl);
@@ -15,7 +17,7 @@
 .banner-cookies-textos {
     display: flex;
     flex-direction: column;
-    gap: var(--espacio-1);
+    gap: 4px;
     min-width: 0;
 }
 
@@ -39,16 +41,16 @@
 }
 
 .banner-cookies-acciones {
-    display: flex;
-    agrid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: var(--espacio-3);
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
     width: 100%;
 }
 
 .banner-cookies-acciones > .boton {
     width: 100%;
     min-width: 0;
-    min-height: 44px;
+    min-height: 42px;
     overflow-wrap: anywhere;
 }
 
@@ -61,8 +63,9 @@
     .banner-cookies {
         flex-direction: row;
         align-items: center;
-        gap: var(--espacio-8);
-        padding: var(--espacio-6) var(--espacio-8);
+        gap: 32px;
+        min-height: 98px;
+        padding: 24px 32px;
     }
 
     .banner-cookies-textos {
@@ -70,7 +73,9 @@
     }
 
     .banner-cookies-acciones {
-        flex: 0 0 240px;
-        width: 240px;
+        flex: 0 0 auto;
+        grid-template-columns: repeat(2, minmax(max-content, 1fr));
+        width: max-content;
+        min-width: 200px;
     }
 }
