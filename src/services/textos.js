@@ -14,6 +14,11 @@ const CAMPOS_REQUERIDOS = [
     "navbar.botones.ingresar",
     "navbar.botones.crearCuenta",
 
+    "cookies.banner.titulo",
+    "cookies.banner.texto",
+    "cookies.banner.botones.rechazar",
+    "cookies.banner.botones.aceptar",
+
     "menuMovil.abrir",
     "menuMovil.cerrar",
     "menuMovil.secciones.idioma",
