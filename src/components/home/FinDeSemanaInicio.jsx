@@ -1,3 +1,4 @@
+import { obtenerEstadoContenido } from "../../utils/estadoContenido.js";
 import { Link } from "react-router";
 import TarjetaEventoCompacta from "../events/TarjetaEventoCompacta.jsx";
 import EstadoContenido from "../ui/EstadoContenido.jsx";
@@ -19,15 +20,11 @@ export default function FinDeSemanaInicio({
         periodo: "fin-de-semana",
     });
 
-    let tipoEstado = null;
-
-    if (datos.cargando) {
-        tipoEstado = "cargando";
-    } else if (datos.error) {
-        tipoEstado = "error";
-    } else if (datos.eventos.length === 0) {
-        tipoEstado = "vacio";
-    }
+    const tipoEstado = obtenerEstadoContenido({
+        cargando: datos.cargando,
+        error: datos.error,
+        vacio: datos.eventos.length === 0,
+    });
 
     let contenido;
 

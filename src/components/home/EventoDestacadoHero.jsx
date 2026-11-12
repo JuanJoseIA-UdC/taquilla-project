@@ -1,3 +1,4 @@
+import { obtenerEstadoContenido } from "../../utils/estadoContenido.js";
 import { Link } from "react-router";
 import Etiqueta from "../ui/Etiqueta.jsx";
 import { crearFormateadoresEvento } from "../../utils/formatoEventos.js";
@@ -11,15 +12,11 @@ export default function EventoDestacadoHero({
     idioma,
 }) {
     const evento = datos.eventos[0];
-    let tipoEstado = null;
-
-    if (datos.cargando) {
-        tipoEstado = "cargando";
-    } else if (datos.error) {
-        tipoEstado = "error";
-    } else if (!evento) {
-        tipoEstado = "vacio";
-    }
+    const tipoEstado = obtenerEstadoContenido({
+        cargando: datos.cargando,
+        error: datos.error,
+        vacio: !evento,
+    });
 
     if (tipoEstado) {
         return (

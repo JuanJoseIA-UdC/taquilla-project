@@ -30,7 +30,7 @@ function normalizarPrecio(valor) {
     return Number.isSafeInteger(numero) ? numero : null;
 }
 
-function normalizarFiltros({
+export function normalizarFiltrosExplorar({
     q = "",
     ciudad = "",
     categorias = [],
@@ -87,7 +87,7 @@ function normalizarFiltros({
 export function leerFiltrosExplorar(consulta = "") {
     const parametros = new URLSearchParams(consulta);
 
-    return normalizarFiltros({
+    return normalizarFiltrosExplorar({
         q: parametros.get("q") ?? "",
         ciudad: parametros.get("ciudad") ?? "",
         categorias: parametros.getAll("categoria"),
@@ -113,7 +113,7 @@ export function crearRutaExplorar(filtros = {}) {
         fechaHasta,
         precioMin,
         precioMax,
-    } = normalizarFiltros(filtros);
+    } = normalizarFiltrosExplorar(filtros);
 
     const parametros = new URLSearchParams();
 
