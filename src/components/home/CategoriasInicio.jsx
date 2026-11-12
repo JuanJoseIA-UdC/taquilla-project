@@ -1,3 +1,4 @@
+import { obtenerEstadoContenido } from "../../utils/estadoContenido.js";
 import { Link } from "react-router";
 import Chip from "../ui/Chip.jsx";
 import Icono from "../ui/Icono.jsx";
@@ -30,15 +31,11 @@ export default function CategoriasInicio({
     textoTodos,
     estados,
 }) {
-    let tipoEstado = null;
-
-    if (datos.cargando) {
-        tipoEstado = "cargando";
-    } else if (datos.error) {
-        tipoEstado = "error";
-    } else if (datos.categorias.length === 0) {
-        tipoEstado = "vacio";
-    }
+    const tipoEstado = obtenerEstadoContenido({
+        cargando: datos.cargando,
+        error: datos.error,
+        vacio: datos.categorias.length === 0,
+    });
 
     let contenido;
 

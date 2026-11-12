@@ -1,3 +1,4 @@
+import { obtenerEstadoContenido } from "../../utils/estadoContenido.js";
 import { Link } from "react-router";
 import ListaEventos from "../events/ListaEventos.jsx";
 import EstadoContenido from "../ui/EstadoContenido.jsx";
@@ -13,15 +14,11 @@ export default function DestacadosInicio({
     estados,
     idioma,
 }) {
-    let tipoEstado = null;
-
-    if (datos.cargando) {
-        tipoEstado = "cargando";
-    } else if (datos.error) {
-        tipoEstado = "error";
-    } else if (datos.eventos.length === 0) {
-        tipoEstado = "vacio";
-    }
+    const tipoEstado = obtenerEstadoContenido({
+        cargando: datos.cargando,
+        error: datos.error,
+        vacio: datos.eventos.length === 0,
+    });
 
     let contenido;
 

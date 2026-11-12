@@ -1,3 +1,4 @@
+import { obtenerEstadoContenido } from "../../utils/estadoContenido.js";
 import { Link } from "react-router";
 import EstadoContenido from "../ui/EstadoContenido.jsx";
 import ListaEventos from "../events/ListaEventos.jsx";
@@ -20,15 +21,11 @@ export default function ProximosInicio({
         orden: "fecha",
     });
 
-    let tipoEstado = null;
-
-    if (datos.cargando) {
-        tipoEstado = "cargando";
-    } else if (datos.error) {
-        tipoEstado = "error";
-    } else if (datos.eventos.length === 0) {
-        tipoEstado = "vacio";
-    }
+    const tipoEstado = obtenerEstadoContenido({
+        cargando: datos.cargando,
+        error: datos.error,
+        vacio: datos.eventos.length === 0,
+    });
 
     let contenido;
 
