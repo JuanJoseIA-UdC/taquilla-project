@@ -9,6 +9,7 @@ import "./LayoutPublico.css";
 export default function LayoutPublico({
     datos,
     idioma,
+    idiomas,
     cambiarIdioma,
     preferencias,
     children,
@@ -32,6 +33,7 @@ export default function LayoutPublico({
             <Navbar
                 textos={datos.textos}
                 idioma={idioma}
+                idiomas={idiomas}
                 cambiarIdioma={cambiarIdioma}
                 onAbrirAccesibilidad={abrirAccesibilidad}
             />

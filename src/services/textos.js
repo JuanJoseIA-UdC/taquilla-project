@@ -3,6 +3,10 @@ import { OPCIONES_ACCESIBILIDAD } from "../config/accesibilidad.js";
 import { TEXTOS_RESPALDO } from "../data/textosRespaldo.js";
 
 const CAMPOS_REQUERIDOS = [
+    "idioma.es",
+    "idioma.en",
+    "idioma.codigoEs",
+    "idioma.codigoEn",
     "navbar.logo.texto",
     "navbar.logo.aria",
     "navbar.enlaces.inicio",

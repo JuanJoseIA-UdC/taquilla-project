@@ -10,6 +10,7 @@ import "./Navbar.css";
 export default function Navbar({
     textos,
     idioma,
+    idiomas,
     cambiarIdioma,
     onAbrirAccesibilidad,
 }) {
@@ -148,8 +149,10 @@ export default function Navbar({
 
                     <SelectorIdioma
                         idioma={idioma}
+                        idiomas={idiomas}
                         onCambiarIdioma={cambiarIdioma}
                         etiqueta={nav.aria.idioma}
+                        textos={textos.idioma}
                     />
 
                     <Link
@@ -173,6 +176,7 @@ export default function Navbar({
                 onCerrar={cerrarMenu}
                 textos={textos}
                 idioma={idioma}
+                idiomas={idiomas}
                 cambiarIdioma={cambiarIdioma}
                 onAbrirAccesibilidad={onAbrirAccesibilidad}
             />

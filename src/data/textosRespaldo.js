@@ -2,6 +2,12 @@
 // No contiene datos del catálogo ni sustituye las respuestas válidas de la API.
 export const TEXTOS_RESPALDO = {
     es: {
+        idioma: {
+            es: "Español",
+            en: "English",
+            codigoEs: "ES",
+            codigoEn: "EN",
+        },
         navbar: {
             logo: {
                 texto: "taquilla",
@@ -265,6 +271,12 @@ export const TEXTOS_RESPALDO = {
         },
     },
     en: {
+        idioma: {
+            es: "Español",
+            en: "English",
+            codigoEs: "ES",
+            codigoEn: "EN",
+        },
         navbar: {
             logo: {
                 texto: "taquilla",

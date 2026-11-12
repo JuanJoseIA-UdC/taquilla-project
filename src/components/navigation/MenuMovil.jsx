@@ -12,6 +12,7 @@ export default function MenuMovil({
     onCerrar,
     textos,
     idioma,
+    idiomas,
     cambiarIdioma,
     onAbrirAccesibilidad,
 }) {
@@ -114,8 +115,10 @@ export default function MenuMovil({
 
                     <SelectorIdioma
                         idioma={idioma}
+                        idiomas={idiomas}
                         onCambiarIdioma={cambiarIdioma}
                         etiqueta={nav.aria.idioma}
+                        textos={textos.idioma}
                     />
                 </div>
 

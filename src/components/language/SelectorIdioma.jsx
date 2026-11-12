@@ -1,23 +1,30 @@
 import "./SelectorIdioma.css";
 
-const IDIOMAS = ["es", "en"];
+const CLAVES_ETIQUETAS = { es: "codigoEs", en: "codigoEn" };
 
-export default function SelectorIdioma({ idioma, onCambiarIdioma, etiqueta }) {
+export default function SelectorIdioma({
+    idioma,
+    idiomas,
+    onCambiarIdioma,
+    etiqueta,
+    textos,
+}) {
     return (
         <div className="selector-idioma" role="group" aria-label={etiqueta}>
-            {IDIOMAS.map((codigo) => (
+            {idiomas.map((codigo) => (
                 <button
                     key={codigo}
                     type="button"
                     className="selector-idioma-opcion"
                     aria-pressed={idioma === codigo}
+                    aria-label={`${textos[CLAVES_ETIQUETAS[codigo]]}: ${textos[codigo]}`}
                     onClick={() => {
                         if (idioma !== codigo) {
                             onCambiarIdioma(codigo);
                         }
                     }}
                 >
-                    {codigo.toUpperCase()}
+                    {textos[CLAVES_ETIQUETAS[codigo]]}
                 </button>
             ))}
         </div>
