@@ -1,18 +1,17 @@
 import { useState } from "react";
 import { useEventosExplorar } from "./useEventosExplorar.js";
-import { crearRutaExplorar, leerFiltrosExplorar } from "../utils/rutas.js";
+import {
+    crearRutaExplorar,
+    normalizarFiltrosExplorar,
+} from "../utils/rutas.js";
 
 function obtenerConsulta(filtros) {
     return crearRutaExplorar(filtros).split("?")[1] ?? "";
 }
 
-function normalizar(filtros) {
-    return leerFiltrosExplorar(obtenerConsulta(filtros));
-}
-
 export function useFiltrosMoviles(filtrosIniciales) {
     const [seleccion, setSeleccion] = useState(() => ({
-        filtros: normalizar({
+        filtros: normalizarFiltrosExplorar({
             ...filtrosIniciales,
             pagina: 1,
         }),
@@ -24,7 +23,7 @@ export function useFiltrosMoviles(filtrosIniciales) {
     function cambiar(cambios) {
         setSeleccion((actual) => ({
             ...actual,
-            filtros: normalizar({
+            filtros: normalizarFiltrosExplorar({
                 ...actual.filtros,
                 ...cambios,
                 pagina: 1,
@@ -34,7 +33,7 @@ export function useFiltrosMoviles(filtrosIniciales) {
 
     function limpiar() {
         setSeleccion((actual) => ({
-            filtros: normalizar({
+            filtros: normalizarFiltrosExplorar({
                 orden: actual.filtros.orden,
             }),
             revision: actual.revision + 1,
