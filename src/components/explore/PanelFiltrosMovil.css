@@ -1,14 +1,14 @@
 .panel-filtros-movil {
     position: fixed;
     inset: 0;
-    width: calc(100% - 8px);
-    max-width: 480px;
-    height: calc(100dvh - 8px);
-    max-height: calc(100dvh - 8px);
-    margin: auto;
+    width: 100%;
+    max-width: none;
+    height: 100dvh;
+    max-height: none;
+    margin: 0;
     padding: 0;
     border: 0;
-    border-radius: var(--radio-lg);
+    border-radius: 0;
     background-color: var(--fondo-superficie);
     color: var(--texto-principal);
     overflow: hidden;
@@ -27,9 +27,10 @@
     display: flex;
     flex-shrink: 0;
     align-items: center;
+    justify-content: space-between;
     gap: 12px;
-    min-height: 64px;
-    padding: 12px 20px;
+    min-height: 55px;
+    padding: 4px 20px 14px;
     border-bottom: 1px solid var(--borde-sutil);
 }
 
@@ -77,28 +78,31 @@
     display: flex;
     flex: 1;
     flex-direction: column;
-    gap: 24px;
+    gap: 22px;
     min-height: 0;
-    padding: 24px 20px;
+    padding: 20px;
     overflow-y: auto;
     overscroll-behavior: contain;
 }
 
 .panel-filtros-movil-contenido > * {
     flex-shrink: 0;
+    min-width: 0;
 }
 
 .panel-filtros-movil-pie {
     flex-shrink: 0;
+    min-height: 93px;
     max-height: 40%;
-    padding: 12px 20px max(24px, env(safe-area-inset-bottom));
+    padding: 12px 20px max(28px, env(safe-area-inset-bottom));
     border-top: 1px solid var(--borde-sutil);
+    background-color: var(--fondo-superficie);
     overflow-y: auto;
 }
 
 .panel-filtros-movil-pie > .boton {
     width: 100%;
-    min-height: 48px;
+    min-height: 52px;
 }
 
 .panel-filtros-movil-estado {
@@ -121,4 +125,29 @@
 .panel-filtros-movil-cerrar:focus-visible {
     outline: 2px solid var(--texto-principal);
     outline-offset: 3px;
+}
+
+.panel-filtros-movil .filtro-categorias,
+.panel-filtros-movil .filtro-fecha {
+    min-height: 118px;
+}
+
+.panel-filtros-movil .filtro-ciudad {
+    min-height: 82px;
+    align-content: start;
+    gap: 10px;
+}
+
+.panel-filtros-movil .rango-precio {
+    min-height: 88px;
+}
+
+.panel-filtros-movil .filtro-categorias > legend,
+.panel-filtros-movil .filtro-fecha > legend,
+.panel-filtros-movil .rango-precio > legend {
+    margin-bottom: 10px;
+}
+
+.panel-filtros-movil .rango-precio-valores {
+    margin-top: 10px;
 }

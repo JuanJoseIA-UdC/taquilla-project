@@ -127,6 +127,7 @@ function ContenidoPanel({
                     />
                 ) : (
                     <Boton
+                        tamano="g"
                         disabled={resultados.cargando}
                         onClick={() => onAplicar(filtros)}
                     >
