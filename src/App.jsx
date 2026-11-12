@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { usePreferencias } from "./hooks/usePreferencias.js";
 import { Route, Routes } from "react-router";
 import { useTextos } from "./hooks/useTextos.js";
 import LayoutPublico from "./components/layout/LayoutPublico.jsx";
@@ -7,16 +7,18 @@ import Inicio from "./pages/Inicio.jsx";
 import Explorar from "./pages/Explorar.jsx";
 
 export default function App() {
-    const [idioma, setIdioma] = useState("es");
+    const preferencias = usePreferencias();
+    const { idioma, cambiarIdioma } = preferencias;
+
     const datos = useTextos(idioma);
     const nav = datos.textos?.navbar;
 
-    useEffect(() => {
-        document.documentElement.lang = idioma;
-    }, [idioma]);
-
     return (
-        <LayoutPublico datos={datos} idioma={idioma} cambiarIdioma={setIdioma}>
+        <LayoutPublico
+            datos={datos}
+            idioma={idioma}
+            cambiarIdioma={cambiarIdioma}
+        >
             <Routes>
                 <Route
                     path="/"
