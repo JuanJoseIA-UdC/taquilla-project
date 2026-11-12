@@ -40,14 +40,21 @@
 
 .banner-cookies-acciones {
     display: flex;
-    align-items: center;
+    agrid-template-columns: repeat(2, minmax(0, 1fr));
     gap: var(--espacio-3);
     width: 100%;
 }
 
 .banner-cookies-acciones > .boton {
-    flex: 1 1 0;
+    width: 100%;
     min-width: 0;
+    min-height: 44px;
+    overflow-wrap: anywhere;
+}
+
+.banner-cookies-acciones > .boton:focus-visible {
+    outline: 2px solid var(--texto-principal);
+    outline-offset: 2px;
 }
 
 @media (min-width: 768px) {
@@ -63,11 +70,7 @@
     }
 
     .banner-cookies-acciones {
-        flex-shrink: 0;
-        width: auto;
-    }
-
-    .banner-cookies-acciones > .boton {
-        flex: none;
+        flex: 0 0 240px;
+        width: 240px;
     }
 }

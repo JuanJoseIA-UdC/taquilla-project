@@ -18,6 +18,7 @@ export default function App() {
             datos={datos}
             idioma={idioma}
             cambiarIdioma={cambiarIdioma}
+            preferencias={preferencias}
         >
             <Routes>
                 <Route
