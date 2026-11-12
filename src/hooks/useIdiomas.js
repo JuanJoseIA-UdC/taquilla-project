@@ -6,7 +6,6 @@ export function useIdiomas() {
     const consulta = useConsulta(obtenerIdiomas);
 
     return {
-        ...consulta,
         idiomas: consulta.datos ?? IDIOMAS_SOPORTADOS,
     };
 }
