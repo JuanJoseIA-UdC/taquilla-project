@@ -11,6 +11,7 @@ export default function ResultadosExplorar({
     filtros,
     textos,
     textosTarjeta,
+    textosPaginacion,
     estados,
     idioma,
     onCambiarFiltros,
@@ -75,7 +76,7 @@ export default function ResultadosExplorar({
                 <Paginacion
                     pagina={datos.paginacion.pagina}
                     paginas={datos.paginacion.paginas}
-                    textos={textos.paginacion}
+                    textos={textosPaginacion}
                     onCambiar={cambiarPagina}
                 />
             )}

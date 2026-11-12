@@ -6,8 +6,6 @@ import { crearRutaExplorar } from "../../utils/rutas.js";
 import "./HeroTaquilla.css";
 
 export default function HeroTaquilla({ textos, idioma, ciudad, children }) {
-    const sugerencias = BUSQUEDAS_POPULARES[idioma] ?? BUSQUEDAS_POPULARES.es;
-
     return (
         <section className="hero-taquilla" aria-labelledby="inicio-titulo">
             <div className="hero-taquilla-interior">
@@ -32,16 +30,17 @@ export default function HeroTaquilla({ textos, idioma, ciudad, children }) {
                         </span>
 
                         <ul className="hero-taquilla-populares-lista">
-                            {sugerencias.map((sugerencia) => (
-                                <li key={sugerencia}>
+                            {BUSQUEDAS_POPULARES.map((sugerencia) => (
+                                <li key={sugerencia.id}>
                                     <Link
                                         to={crearRutaExplorar({
-                                            q: sugerencia,
+                                            q: sugerencia.consulta,
                                             ciudad,
                                         })}
                                         className="hero-taquilla-popular"
                                     >
-                                        {sugerencia}
+                                        {sugerencia.etiquetas[idioma] ??
+                                            sugerencia.etiquetas.es}
                                     </Link>
                                 </li>
                             ))}

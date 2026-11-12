@@ -2,6 +2,12 @@
 // No contiene datos del catálogo ni sustituye las respuestas válidas de la API.
 export const TEXTOS_RESPALDO = {
     es: {
+        idioma: {
+            es: "Español",
+            en: "English",
+            codigoEs: "ES",
+            codigoEn: "EN",
+        },
         navbar: {
             logo: {
                 texto: "taquilla",
@@ -23,16 +29,6 @@ export const TEXTOS_RESPALDO = {
                 idioma: "Cambiar idioma",
                 accesibilidad: "Abrir el panel de accesibilidad",
             },
-            cookies: {
-                banner: {
-                    titulo: "Usamos cookies",
-                    texto: "Usamos solo las cookies necesarias para mantener tu sesión y recordar tu idioma. Puedes aceptarlas o rechazarlas.",
-                    botones: {
-                        rechazar: "Rechazar",
-                        aceptar: "Aceptar",
-                    },
-                },
-            },
         },
         cookies: {
             banner: {
@@ -41,6 +37,17 @@ export const TEXTOS_RESPALDO = {
                 botones: {
                     rechazar: "Rechazar",
                     aceptar: "Aceptar",
+                },
+            },
+        },
+        componentes: {
+            paginacion: {
+                aria: {
+                    etiqueta: "Paginación",
+                    irAPagina: "Ir a la página {numero}",
+                    paginaActual: "Página {numero}, página actual",
+                    siguiente: "Página siguiente",
+                    anterior: "Página anterior",
                 },
             },
         },
@@ -127,7 +134,6 @@ export const TEXTOS_RESPALDO = {
                     botones: {
                         limpiar: "Limpiar",
                         verResultados: "Ver {cantidad} eventos",
-                        verResultado: "Ver {cantidad} evento",
                     },
                     fecha: {
                         titulo: "Fecha",
@@ -135,16 +141,9 @@ export const TEXTOS_RESPALDO = {
                         finDeSemana: "Este fin de semana",
                         mes: "Este mes",
                         elegir: "Elegir fechas",
-                        inicial: "Fecha inicial",
-                        final: "Fecha final",
                     },
                     ciudad: "Ciudad",
-                    todasCiudades: "Todas las ciudades",
                     precio: "Precio",
-                    precioMinimo: "Precio mínimo",
-                    precioMaximo: "Precio máximo",
-                    activos: "Filtros activos",
-                    quitar: "Quitar filtro: {filtro}",
                 },
                 orden: {
                     etiqueta: "Ordenar:",
@@ -212,6 +211,7 @@ export const TEXTOS_RESPALDO = {
             },
             acciones: {
                 aplicar: "Aplicar",
+                eliminar: "Eliminar",
             },
         },
         accesibilidad: {
@@ -264,6 +264,12 @@ export const TEXTOS_RESPALDO = {
         },
     },
     en: {
+        idioma: {
+            es: "Español",
+            en: "English",
+            codigoEs: "ES",
+            codigoEn: "EN",
+        },
         navbar: {
             logo: {
                 texto: "taquilla",
@@ -293,6 +299,17 @@ export const TEXTOS_RESPALDO = {
                 botones: {
                     rechazar: "Reject",
                     aceptar: "Accept",
+                },
+            },
+        },
+        componentes: {
+            paginacion: {
+                aria: {
+                    etiqueta: "Pagination",
+                    irAPagina: "Go to page {numero}",
+                    paginaActual: "Page {numero}, current page",
+                    siguiente: "Next page",
+                    anterior: "Previous page",
                 },
             },
         },
@@ -379,7 +396,6 @@ export const TEXTOS_RESPALDO = {
                     botones: {
                         limpiar: "Clear",
                         verResultados: "See {cantidad} events",
-                        verResultado: "See {cantidad} event",
                     },
                     fecha: {
                         titulo: "Date",
@@ -387,16 +403,9 @@ export const TEXTOS_RESPALDO = {
                         finDeSemana: "This weekend",
                         mes: "This month",
                         elegir: "Choose dates",
-                        inicial: "Start date",
-                        final: "End date",
                     },
                     ciudad: "City",
-                    todasCiudades: "All cities",
                     precio: "Price",
-                    precioMinimo: "Minimum price",
-                    precioMaximo: "Maximum price",
-                    activos: "Active filters",
-                    quitar: "Remove filter: {filtro}",
                 },
                 orden: {
                     etiqueta: "Sort:",
@@ -464,6 +473,7 @@ export const TEXTOS_RESPALDO = {
             },
             acciones: {
                 aplicar: "Apply",
+                eliminar: "Delete",
             },
         },
         accesibilidad: {

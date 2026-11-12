@@ -1,16 +1,21 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { TEXTOS_RESPALDO } from "../data/textosRespaldo.js";
 import { obtenerTextos } from "../services/textos.js";
 
+import { completarTextos } from "../utils/completarTextos.js";
+
 export function useTextos(idioma) {
+    const respaldo = useMemo(
+        () => completarTextos(TEXTOS_RESPALDO[idioma], idioma),
+        [idioma],
+    );
     const [resultado, setResultado] = useState(null);
     const [intento, setIntento] = useState(0);
 
     const mismoIdioma = resultado?.idioma === idioma;
     const corresponde = mismoIdioma && resultado?.intento === intento;
 
-    const textos =
-        (mismoIdioma ? resultado.textos : null) ?? TEXTOS_RESPALDO[idioma];
+    const textos = (mismoIdioma ? resultado.textos : null) ?? respaldo;
 
     useEffect(() => {
         const controlador = new AbortController();

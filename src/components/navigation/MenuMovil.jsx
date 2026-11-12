@@ -12,13 +12,13 @@ export default function MenuMovil({
     onCerrar,
     textos,
     idioma,
+    idiomas,
     cambiarIdioma,
     onAbrirAccesibilidad,
 }) {
     const dialogoRef = useDialogo(abierto);
     const nav = textos.navbar;
     const menu = textos.menuMovil;
-    const ingles = idioma === "en";
 
     useEffect(() => {
         if (!abierto) return;
@@ -58,7 +58,7 @@ export default function MenuMovil({
             ref={dialogoRef}
             id={id}
             className="menu-movil"
-            aria-label={ingles ? "Main menu" : "Menú principal"}
+            aria-label={menu.aria.titulo}
             onCancel={(evento) => {
                 evento.preventDefault();
                 onCerrar();
@@ -91,9 +91,7 @@ export default function MenuMovil({
                 </button>
             </div>
 
-            <nav
-                aria-label={ingles ? "Main navigation" : "Navegación principal"}
-            >
+            <nav aria-label={menu.aria.navegacion}>
                 <ul className="menu-movil-enlaces">
                     <li>
                         <NavLink to="/" end onClick={onCerrar}>
@@ -114,8 +112,10 @@ export default function MenuMovil({
 
                     <SelectorIdioma
                         idioma={idioma}
+                        idiomas={idiomas}
                         onCambiarIdioma={cambiarIdioma}
                         etiqueta={nav.aria.idioma}
+                        textos={textos.idioma}
                     />
                 </div>
 

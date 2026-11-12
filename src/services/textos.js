@@ -1,8 +1,12 @@
 const API = `${import.meta.env.VITE_API_URL}/textos`;
 import { OPCIONES_ACCESIBILIDAD } from "../config/accesibilidad.js";
-import { TEXTOS_RESPALDO } from "../data/textosRespaldo.js";
+import { completarTextos } from "../utils/completarTextos.js";
 
 const CAMPOS_REQUERIDOS = [
+    "idioma.es",
+    "idioma.en",
+    "idioma.codigoEs",
+    "idioma.codigoEn",
     "navbar.logo.texto",
     "navbar.logo.aria",
     "navbar.enlaces.inicio",
@@ -86,6 +90,7 @@ const CAMPOS_REQUERIDOS = [
     "paginas.explorar.filtros.fecha.mes",
     "paginas.explorar.filtros.fecha.elegir",
     "general.acciones.aplicar",
+    "general.acciones.eliminar",
     "paginas.explorar.filtros.ciudad",
     "paginas.explorar.filtros.precio",
     "paginas.explorar.orden.etiqueta",
@@ -97,6 +102,14 @@ const CAMPOS_REQUERIDOS = [
     "paginas.explorar.resultadosCorto.uno",
     "paginas.explorar.resultadosCorto.otro",
     "paginas.explorar.filtros.botones.verResultados",
+    "paginas.explorar.paginacion.anterior",
+    "paginas.explorar.paginacion.siguiente",
+
+    "componentes.paginacion.aria.etiqueta",
+    "componentes.paginacion.aria.irAPagina",
+    "componentes.paginacion.aria.paginaActual",
+    "componentes.paginacion.aria.siguiente",
+    "componentes.paginacion.aria.anterior",
 
     "estados.cargando.indicador",
     "estados.vacio.titulo",
@@ -145,26 +158,5 @@ export async function obtenerTextos(idioma, signal) {
     }
     const textos = validarTextos(await respuesta.json());
 
-    const filtrosAPI = textos.paginas.explorar.filtros;
-    const filtrosRespaldo = TEXTOS_RESPALDO[idioma].paginas.explorar.filtros;
-
-    textos.paginas.explorar.filtros = {
-        ...filtrosRespaldo,
-        ...filtrosAPI,
-        fecha: {
-            ...filtrosRespaldo.fecha,
-            ...filtrosAPI.fecha,
-        },
-        botones: {
-            ...filtrosRespaldo.botones,
-            ...filtrosAPI.botones,
-        },
-    };
-
-    textos.paginas.explorar.paginacion = {
-        ...TEXTOS_RESPALDO[idioma].paginas.explorar.paginacion,
-        ...textos.paginas.explorar.paginacion,
-    };
-
-    return textos;
+    return completarTextos(textos, idioma);
 }

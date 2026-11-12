@@ -1,3 +1,4 @@
+import { useIdiomas } from "./hooks/useIdiomas.js";
 import { usePreferencias } from "./hooks/usePreferencias.js";
 import { Route, Routes } from "react-router";
 import { useTextos } from "./hooks/useTextos.js";
@@ -7,6 +8,7 @@ import Inicio from "./pages/Inicio.jsx";
 import Explorar from "./pages/Explorar.jsx";
 
 export default function App() {
+    const { idiomas } = useIdiomas();
     const preferencias = usePreferencias();
     const { idioma, cambiarIdioma } = preferencias;
 
@@ -17,6 +19,7 @@ export default function App() {
         <LayoutPublico
             datos={datos}
             idioma={idioma}
+            idiomas={idiomas}
             cambiarIdioma={cambiarIdioma}
             preferencias={preferencias}
         >

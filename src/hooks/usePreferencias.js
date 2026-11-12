@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { leerCookie, guardarCookie, eliminarCookie } from "../utils/cookies.js";
 
-const IDIOMAS_VALIDOS = ["es", "en"];
+import { IDIOMAS_SOPORTADOS } from "../config/idiomas.js";
 const CONSENTIMIENTOS_VALIDOS = ["aceptado", "rechazado"];
 
 function leerPreferenciasIniciales() {
@@ -18,7 +18,7 @@ function leerPreferenciasIniciales() {
 
     return {
         consentimiento,
-        idioma: IDIOMAS_VALIDOS.includes(idiomaGuardado)
+        idioma: IDIOMAS_SOPORTADOS.includes(idiomaGuardado)
             ? idiomaGuardado
             : "es",
         error: false,
@@ -41,7 +41,7 @@ export function usePreferencias() {
     }, [consentimiento]);
 
     function cambiarIdioma(nuevoIdioma) {
-        if (!IDIOMAS_VALIDOS.includes(nuevoIdioma)) {
+        if (!IDIOMAS_SOPORTADOS.includes(nuevoIdioma)) {
             return;
         }
 
