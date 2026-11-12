@@ -12,7 +12,7 @@ export default function Paginacion({ pagina, paginas, textos, onCambiar }) {
     const actual = Math.min(pagina, paginas);
 
     return (
-        <nav className="paginacion" aria-label={textos.titulo}>
+        <nav className="paginacion" aria-label={textos.etiqueta}>
             <button
                 type="button"
                 className="paginacion-boton"
@@ -43,10 +43,10 @@ export default function Paginacion({ pagina, paginas, textos, onCambiar }) {
                         key={elemento}
                         type="button"
                         className="paginacion-boton"
-                        aria-label={textos.pagina.replace(
-                            "{pagina}",
-                            String(elemento),
-                        )}
+                        aria-label={(seleccionada
+                            ? textos.paginaActual
+                            : textos.irAPagina
+                        ).replace("{numero}", String(elemento))}
                         aria-current={seleccionada ? "page" : undefined}
                         onClick={() => {
                             if (!seleccionada) {

@@ -97,6 +97,14 @@ const CAMPOS_REQUERIDOS = [
     "paginas.explorar.resultadosCorto.uno",
     "paginas.explorar.resultadosCorto.otro",
     "paginas.explorar.filtros.botones.verResultados",
+    "paginas.explorar.paginacion.anterior",
+    "paginas.explorar.paginacion.siguiente",
+
+    "componentes.paginacion.aria.etiqueta",
+    "componentes.paginacion.aria.irAPagina",
+    "componentes.paginacion.aria.paginaActual",
+    "componentes.paginacion.aria.siguiente",
+    "componentes.paginacion.aria.anterior",
 
     "estados.cargando.indicador",
     "estados.vacio.titulo",
@@ -159,11 +167,6 @@ export async function obtenerTextos(idioma, signal) {
             ...filtrosRespaldo.botones,
             ...filtrosAPI.botones,
         },
-    };
-
-    textos.paginas.explorar.paginacion = {
-        ...TEXTOS_RESPALDO[idioma].paginas.explorar.paginacion,
-        ...textos.paginas.explorar.paginacion,
     };
 
     return textos;

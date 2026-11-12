@@ -23,16 +23,6 @@ export const TEXTOS_RESPALDO = {
                 idioma: "Cambiar idioma",
                 accesibilidad: "Abrir el panel de accesibilidad",
             },
-            cookies: {
-                banner: {
-                    titulo: "Usamos cookies",
-                    texto: "Usamos solo las cookies necesarias para mantener tu sesión y recordar tu idioma. Puedes aceptarlas o rechazarlas.",
-                    botones: {
-                        rechazar: "Rechazar",
-                        aceptar: "Aceptar",
-                    },
-                },
-            },
         },
         cookies: {
             banner: {
@@ -41,6 +31,17 @@ export const TEXTOS_RESPALDO = {
                 botones: {
                     rechazar: "Rechazar",
                     aceptar: "Aceptar",
+                },
+            },
+        },
+        componentes: {
+            paginacion: {
+                aria: {
+                    etiqueta: "Paginación",
+                    irAPagina: "Ir a la página {numero}",
+                    paginaActual: "Página {numero}, página actual",
+                    siguiente: "Página siguiente",
+                    anterior: "Página anterior",
                 },
             },
         },
@@ -293,6 +294,17 @@ export const TEXTOS_RESPALDO = {
                 botones: {
                     rechazar: "Reject",
                     aceptar: "Accept",
+                },
+            },
+        },
+        componentes: {
+            paginacion: {
+                aria: {
+                    etiqueta: "Pagination",
+                    irAPagina: "Go to page {numero}",
+                    paginaActual: "Page {numero}, current page",
+                    siguiente: "Next page",
+                    anterior: "Previous page",
                 },
             },
         },

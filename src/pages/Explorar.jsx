@@ -162,6 +162,7 @@ export default function Explorar({ textos, idioma }) {
                     textos={textos.paginas.explorar}
                     onCambiarFiltros={cambiarFiltros}
                     onCambiarPagina={cambiarPagina}
+                    textosPaginacion={textos.componentes.paginacion.aria}
                 />
             </ContenidoExplorar>
 
