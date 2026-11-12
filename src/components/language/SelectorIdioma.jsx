@@ -1,28 +1,25 @@
 import "./SelectorIdioma.css";
 
+const IDIOMAS = ["es", "en"];
+
 export default function SelectorIdioma({ idioma, onCambiarIdioma, etiqueta }) {
     return (
-        <button
-            type="button"
-            className="selector-idioma"
-            aria-label={`${etiqueta}: ${idioma.toUpperCase()}`}
-            onClick={() => onCambiarIdioma(idioma === "es" ? "en" : "es")}
-        >
-            <span
-                className="selector-idioma-opcion"
-                data-activa={idioma === "es"}
-                aria-hidden="true"
-            >
-                ES
-            </span>
-
-            <span
-                className="selector-idioma-opcion"
-                data-activa={idioma === "en"}
-                aria-hidden="true"
-            >
-                EN
-            </span>
-        </button>
+        <div className="selector-idioma" role="group" aria-label={etiqueta}>
+            {IDIOMAS.map((codigo) => (
+                <button
+                    key={codigo}
+                    type="button"
+                    className="selector-idioma-opcion"
+                    aria-pressed={idioma === codigo}
+                    onClick={() => {
+                        if (idioma !== codigo) {
+                            onCambiarIdioma(codigo);
+                        }
+                    }}
+                >
+                    {codigo.toUpperCase()}
+                </button>
+            ))}
+        </div>
     );
 }
