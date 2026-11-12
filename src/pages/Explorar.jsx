@@ -84,6 +84,10 @@ export default function Explorar({ textos, idioma }) {
     const panelFiltrosId = useId();
     const [aperturaFiltros, setAperturaFiltros] = useState(null);
 
+    if (aperturaFiltros !== null && aperturaFiltros.clave !== claveUbicacion) {
+        setAperturaFiltros(null);
+    }
+
     const filtrosAbiertos = aperturaFiltros?.clave === claveUbicacion;
 
     function abrirFiltros() {
