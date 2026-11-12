@@ -134,7 +134,6 @@ export const TEXTOS_RESPALDO = {
                     botones: {
                         limpiar: "Limpiar",
                         verResultados: "Ver {cantidad} eventos",
-                        verResultado: "Ver {cantidad} evento",
                     },
                     fecha: {
                         titulo: "Fecha",
@@ -142,16 +141,9 @@ export const TEXTOS_RESPALDO = {
                         finDeSemana: "Este fin de semana",
                         mes: "Este mes",
                         elegir: "Elegir fechas",
-                        inicial: "Fecha inicial",
-                        final: "Fecha final",
                     },
                     ciudad: "Ciudad",
-                    todasCiudades: "Todas las ciudades",
                     precio: "Precio",
-                    precioMinimo: "Precio mínimo",
-                    precioMaximo: "Precio máximo",
-                    activos: "Filtros activos",
-                    quitar: "Quitar filtro: {filtro}",
                 },
                 orden: {
                     etiqueta: "Ordenar:",
@@ -219,6 +211,7 @@ export const TEXTOS_RESPALDO = {
             },
             acciones: {
                 aplicar: "Aplicar",
+                eliminar: "Eliminar",
             },
         },
         accesibilidad: {
@@ -403,7 +396,6 @@ export const TEXTOS_RESPALDO = {
                     botones: {
                         limpiar: "Clear",
                         verResultados: "See {cantidad} events",
-                        verResultado: "See {cantidad} event",
                     },
                     fecha: {
                         titulo: "Date",
@@ -411,16 +403,9 @@ export const TEXTOS_RESPALDO = {
                         finDeSemana: "This weekend",
                         mes: "This month",
                         elegir: "Choose dates",
-                        inicial: "Start date",
-                        final: "End date",
                     },
                     ciudad: "City",
-                    todasCiudades: "All cities",
                     precio: "Price",
-                    precioMinimo: "Minimum price",
-                    precioMaximo: "Maximum price",
-                    activos: "Active filters",
-                    quitar: "Remove filter: {filtro}",
                 },
                 orden: {
                     etiqueta: "Sort:",
@@ -488,6 +473,7 @@ export const TEXTOS_RESPALDO = {
             },
             acciones: {
                 aplicar: "Apply",
+                eliminar: "Delete",
             },
         },
         accesibilidad: {

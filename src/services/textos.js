@@ -1,6 +1,6 @@
 const API = `${import.meta.env.VITE_API_URL}/textos`;
 import { OPCIONES_ACCESIBILIDAD } from "../config/accesibilidad.js";
-import { TEXTOS_RESPALDO } from "../data/textosRespaldo.js";
+import { completarTextos } from "../utils/completarTextos.js";
 
 const CAMPOS_REQUERIDOS = [
     "idioma.es",
@@ -90,6 +90,7 @@ const CAMPOS_REQUERIDOS = [
     "paginas.explorar.filtros.fecha.mes",
     "paginas.explorar.filtros.fecha.elegir",
     "general.acciones.aplicar",
+    "general.acciones.eliminar",
     "paginas.explorar.filtros.ciudad",
     "paginas.explorar.filtros.precio",
     "paginas.explorar.orden.etiqueta",
@@ -157,21 +158,5 @@ export async function obtenerTextos(idioma, signal) {
     }
     const textos = validarTextos(await respuesta.json());
 
-    const filtrosAPI = textos.paginas.explorar.filtros;
-    const filtrosRespaldo = TEXTOS_RESPALDO[idioma].paginas.explorar.filtros;
-
-    textos.paginas.explorar.filtros = {
-        ...filtrosRespaldo,
-        ...filtrosAPI,
-        fecha: {
-            ...filtrosRespaldo.fecha,
-            ...filtrosAPI.fecha,
-        },
-        botones: {
-            ...filtrosRespaldo.botones,
-            ...filtrosAPI.botones,
-        },
-    };
-
-    return textos;
+    return completarTextos(textos, idioma);
 }
