@@ -207,6 +207,7 @@
     }
 
     .barra-resultados-selector select {
+        display: block;
         min-height: 20px;
     }
 }

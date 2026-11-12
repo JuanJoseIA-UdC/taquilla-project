@@ -116,6 +116,7 @@
 
 @media (width < 1280px) {
     .explorar-encabezado {
+        background-color: var(--fondo-superficie);
         min-height: auto;
         padding: 20px;
     }
