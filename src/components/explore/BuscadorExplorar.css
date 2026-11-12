@@ -1,0 +1,64 @@
+.buscador-explorar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+    min-height: 48px;
+    padding-inline: 14px;
+    border-radius: var(--radio-md);
+    background-color: var(--fondo-sutil);
+}
+
+.buscador-explorar-enviar {
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    min-height: 48;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--texto-secundario);
+    cursor: pointer;
+}
+
+.buscador-explorar-icono {
+    width: 18px;
+    height: 18px;
+}
+
+.buscador-explorar input {
+    flex: 1;
+    width: 100%;
+    min-width: 0;
+    min-height: 48px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(---texto-principal);
+    font-family: inherit;
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.428571;
+}
+
+.buscador-explorar input::placeholder {
+    color: var(--texto-terciario);
+    opacity: 1;
+}
+
+.buscador-explorar:focus-within {
+    outline: 2px solid var(---texto-principal);
+    outline-offset: 3px;
+}
+
+.buscador-explorar input:focus {
+    outline: none;
+}
+
+.buscador-explorar-enviar:focus-visible {
+    outline: 2px solid var(---texto-principal);
+    outline-offset: 2px;
+    border-radius: 2px;
+}

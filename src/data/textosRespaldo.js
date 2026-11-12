@@ -96,6 +96,55 @@ export const TEXTOS_RESPALDO = {
                     finDeSemana: "Este fin de semana",
                 },
             },
+            explorar: {
+                resultados: {
+                    uno: "{cantidad} evento coincide con tus filtros",
+                    otro: "{cantidad} eventos coinciden con tus filtros",
+                },
+                filtros: {
+                    titulo: "Filtros",
+                    categoria: "Categoría",
+                    botones: {
+                        limpiar: "Limpiar",
+                        verResultados: "Ver {cantidad} eventos",
+                        verResultado: "Ver {cantidad} evento",
+                    },
+                    fecha: {
+                        titulo: "Fecha",
+                        hoy: "Hoy",
+                        finDeSemana: "Este fin de semana",
+                        mes: "Este mes",
+                        elegir: "Elegir fechas",
+                        inicial: "Fecha inicial",
+                        final: "Fecha final",
+                    },
+                    ciudad: "Ciudad",
+                    todasCiudades: "Todas las ciudades",
+                    precio: "Precio",
+                    precioMinimo: "Precio mínimo",
+                    precioMaximo: "Precio máximo",
+                    activos: "Filtros activos",
+                    quitar: "Quitar filtro: {filtro}",
+                },
+                orden: {
+                    etiqueta: "Ordenar:",
+                    opciones: {
+                        fecha: "Fecha más próxima",
+                        precio: "Precio más bajo",
+                        popularidad: "Más populares",
+                    },
+                },
+                paginacion: {
+                    titulo: "Paginación de eventos",
+                    pagina: "Página {pagina}",
+                    anterior: "Página anterior",
+                    siguiente: "Página siguiente",
+                },
+                resultadosCorto: {
+                    uno: "{cantidad} evento",
+                    otro: "{cantidad} eventos",
+                },
+            },
             noEncontrado: {
                 contenido: {
                     titulo: "No encontramos esta página",
@@ -140,6 +189,9 @@ export const TEXTOS_RESPALDO = {
             aria: {
                 cerrarDialogo: "Cerrar el diálogo",
                 saltarAlContenido: "Saltar al contenido principal",
+            },
+            acciones: {
+                aplicar: "Aplicar",
             },
         },
         accesibilidad: {
@@ -286,6 +338,55 @@ export const TEXTOS_RESPALDO = {
                     finDeSemana: "This weekend",
                 },
             },
+            explorar: {
+                resultados: {
+                    uno: "{cantidad} event matches your filters",
+                    otro: "{cantidad} events match your filters",
+                },
+                filtros: {
+                    titulo: "Filters",
+                    categoria: "Category",
+                    botones: {
+                        limpiar: "Clear",
+                        verResultados: "See {cantidad} events",
+                        verResultado: "See {cantidad} event",
+                    },
+                    fecha: {
+                        titulo: "Date",
+                        hoy: "Today",
+                        finDeSemana: "This weekend",
+                        mes: "This month",
+                        elegir: "Choose dates",
+                        inicial: "Start date",
+                        final: "End date",
+                    },
+                    ciudad: "City",
+                    todasCiudades: "All cities",
+                    precio: "Price",
+                    precioMinimo: "Minimum price",
+                    precioMaximo: "Maximum price",
+                    activos: "Active filters",
+                    quitar: "Remove filter: {filtro}",
+                },
+                orden: {
+                    etiqueta: "Sort:",
+                    opciones: {
+                        fecha: "Soonest date",
+                        precio: "Lowest price",
+                        popularidad: "Most popular",
+                    },
+                },
+                paginacion: {
+                    titulo: "Event pagination",
+                    pagina: "Page {pagina}",
+                    anterior: "Previous page",
+                    siguiente: "Next page",
+                },
+                resultadosCorto: {
+                    uno: "{cantidad} event",
+                    otro: "{cantidad} events",
+                },
+            },
             noEncontrado: {
                 contenido: {
                     titulo: "We couldn't find this page",
@@ -330,6 +431,9 @@ export const TEXTOS_RESPALDO = {
             aria: {
                 cerrarDialogo: "Close the dialog",
                 saltarAlContenido: "Skip to main content",
+            },
+            acciones: {
+                aplicar: "Apply",
             },
         },
         accesibilidad: {

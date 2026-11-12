@@ -1,8 +1,9 @@
-import { useCallback, useId, useState } from "react";
-import { Link, NavLink, useNavigate } from "react-router";
+import { useCallback, useEffect, useId, useRef, useState } from "react";
+import { Link, NavLink, useLocation, useNavigate } from "react-router";
 import Icono from "../ui/Icono.jsx";
 import SelectorIdioma from "../language/SelectorIdioma.jsx";
 import MenuMovil from "./MenuMovil.jsx";
+import { crearRutaExplorar, leerFiltrosExplorar } from "../../utils/rutas.js";
 import "../ui/Boton.css";
 import "./Navbar.css";
 
@@ -12,7 +13,7 @@ export default function Navbar({
     cambiarIdioma,
     onAbrirAccesibilidad,
 }) {
-    const [consulta, setConsulta] = useState("");
+    const campoBusquedaRef = useRef(null);
     const [menuAbierto, setMenuAbierto] = useState(false);
     const menuId = useId();
     const cerrarMenu = useCallback(() => {
@@ -20,21 +21,33 @@ export default function Navbar({
     }, []);
     const navigate = useNavigate();
     const nav = textos?.navbar;
+    const { pathname, search, key: claveUbicacion } = useLocation();
+
+    const enExplorar = /^\/explorar\/?$/i.test(pathname);
+    const filtrosActuales = enExplorar ? leerFiltrosExplorar(search) : {};
+    const consultaURL = filtrosActuales.q ?? "";
+
+    useEffect(() => {
+        if (campoBusquedaRef.current) {
+            campoBusquedaRef.current.value = consultaURL;
+        }
+    }, [consultaURL, claveUbicacion]);
 
     function buscar(evento) {
         evento.preventDefault();
 
-        const termino = consulta.trim();
-        const parametros = new URLSearchParams();
+        const formulario = new FormData(evento.currentTarget);
+        const q = String(formulario.get("q") ?? "").trim();
 
-        if (termino) {
-            parametros.set("q", termino);
-        }
+        campoBusquedaRef.current.value = q;
 
-        navigate({
-            pathname: "/explorar",
-            search: parametros.toString(),
-        });
+        navigate(
+            crearRutaExplorar({
+                ...filtrosActuales,
+                q,
+                pagina: 1,
+            }),
+        );
     }
 
     if (!nav) return null;
@@ -113,13 +126,13 @@ export default function Navbar({
                         </button>
 
                         <input
+                            ref={campoBusquedaRef}
                             type="search"
-                            value={consulta}
-                            onChange={(evento) =>
-                                setConsulta(evento.target.value)
-                            }
+                            name="q"
+                            defaultValue={consultaURL}
                             placeholder={nav.buscador.placeholder}
                             aria-label={nav.buscador.aria}
+                            enterKeyHint="search"
                         />
                     </form>
 

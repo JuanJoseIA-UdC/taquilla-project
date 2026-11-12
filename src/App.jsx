@@ -4,6 +4,7 @@ import { useTextos } from "./hooks/useTextos.js";
 import LayoutPublico from "./components/layout/LayoutPublico.jsx";
 import NoEncontrado from "./pages/NoEncontrado.jsx";
 import Inicio from "./pages/Inicio.jsx";
+import Explorar from "./pages/Explorar.jsx";
 
 export default function App() {
     const [idioma, setIdioma] = useState("es");
@@ -23,7 +24,7 @@ export default function App() {
                 />
                 <Route
                     path="/explorar"
-                    element={<h1>{nav?.enlaces.explorar}</h1>}
+                    element={<Explorar textos={datos.textos} idioma={idioma} />}
                 />
                 <Route
                     path="/ingresar"

@@ -1,0 +1,33 @@
+.filtro-categorias {
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+.filtro-categorias legend {
+    margin-bottom: var(--espacio-3);
+    padding: 0;
+    color: var(--texto-principal);
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1.428571;
+}
+
+.filtro-categorias-opciones {
+    display: grid;
+    gap: var(--espacio-3);
+}
+
+.filtro-categorias--chips .filtro-categorias-opciones {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--espacio-2);
+}
+
+.filtro-categorias--chips .chip {
+    max-width: 100%;
+    white-space: normal;
+    overflow-wrap: anywhere;
+}

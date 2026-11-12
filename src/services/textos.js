@@ -1,5 +1,6 @@
-import { OPCIONES_ACCESIBILIDAD } from "../config/accesibilidad.js";
 const API = `${import.meta.env.VITE_API_URL}/textos`;
+import { OPCIONES_ACCESIBILIDAD } from "../config/accesibilidad.js";
+import { TEXTOS_RESPALDO } from "../data/textosRespaldo.js";
 
 const CAMPOS_REQUERIDOS = [
     "navbar.logo.texto",
@@ -56,7 +57,6 @@ const CAMPOS_REQUERIDOS = [
     "paginas.inicio.hero.destacado.etiqueta",
     "paginas.inicio.hero.destacado.desde",
     "paginas.inicio.hero.destacado.botones.verEvento",
-
     "paginas.inicio.categorias.eventos.uno",
     "paginas.inicio.categorias.eventos.otro",
     "paginas.inicio.destacados.titulo",
@@ -69,6 +69,29 @@ const CAMPOS_REQUERIDOS = [
     "paginas.inicio.filtrosMovil.todos",
     "paginas.inicio.filtrosMovil.destacados",
     "paginas.inicio.filtrosMovil.finDeSemana",
+
+    "paginas.explorar.resultados.uno",
+    "paginas.explorar.resultados.otro",
+    "paginas.explorar.filtros.titulo",
+    "paginas.explorar.filtros.categoria",
+    "paginas.explorar.filtros.botones.limpiar",
+    "paginas.explorar.filtros.fecha.titulo",
+    "paginas.explorar.filtros.fecha.hoy",
+    "paginas.explorar.filtros.fecha.finDeSemana",
+    "paginas.explorar.filtros.fecha.mes",
+    "paginas.explorar.filtros.fecha.elegir",
+    "general.acciones.aplicar",
+    "paginas.explorar.filtros.ciudad",
+    "paginas.explorar.filtros.precio",
+    "paginas.explorar.orden.etiqueta",
+    "paginas.explorar.orden.opciones.fecha",
+    "paginas.explorar.orden.opciones.precio",
+    "paginas.explorar.orden.opciones.popularidad",
+    "paginas.explorar.paginacion.anterior",
+    "paginas.explorar.paginacion.siguiente",
+    "paginas.explorar.resultadosCorto.uno",
+    "paginas.explorar.resultadosCorto.otro",
+    "paginas.explorar.filtros.botones.verResultados",
 
     "estados.cargando.indicador",
     "estados.vacio.titulo",
@@ -115,6 +138,28 @@ export async function obtenerTextos(idioma, signal) {
     if (!respuesta.ok) {
         throw new Error(`HTTP ${respuesta.status}`);
     }
+    const textos = validarTextos(await respuesta.json());
 
-    return validarTextos(await respuesta.json());
+    const filtrosAPI = textos.paginas.explorar.filtros;
+    const filtrosRespaldo = TEXTOS_RESPALDO[idioma].paginas.explorar.filtros;
+
+    textos.paginas.explorar.filtros = {
+        ...filtrosRespaldo,
+        ...filtrosAPI,
+        fecha: {
+            ...filtrosRespaldo.fecha,
+            ...filtrosAPI.fecha,
+        },
+        botones: {
+            ...filtrosRespaldo.botones,
+            ...filtrosAPI.botones,
+        },
+    };
+
+    textos.paginas.explorar.paginacion = {
+        ...TEXTOS_RESPALDO[idioma].paginas.explorar.paginacion,
+        ...textos.paginas.explorar.paginacion,
+    };
+
+    return textos;
 }
