@@ -6,6 +6,7 @@ import LayoutPublico from "./components/layout/LayoutPublico.jsx";
 import NoEncontrado from "./pages/NoEncontrado.jsx";
 import Inicio from "./pages/Inicio.jsx";
 import Explorar from "./pages/Explorar.jsx";
+import DetalleEvento from "./pages/DetalleEvento.jsx";
 
 export default function App() {
     const { idiomas } = useIdiomas();
@@ -31,6 +32,10 @@ export default function App() {
                 <Route
                     path="/explorar"
                     element={<Explorar textos={datos.textos} idioma={idioma} />}
+                />
+                <Route
+                    path="/eventos/:slug"
+                    element={<DetalleEvento textos={datos.textos} />}
                 />
                 <Route
                     path="/ingresar"

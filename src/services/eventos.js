@@ -224,7 +224,7 @@ export async function obtenerPaginaEventos(
     };
 }
 
-export async function obtenerDetalleEvetno(signal, slug) {
+export async function obtenerDetalleEvento(signal, slug) {
     const respuesta = await fetch(`${API}/${encodeURIComponent(slug)}`, {
         signal,
     });
@@ -244,7 +244,9 @@ export async function obtenerDetalleEvetno(signal, slug) {
     const evento = await respuesta.json();
 
     if (!esTexto(evento?.titulo) || !esTexto(evento?.descripcion)) {
-        throw new Error("El detalle del evento no contiene título o descripción.");
+        throw new Error(
+            "El detalle del evento no contiene título o descripción.",
+        );
     }
 
     return evento;
