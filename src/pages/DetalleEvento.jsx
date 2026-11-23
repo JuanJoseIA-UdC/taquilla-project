@@ -1,13 +1,16 @@
 import { useParams } from "react-router";
 import EstadoContenido from "../components/ui/EstadoContenido.jsx";
 import { useConsulta } from "../hooks/useConsulta.js";
+import { useCategorias } from "../hooks/useCategorias.js";
 import { useEffect } from "react";
 import { obtenerDetalleEvento } from "../services/eventos.js";
 import NoEncontrado from "./NoEncontrado.jsx";
 import PortadaEvento from "../components/detail/PortadaEvento.jsx";
+import ContenidoEvento from "../components/detail/ContenidoEvento.jsx";
 
 export default function DetalleEvento({ textos }) {
     const { slug } = useParams();
+    const { categorias } = useCategorias();
     const {
         datos: evento,
         cargando,
@@ -40,6 +43,10 @@ export default function DetalleEvento({ textos }) {
         return <NoEncontrado textos={textos} />;
     }
 
+    const nombreCategoria =
+        categorias.find((categoria) => categoria.id === evento.categoria)
+            ?.nombre ?? evento.categoria;
+
     return (
         <section aria-labelledby="detalle-evento-titulo">
             <meta name="description" content={evento.descripcion} />
@@ -49,8 +56,11 @@ export default function DetalleEvento({ textos }) {
                 enlaces={textos.navbar.enlaces}
                 acciones={textos.paginas.detalle}
             />
-            <h1 id="detalle-evento-titulo">{evento.titulo}</h1>
-            <p>{evento.descripcion}</p>
+            <ContenidoEvento
+                evento={evento}
+                nombreCategoria={nombreCategoria}
+                textos={textos.paginas.detalleEvento}
+            />
         </section>
     );
 }

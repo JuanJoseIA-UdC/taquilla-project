@@ -164,6 +164,15 @@ export const TEXTOS_RESPALDO = {
                     otro: "{cantidad} eventos",
                 },
             },
+            detalleEvento: {
+                etiquetas: {
+                    edadMinima: "Mayores de {edad}",
+                    todoPublico: "Todo público",
+                },
+                descripcion: {
+                    titulo: "Sobre el evento",
+                },
+            },
             noEncontrado: {
                 contenido: {
                     titulo: "No encontramos esta página",
@@ -424,6 +433,15 @@ export const TEXTOS_RESPALDO = {
                 resultadosCorto: {
                     uno: "{cantidad} event",
                     otro: "{cantidad} events",
+                },
+            },
+            detalleEvento: {
+                etiquetas: {
+                    edadMinima: "{edad}+",
+                    todoPublico: "All ages",
+                },
+                descripcion: {
+                    titulo: "About the event",
                 },
             },
             noEncontrado: {
