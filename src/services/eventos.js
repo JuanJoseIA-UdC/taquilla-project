@@ -223,3 +223,29 @@ export async function obtenerPaginaEventos(
         paginacion,
     };
 }
+
+export async function obtenerDetalleEvetno(signal, slug) {
+    const respuesta = await fetch(`${API}/${encodeURIComponent(slug)}`, {
+        signal,
+    });
+
+    if (respuesta.status === 404) {
+        const contenido = await respuesta.json();
+
+        if (contenido?.error?.codigo === "no_encontrado") {
+            return null;
+        }
+    }
+
+    if (!respuesta.ok) {
+        throw new Error(`HTTP ${respuesta.status}`);
+    }
+
+    const evento = await respuesta.json();
+
+    if (!esTexto(evento?.titulo) || !esTexto(evento?.descripcion)) {
+        throw new Error("El detalle del evento no contiene título o descripción.");
+    }
+
+    return evento;
+}
