@@ -1,6 +1,7 @@
 import { useParams } from "react-router";
 import EstadoContenido from "../components/ui/EstadoContenido.jsx";
 import { useConsulta } from "../hooks/useConsulta.js";
+import { useEffect } from "react";
 import { obtenerDetalleEvento } from "../services/eventos.js";
 import NoEncontrado from "./NoEncontrado.jsx";
 
@@ -12,6 +13,17 @@ export default function DetalleEvento({ textos }) {
         error,
         recargar,
     } = useConsulta(obtenerDetalleEvento, slug);
+
+    useEffect(() => {
+        if (!evento) return;
+
+        const tituloAnterior = document.title;
+        document.title = evento.titulo;
+
+        return () => {
+            document.title = tituloAnterior;
+        };
+    }, [evento]);
 
     if (cargando || error) {
         return (
@@ -29,6 +41,7 @@ export default function DetalleEvento({ textos }) {
 
     return (
         <section aria-labelledby="detalle-evento-titulo">
+            <meta name="description" content={evento.descripcion} />
             <h1 id="detalle-evento-titulo">{evento.titulo}</h1>
             <p>{evento.descripcion}</p>
         </section>
