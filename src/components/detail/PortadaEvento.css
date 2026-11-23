@@ -66,11 +66,9 @@
     height: 360px;
     overflow: hidden;
     border-radius: var(--radio-lg);
-    background: linear-gradient(
-        135deg,
-        var(--afiche-inicio) 0%,
-        var(--afiche-fin) 71.43%
-    );
+    background: linear-gradient(135deg,
+            var(--afiche-inicio) 0%,
+            var(--afiche-fin) 71.43%);
 }
 
 .portada-evento-afiche::before,
@@ -97,6 +95,10 @@
     background-color: #00000026;
 }
 
+.portada-evento-acciones {
+    display: none;
+}
+
 @media (width < 1280px) {
     .portada-evento {
         padding: 0;
@@ -109,5 +111,47 @@
     .portada-evento-afiche {
         height: 280px;
         border-radius: 0;
+    }
+
+    .portada-evento-acciones {
+        position: absolute;
+        z-index: 1;
+        top: 52px;
+        left: 20px;
+        right: 68px;
+        display: flex;
+        justify-content: space-between;
+        pointer-events: none;
+    }
+
+    .portada-evento-boton {
+        display: grid;
+        place-items: center;
+        width: 40px;
+        height: 40px;
+        padding: 0;
+        border: 0;
+        border-radius: 50%;
+        background-color: #fff;
+        color: #161616;
+        pointer-events: auto;
+    }
+
+    .portada-evento-boton svg {
+        width: 18px;
+        height: 18px;
+    }
+
+    .portada-evento-boton:enabled {
+        cursor: pointer;
+    }
+
+    .portada-evento-boton:disabled {
+        opacity: 1;
+    }
+
+    .portada-evento-boton:focus-visible {
+        outline: 2px solid currentColor;
+        outline-offset: 3px;
     }
 }

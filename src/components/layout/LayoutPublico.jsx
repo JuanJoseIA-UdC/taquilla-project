@@ -1,5 +1,6 @@
 import { useCallback, useState } from "react";
 import { useAccesibilidad } from "../../hooks/useAccesibilidad.js";
+import { useMatch } from "react-router";
 import Navbar from "../navigation/Navbar.jsx";
 import PanelAccesibilidad from "../accessibility/PanelAccesibilidad.jsx";
 import Footer from "./Footer.jsx";
@@ -16,6 +17,7 @@ export default function LayoutPublico({
 }) {
     const accesibilidad = useAccesibilidad();
     const [panelAbierto, setPanelAbierto] = useState(false);
+    const enDetalleEvento = useMatch("/eventos/:slug");
 
     const abrirAccesibilidad = useCallback(() => {
         setPanelAbierto(true);
@@ -26,7 +28,7 @@ export default function LayoutPublico({
     }, []);
 
     return (
-        <div className="layout-publico">
+        <div className={enDetalleEvento ? "layout-publico layout-publico--detalle" : "layout-publico"}>
             <a className="saltar-contenido" href="#contenido">
                 {datos.textos.general.aria.saltarAlContenido}
             </a>
@@ -72,6 +74,6 @@ export default function LayoutPublico({
                 />
             )}
             <GestorCookies textos={datos.textos} preferencias={preferencias} />
-        </div>
+        </div >
     );
 }

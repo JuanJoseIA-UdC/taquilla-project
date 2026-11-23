@@ -1,8 +1,19 @@
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import Icono from "../ui/Icono.jsx";
 import "./PortadaEvento.css";
 
-export default function PortadaEvento({ titulo, afiche, enlaces }) {
+export default function PortadaEvento({ titulo, afiche, enlaces, acciones }) {
+
+    const navigate = useNavigate();
+
+    function volver() {
+        if (window.history.state?.idx > 0) {
+            navigate(-1);
+        } else {
+            navigate("/explorar", { replace: true });
+        }
+    }
+
     return (
         <header className="portada-evento">
             <nav
@@ -28,12 +39,31 @@ export default function PortadaEvento({ titulo, afiche, enlaces }) {
 
             <div
                 className="portada-evento-afiche"
-                aria-hidden="true"
                 style={{
                     "--afiche-inicio": afiche.color1,
                     "--afiche-fin": afiche.color2,
                 }}
-            />
+            >
+                <div className="portada-evento-acciones">
+                    <button
+                        type="button"
+                        className="portada-evento-boton"
+                        aria-label={acciones.atras}
+                        onClick={volver}
+                    >
+                        <Icono nombre="chevronIzquierda" />
+                    </button>
+                    <button
+                        type="button"
+                        className="portada-evento-boton"
+                        aria-label={acciones.compartir}
+                        disabled
+                    >
+                        <Icono nombre="compartir" />
+                    </button>
+                </div>
+            </div>
+
         </header>
     );
 }

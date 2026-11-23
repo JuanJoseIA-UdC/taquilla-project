@@ -47,6 +47,7 @@ export default function DetalleEvento({ textos }) {
                 titulo={evento.titulo}
                 afiche={evento.afiche}
                 enlaces={textos.navbar.enlaces}
+                acciones={textos.paginas.detalle}
             />
             <h1 id="detalle-evento-titulo">{evento.titulo}</h1>
             <p>{evento.descripcion}</p>
