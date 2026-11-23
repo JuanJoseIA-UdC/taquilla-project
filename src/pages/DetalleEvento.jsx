@@ -4,6 +4,7 @@ import { useConsulta } from "../hooks/useConsulta.js";
 import { useEffect } from "react";
 import { obtenerDetalleEvento } from "../services/eventos.js";
 import NoEncontrado from "./NoEncontrado.jsx";
+import PortadaEvento from "../components/detail/PortadaEvento.jsx";
 
 export default function DetalleEvento({ textos }) {
     const { slug } = useParams();
@@ -42,6 +43,11 @@ export default function DetalleEvento({ textos }) {
     return (
         <section aria-labelledby="detalle-evento-titulo">
             <meta name="description" content={evento.descripcion} />
+            <PortadaEvento
+                titulo={evento.titulo}
+                afiche={evento.afiche}
+                enlaces={textos.navbar.enlaces}
+            />
             <h1 id="detalle-evento-titulo">{evento.titulo}</h1>
             <p>{evento.descripcion}</p>
         </section>
