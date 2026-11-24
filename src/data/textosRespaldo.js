@@ -195,6 +195,69 @@ export const TEXTOS_RESPALDO = {
                     },
                 },
             },
+            ingresar: {
+                seo: {
+                    titulo: "Ingresar · Taquilla",
+                    descripcion: "Ingresa a tu cuenta de Taquilla.",
+                },
+                presentacion: {
+                    lema: "Tu próxima noche empieza aquí.",
+                    beneficios: {
+                        descubre: "Descubre conciertos, teatro y deportes",
+                        filtra: "Filtra por categoría, fecha y ciudad",
+                        consulta: "Consulta horario, lugar y cómo llegar",
+                    },
+                },
+                formulario: {
+                    titulo: "Ingresa a tu cuenta",
+                    subtitulo:
+                        "Ingresa con el correo y la contraseña de tu cuenta.",
+                    etiquetas: {
+                        correo: "Correo electrónico",
+                        clave: "Contraseña",
+                        mantenerSesion: "Mantener la sesión iniciada",
+                    },
+                    placeholders: {
+                        correo: "nombre@correo.com",
+                    },
+                    enlaces: {
+                        olvidasteClave: "¿Olvidaste tu contraseña?",
+                        crearCuenta: "Crea una cuenta",
+                    },
+                    mensajes: {
+                        sinCuenta: "¿No tienes cuenta?",
+                        ingresando: "Ingresando…",
+                    },
+                    botones: {
+                        ingresar: "Ingresar",
+                        mostrarClave: "Mostrar contraseña",
+                        ocultarClave: "Ocultar contraseña",
+                    },
+                },
+                errores: {
+                    camposObligatorios: {
+                        titulo: "Revisa los campos marcados",
+                        texto: "Para ingresar escribe tu correo y tu contraseña.",
+                    },
+                    correoObligatorio: "Escribe tu correo electrónico.",
+                    claveObligatoria: "Escribe tu contraseña.",
+                    credenciales: {
+                        titulo: "Correo o contraseña incorrectos",
+                        texto: "Revisa los datos e inténtalo de nuevo. Si no recuerdas tu contraseña, puedes restablecerla.",
+                    },
+                    demasiadosIntentos: {
+                        titulo: "Demasiados intentos",
+                        texto: "Espera {segundos} segundos antes de volver a intentarlo.",
+                    },
+                    conexion: {
+                        titulo: "No pudimos conectarnos",
+                        texto: "Revisa tu conexión a internet e inténtalo de nuevo. Lo que escribiste se conserva.",
+                        botones: {
+                            reintentar: "Reintentar",
+                        },
+                    },
+                },
+            },
         },
         footer: {
             lema: "Conciertos, teatro, deportes y festivales en un solo lugar. Explora eventos y consulta sus detalles.",
@@ -476,6 +539,69 @@ export const TEXTOS_RESPALDO = {
                     texto: "The event may no longer exist or the address may be misspelled.",
                     botones: {
                         volverInicio: "Back to home",
+                    },
+                },
+            },
+            ingresar: {
+                seo: {
+                    titulo: "Log in · Taquilla",
+                    descripcion: "Log in to your Taquilla account.",
+                },
+                presentacion: {
+                    lema: "Your next night out starts here.",
+                    beneficios: {
+                        descubre: "Discover concerts, theater and sports",
+                        filtra: "Filter by category, date and city",
+                        consulta: "Check the time, venue and how to get there",
+                    },
+                },
+                formulario: {
+                    titulo: "Log in to your account",
+                    subtitulo:
+                        "Log in with the email and password of your account.",
+                    etiquetas: {
+                        correo: "Email",
+                        clave: "Password",
+                        mantenerSesion: "Keep me logged in",
+                    },
+                    placeholders: {
+                        correo: "name@email.com",
+                    },
+                    enlaces: {
+                        olvidasteClave: "Forgot your password?",
+                        crearCuenta: "Create an account",
+                    },
+                    mensajes: {
+                        sinCuenta: "Don't have an account?",
+                        ingresando: "Logging in…",
+                    },
+                    botones: {
+                        ingresar: "Log in",
+                        mostrarClave: "Show password",
+                        ocultarClave: "Hide password",
+                    },
+                },
+                errores: {
+                    camposObligatorios: {
+                        titulo: "Check the highlighted fields",
+                        texto: "To log in, enter your email and password.",
+                    },
+                    correoObligatorio: "Enter your email.",
+                    claveObligatoria: "Enter your password.",
+                    credenciales: {
+                        titulo: "Incorrect email or password",
+                        texto: "Check your details and try again. If you don't remember your password, you can reset it.",
+                    },
+                    demasiadosIntentos: {
+                        titulo: "Too many attempts",
+                        texto: "Wait {segundos} seconds before trying again.",
+                    },
+                    conexion: {
+                        titulo: "We couldn't connect",
+                        texto: "Check your internet connection and try again. What you typed is kept.",
+                        botones: {
+                            reintentar: "Try again",
+                        },
                     },
                 },
             },
