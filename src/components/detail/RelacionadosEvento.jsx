@@ -12,8 +12,9 @@ export default function RelacionadosEvento({
     textosTarjeta,
     estados,
     idioma,
+    errores,
 }) {
-    const { datos, cargando, error, recargar } = useConsulta(
+    const { datos, cargando, error, codigoError, recargar } = useConsulta(
         obtenerEventosRelacionados,
         slug,
     );
@@ -37,6 +38,7 @@ export default function RelacionadosEvento({
                     tipo={tipoEstado}
                     textos={estados}
                     onReintentar={recargar}
+                    mensajeError={errores?.[codigoError] ?? errores?.generico}
                 />
             ) : (
                 <ListaEventos
