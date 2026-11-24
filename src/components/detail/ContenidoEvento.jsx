@@ -64,12 +64,14 @@ export default function ContenidoEvento({
         fechaFormateada.charAt(0).toLocaleUpperCase(idioma) +
         fechaFormateada.slice(1);
 
-    const unaHoraEnMilisegundos = 60 * 60 * 1000;
-    const apertura = new Date(inicio.getTime() - unaHoraEnMilisegundos);
+    const horaInicio = formatoHora.format(inicio);
+    const apertura = Date.parse(evento.puertas);
 
-    const horaVisible = textos.info.horaValor
-        .replace("{hora}", formatoHora.format(inicio))
-        .replace("{puertas}", formatoHora.format(apertura));
+    const horaVisible = Number.isFinite(apertura)
+        ? textos.info.horaValor
+              .replace("{hora}", horaInicio)
+              .replace("{puertas}", formatoHora.format(apertura))
+        : horaInicio;
 
     const { nombre, ciudad, direccion } = evento.recinto;
     const direccionCompleta = [direccion, ciudad].filter(Boolean).join(", ");

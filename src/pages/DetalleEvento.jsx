@@ -16,6 +16,7 @@ export default function DetalleEvento({ textos, idioma }) {
         datos: evento,
         cargando,
         error,
+        codigoError,
         recargar,
     } = useConsulta(obtenerDetalleEvento, slug);
 
@@ -35,6 +36,9 @@ export default function DetalleEvento({ textos, idioma }) {
             <EstadoContenido
                 tipo={cargando ? "cargando" : "error"}
                 textos={textos.estados}
+                mensajeError={
+                    textos.errores?.[codigoError] ?? textos.errores?.generico
+                }
                 onReintentar={recargar}
             />
         );
@@ -69,6 +73,7 @@ export default function DetalleEvento({ textos, idioma }) {
                 categorias={categorias}
                 textosTarjeta={textos.paginas.inicio.tarjeta}
                 estados={textos.estados}
+                errores={textos.errores}
                 idioma={idioma}
             />
         </section>

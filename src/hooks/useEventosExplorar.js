@@ -24,6 +24,7 @@ export function useEventosExplorar(consultaURL = "") {
         paginacion: consulta.datos?.paginacion ?? null,
         cargando: consulta.cargando,
         error: consulta.error,
+        codigoError: consulta.codigoError,
         recargar: consulta.recargar,
     };
 }

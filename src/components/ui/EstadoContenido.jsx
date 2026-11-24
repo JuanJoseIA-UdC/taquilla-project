@@ -3,6 +3,7 @@ import Boton from "./Boton.jsx";
 export default function EstadoContenido({
     tipo,
     textos,
+    mensajeError,
     onReintentar,
     className = "",
 }) {
@@ -21,7 +22,7 @@ export default function EstadoContenido({
                     <p>
                         <strong>{textos.error.titulo}</strong>
                     </p>
-                    <p>{textos.error.texto}</p>
+                    <p>{mensajeError ?? textos.error.texto}</p>
                 </div>
 
                 <Boton variante="secundario" onClick={onReintentar}>
