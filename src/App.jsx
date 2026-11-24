@@ -7,6 +7,7 @@ import NoEncontrado from "./pages/NoEncontrado.jsx";
 import Inicio from "./pages/Inicio.jsx";
 import Explorar from "./pages/Explorar.jsx";
 import DetalleEvento from "./pages/DetalleEvento.jsx";
+import Ingresar from "./pages/Ingresar.jsx";
 
 export default function App() {
     const { idiomas } = useIdiomas();
@@ -35,13 +36,11 @@ export default function App() {
                 />
                 <Route
                     path="/eventos/:slug"
-                    element={
-                        <DetalleEvento textos={datos.textos} idioma={idioma} />
-                    }
+                    element={<DetalleEvento textos={datos.textos} idioma={idioma} />}
                 />
                 <Route
                     path="/ingresar"
-                    element={<h1>{nav?.botones.ingresar}</h1>}
+                    element={<Ingresar textos={datos.textos} />}
                 />
                 <Route
                     path="/registro"

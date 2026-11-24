@@ -18,6 +18,7 @@ export default function LayoutPublico({
     const accesibilidad = useAccesibilidad();
     const [panelAbierto, setPanelAbierto] = useState(false);
     const enDetalleEvento = useMatch("/eventos/:slug");
+    const enIngreso = useMatch("/ingresar");
 
     const abrirAccesibilidad = useCallback(() => {
         setPanelAbierto(true);
@@ -32,13 +33,15 @@ export default function LayoutPublico({
             <a className="saltar-contenido" href="#contenido">
                 {datos.textos.general.aria.saltarAlContenido}
             </a>
-            <Navbar
-                textos={datos.textos}
-                idioma={idioma}
-                idiomas={idiomas}
-                cambiarIdioma={cambiarIdioma}
-                onAbrirAccesibilidad={abrirAccesibilidad}
-            />
+            {!enIngreso && (
+                <Navbar
+                    textos={datos.textos}
+                    idioma={idioma}
+                    idiomas={idiomas}
+                    cambiarIdioma={cambiarIdioma}
+                    onAbrirAccesibilidad={abrirAccesibilidad}
+                />
+            )}
 
             <main id="contenido" tabIndex={-1}>
                 {datos.cargando && (
@@ -60,11 +63,13 @@ export default function LayoutPublico({
                 {children}
             </main>
 
-            <Footer
-                textos={datos.textos}
-                onAccesibilidad={abrirAccesibilidad}
-            />
-
+            {!enIngreso && (
+                <Footer
+                    textos={datos.textos}
+                    onAccesibilidad={abrirAccesibilidad}
+                />
+            )}
+            
             {datos.textos && (
                 <PanelAccesibilidad
                     abierto={panelAbierto}
