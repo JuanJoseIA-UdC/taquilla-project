@@ -157,6 +157,10 @@ export default function Explorar({ textos, idioma }) {
                     categorias={categorias.categorias}
                     textosTarjeta={textos.paginas.inicio.tarjeta}
                     estados={textos.estados}
+                    mensajeError={
+                        textos.errores?.[datos.codigoError] ??
+                        textos.errores?.generico
+                    }
                     idioma={idioma}
                     filtros={datos.filtros}
                     textos={textos.paginas.explorar}

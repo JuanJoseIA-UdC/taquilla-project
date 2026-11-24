@@ -13,6 +13,7 @@ export default function ResultadosExplorar({
     textosTarjeta,
     textosPaginacion,
     estados,
+    mensajeError,
     idioma,
     onCambiarFiltros,
     onCambiarPagina,
@@ -59,6 +60,7 @@ export default function ResultadosExplorar({
                 <EstadoContenido
                     tipo={tipoEstado}
                     textos={estados}
+                    mensajeError={mensajeError}
                     onReintentar={datos.recargar}
                     className="explorar-estado"
                 />
