@@ -1,18 +1,17 @@
 .contenido-evento {
-    box-sizing: border-box;
     display: grid;
     gap: 40px;
     width: 100%;
     max-width: 1440px;
     margin-inline: auto;
-    padding: 40px 80px 64px;
+    padding: 40px 80px var(--espacio-16);
     color: var(--texto-principal);
     font-family: var(--fuente-instrument-sans);
 }
 
 .contenido-evento-encabezado {
     display: grid;
-    gap: 16px;
+    gap: var(--espacio-4);
     min-width: 0;
 }
 
@@ -20,7 +19,7 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 8px;
+    gap: var(--espacio-2);
 }
 
 .contenido-evento-titulo {
@@ -40,39 +39,17 @@
     overflow-wrap: anywhere;
 }
 
-.contenido-evento-descripcion {
-    display: grid;
-    gap: 12px;
-}
-
-.contenido-evento-descripcion h2 {
-    margin: 0;
-    font-size: 1.5rem;
-    font-weight: 600;
-    line-height: 1.25;
-    letter-spacing: -0.015em;
-}
-
-.contenido-evento-descripcion p {
-    margin: 0;
-    color: var(--texto-secundario);
-    font-size: 1rem;
-    line-height: 1.5;
-    white-space: pre-line;
-    overflow-wrap: anywhere;
-}
-
 .contenido-evento-datos {
     display: flex;
     flex-wrap: wrap;
-    gap: 32px;
-    padding-top: 8px;
+    gap: var(--espacio-8);
+    padding-top: var(--espacio-2);
 }
 
 .contenido-evento-dato {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: var(--espacio-3);
     min-width: 0;
 }
 
@@ -81,7 +58,7 @@
     flex: 0 0 44px;
     height: 44px;
     place-items: center;
-    border-radius: 6px;
+    border-radius: var(--radio-sm);
     background-color: var(--fondo-sutil);
 }
 
@@ -113,16 +90,14 @@
 
 .contenido-evento-pestanas {
     display: flex;
-    align-items: stretch;
-    gap: 32px;
+    gap: var(--espacio-8);
     min-height: 40px;
     border-bottom: 1px solid var(--borde-sutil);
 }
 
-.contenido-evento-pestanas> :is(a, button) {
+.contenido-evento-pestanas > :is(a, button) {
     display: inline-flex;
     align-items: flex-start;
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
     border: 0;
@@ -149,22 +124,67 @@
     outline-offset: 3px;
 }
 
+.contenido-evento-descripcion {
+    display: grid;
+    gap: var(--espacio-3);
+}
+
+.contenido-evento-descripcion h2,
+.contenido-evento-llegada h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1.25;
+    letter-spacing: -0.015em;
+}
+
+.contenido-evento-descripcion p,
+.contenido-evento-llegada p {
+    margin: 0;
+    color: var(--texto-secundario);
+    font-size: 1rem;
+    line-height: 1.5;
+    white-space: pre-line;
+    overflow-wrap: anywhere;
+}
+
+.contenido-evento-llegada {
+    display: grid;
+    gap: var(--espacio-4);
+}
+
+.contenido-evento-mapa {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--espacio-2);
+    height: 220px;
+    border-radius: var(--radio-lg);
+    background-color: var(--fondo-sutil);
+    color: var(--texto-secundario);
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+}
+
+.contenido-evento-mapa svg {
+    width: 24px;
+    height: 24px;
+    color: var(--texto-principal);
+}
+
 @media (width < 1280px) {
     .contenido-evento {
         gap: 20px;
         padding: 20px;
     }
 
-    .contenido-evento .contenido-evento-edad {
-        display: none;
-    }
-
     .contenido-evento-encabezado {
-        gap: 8px;
+        gap: var(--espacio-2);
     }
 
     .contenido-evento-etiquetas {
-        margin-bottom: 12px;
+        margin-bottom: var(--espacio-3);
     }
 
     .contenido-evento-titulo {
@@ -177,8 +197,18 @@
         line-height: 1.5;
     }
 
+    .contenido-evento-datos {
+        display: grid;
+        gap: var(--espacio-3);
+        padding-top: var(--espacio-3);
+    }
+
+    .contenido-evento-dato-secundario {
+        display: block;
+    }
+
     .contenido-evento-descripcion {
-        gap: 8px;
+        gap: var(--espacio-2);
         padding-top: 20px;
         border-top: 1px solid var(--borde-sutil);
     }
@@ -188,23 +218,12 @@
         line-height: 1.3;
     }
 
-    .contenido-evento-datos {
-        display: grid;
-        gap: 12px;
-        padding-top: 12px;
-    }
-
+    .contenido-evento .contenido-evento-edad,
     .contenido-evento-dato--hora,
     .contenido-evento-dato-etiqueta,
-    .contenido-evento-ciudad-web {
-        display: none;
-    }
-
-    .contenido-evento-dato-secundario {
-        display: block;
-    }
-
-    .contenido-evento-pestanas {
+    .contenido-evento-ciudad-web,
+    .contenido-evento-pestanas,
+    .contenido-evento-llegada {
         display: none;
     }
 }

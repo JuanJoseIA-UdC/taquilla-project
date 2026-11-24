@@ -8,7 +8,7 @@ import NoEncontrado from "./NoEncontrado.jsx";
 import PortadaEvento from "../components/detail/PortadaEvento.jsx";
 import ContenidoEvento from "../components/detail/ContenidoEvento.jsx";
 
-export default function DetalleEvento({ textos }) {
+export default function DetalleEvento({ textos, idioma }) {
     const { slug } = useParams();
     const { categorias } = useCategorias();
     const {
@@ -60,6 +60,7 @@ export default function DetalleEvento({ textos }) {
                 evento={evento}
                 nombreCategoria={nombreCategoria}
                 textos={textos.paginas.detalleEvento}
+                idioma={idioma}
             />
         </section>
     );

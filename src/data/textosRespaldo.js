@@ -183,6 +183,7 @@ export const TEXTOS_RESPALDO = {
                     comoLlegar: "Cómo llegar",
                     politicas: "Políticas",
                 },
+                mapa: { titulo: "Mapa del lugar" },
             },
             noEncontrado: {
                 contenido: {
@@ -465,6 +466,7 @@ export const TEXTOS_RESPALDO = {
                     comoLlegar: "Getting there",
                     politicas: "Policies",
                 },
+                mapa: { titulo: "Venue map" },
             },
             noEncontrado: {
                 contenido: {
