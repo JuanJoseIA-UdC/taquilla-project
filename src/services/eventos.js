@@ -251,3 +251,27 @@ export async function obtenerDetalleEvento(signal, slug) {
 
     return evento;
 }
+
+export async function obtenerEventosRelacionados(signal, slug) {
+    const respuesta = await fetch(
+        `${API}/${encodeURIComponent(slug)}/relacionados`,
+        { signal },
+    );
+
+    if (!respuesta.ok) {
+        throw new Error(`HTTP ${respuesta.status}`);
+    }
+
+    const contenido = await respuesta.json();
+
+    if (
+        !Array.isArray(contenido?.datos) ||
+        !contenido.datos.every(esEventoValido)
+    ) {
+        throw new Error(
+            "La respuesta de relacionados contiene datos inválidos.",
+        );
+    }
+
+    return contenido.datos.slice(0, 4);
+}

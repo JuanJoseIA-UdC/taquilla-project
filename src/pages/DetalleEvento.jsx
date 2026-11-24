@@ -7,6 +7,7 @@ import { obtenerDetalleEvento } from "../services/eventos.js";
 import NoEncontrado from "./NoEncontrado.jsx";
 import PortadaEvento from "../components/detail/PortadaEvento.jsx";
 import ContenidoEvento from "../components/detail/ContenidoEvento.jsx";
+import RelacionadosEvento from "../components/detail/RelacionadosEvento.jsx";
 
 export default function DetalleEvento({ textos, idioma }) {
     const { slug } = useParams();
@@ -60,6 +61,14 @@ export default function DetalleEvento({ textos, idioma }) {
                 evento={evento}
                 nombreCategoria={nombreCategoria}
                 textos={textos.paginas.detalleEvento}
+                idioma={idioma}
+            />
+            <RelacionadosEvento
+                slug={evento.slug}
+                titulo={textos.paginas.detalleEvento.relacionados.titulo}
+                categorias={categorias}
+                textosTarjeta={textos.paginas.inicio.tarjeta}
+                estados={textos.estados}
                 idioma={idioma}
             />
         </section>

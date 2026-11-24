@@ -184,6 +184,7 @@ export const TEXTOS_RESPALDO = {
                     politicas: "Políticas",
                 },
                 mapa: { titulo: "Mapa del lugar" },
+                relacionados: { titulo: "También te puede interesar" },
             },
             noEncontrado: {
                 contenido: {
@@ -467,6 +468,7 @@ export const TEXTOS_RESPALDO = {
                     politicas: "Policies",
                 },
                 mapa: { titulo: "Venue map" },
+                relacionados: { titulo: "You may also like" },
             },
             noEncontrado: {
                 contenido: {
