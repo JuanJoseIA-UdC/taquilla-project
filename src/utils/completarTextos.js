@@ -17,6 +17,10 @@ export function completarTextos(textos, idioma) {
         },
         paginas: {
             ...textos.paginas,
+            detalle: {
+                ...complemento.paginas.detalle,
+                ...textos.paginas.detalle,
+            },
             explorar: {
                 ...explorar,
                 filtros: {

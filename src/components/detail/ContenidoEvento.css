@@ -1,0 +1,229 @@
+.contenido-evento {
+    display: grid;
+    gap: 40px;
+    width: 100%;
+    max-width: 1440px;
+    margin-inline: auto;
+    padding: 40px 80px var(--espacio-16);
+    color: var(--texto-principal);
+    font-family: var(--fuente-instrument-sans);
+}
+
+.contenido-evento-encabezado {
+    display: grid;
+    gap: var(--espacio-4);
+    min-width: 0;
+}
+
+.contenido-evento-etiquetas {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--espacio-2);
+}
+
+.contenido-evento-titulo {
+    margin: 0;
+    font-size: 3.25rem;
+    font-weight: 600;
+    line-height: 1.076923;
+    letter-spacing: -0.025em;
+    overflow-wrap: anywhere;
+}
+
+.contenido-evento-artistas {
+    margin: 0;
+    color: var(--texto-secundario);
+    font-size: 1.125rem;
+    line-height: 1.555556;
+    overflow-wrap: anywhere;
+}
+
+.contenido-evento-datos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--espacio-8);
+    padding-top: var(--espacio-2);
+}
+
+.contenido-evento-dato {
+    display: flex;
+    align-items: center;
+    gap: var(--espacio-3);
+    min-width: 0;
+}
+
+.contenido-evento-dato-icono {
+    display: grid;
+    flex: 0 0 44px;
+    height: 44px;
+    place-items: center;
+    border-radius: var(--radio-sm);
+    background-color: var(--fondo-sutil);
+}
+
+.contenido-evento-dato-icono svg {
+    width: 20px;
+    height: 20px;
+}
+
+.contenido-evento-dato-textos {
+    display: grid;
+    min-width: 0;
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1.25rem;
+    overflow-wrap: anywhere;
+}
+
+.contenido-evento-dato-etiqueta,
+.contenido-evento-dato-secundario {
+    color: var(--texto-secundario);
+    font-size: 0.75rem;
+    font-weight: 400;
+    line-height: 1rem;
+}
+
+.contenido-evento-dato-secundario {
+    display: none;
+}
+
+.contenido-evento-pestanas {
+    display: flex;
+    gap: var(--espacio-8);
+    min-height: 40px;
+    border-bottom: 1px solid var(--borde-sutil);
+}
+
+.contenido-evento-pestanas > :is(a, button) {
+    display: inline-flex;
+    align-items: flex-start;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--texto-secundario);
+    font: inherit;
+    font-weight: 500;
+    line-height: 24px;
+    text-decoration: none;
+}
+
+.contenido-evento-pestanas [aria-current="location"] {
+    border-bottom: 2px solid currentColor;
+    color: var(--texto-principal);
+    font-weight: 600;
+}
+
+.contenido-evento-pestanas button:disabled {
+    opacity: 1;
+}
+
+.contenido-evento-pestanas a:focus-visible {
+    outline: 2px solid var(--texto-principal);
+    outline-offset: 3px;
+}
+
+.contenido-evento-descripcion {
+    display: grid;
+    gap: var(--espacio-3);
+}
+
+.contenido-evento-descripcion h2,
+.contenido-evento-llegada h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1.25;
+    letter-spacing: -0.015em;
+}
+
+.contenido-evento-descripcion p,
+.contenido-evento-llegada p {
+    margin: 0;
+    color: var(--texto-secundario);
+    font-size: 1rem;
+    line-height: 1.5;
+    white-space: pre-line;
+    overflow-wrap: anywhere;
+}
+
+.contenido-evento-llegada {
+    display: grid;
+    gap: var(--espacio-4);
+}
+
+.contenido-evento-mapa {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--espacio-2);
+    height: 220px;
+    border-radius: var(--radio-lg);
+    background-color: var(--fondo-sutil);
+    color: var(--texto-secundario);
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+}
+
+.contenido-evento-mapa svg {
+    width: 24px;
+    height: 24px;
+    color: var(--texto-principal);
+}
+
+@media (width < 1280px) {
+    .contenido-evento {
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .contenido-evento-encabezado {
+        gap: var(--espacio-2);
+    }
+
+    .contenido-evento-etiquetas {
+        margin-bottom: var(--espacio-3);
+    }
+
+    .contenido-evento-titulo {
+        font-size: 2rem;
+        line-height: 1.125;
+    }
+
+    .contenido-evento-artistas {
+        font-size: 1rem;
+        line-height: 1.5;
+    }
+
+    .contenido-evento-datos {
+        display: grid;
+        gap: var(--espacio-3);
+        padding-top: var(--espacio-3);
+    }
+
+    .contenido-evento-dato-secundario {
+        display: block;
+    }
+
+    .contenido-evento-descripcion {
+        gap: var(--espacio-2);
+        padding-top: 20px;
+        border-top: 1px solid var(--borde-sutil);
+    }
+
+    .contenido-evento-descripcion h2 {
+        font-size: 1.25rem;
+        line-height: 1.3;
+    }
+
+    .contenido-evento .contenido-evento-edad,
+    .contenido-evento-dato--hora,
+    .contenido-evento-dato-etiqueta,
+    .contenido-evento-ciudad-web,
+    .contenido-evento-pestanas,
+    .contenido-evento-llegada {
+        display: none;
+    }
+}

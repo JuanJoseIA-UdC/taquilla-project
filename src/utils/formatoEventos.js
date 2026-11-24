@@ -1,4 +1,4 @@
-export function crearFormateadoresEvento(idioma) {
+export function crearFormateadoresEvento(idioma, { incluirAnio = false } = {}) {
     const locale = idioma === "en" ? "en-US" : "es-CO";
     const timeZone = "America/Bogota";
 
@@ -7,6 +7,7 @@ export function crearFormateadoresEvento(idioma) {
         weekday: "short",
         day: "numeric",
         month: "short",
+        year: incluirAnio ? "numeric" : undefined,
     });
 
     const formatoHora = new Intl.DateTimeFormat(locale, {

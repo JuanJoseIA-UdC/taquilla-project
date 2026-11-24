@@ -164,6 +164,28 @@ export const TEXTOS_RESPALDO = {
                     otro: "{cantidad} eventos",
                 },
             },
+            detalleEvento: {
+                etiquetas: {
+                    edadMinima: "Mayores de {edad}",
+                    todoPublico: "Todo público",
+                },
+                descripcion: {
+                    titulo: "Sobre el evento",
+                },
+                info: {
+                    fecha: "Fecha",
+                    hora: "Hora",
+                    lugar: "Lugar",
+                    horaValor: "{hora} · Puertas {puertas}",
+                },
+                pestanas: {
+                    descripcion: "Descripción",
+                    comoLlegar: "Cómo llegar",
+                    politicas: "Políticas",
+                },
+                mapa: { titulo: "Mapa del lugar" },
+                relacionados: { titulo: "También te puede interesar" },
+            },
             noEncontrado: {
                 contenido: {
                     titulo: "No encontramos esta página",
@@ -425,6 +447,28 @@ export const TEXTOS_RESPALDO = {
                     uno: "{cantidad} event",
                     otro: "{cantidad} events",
                 },
+            },
+            detalleEvento: {
+                etiquetas: {
+                    edadMinima: "{edad}+",
+                    todoPublico: "All ages",
+                },
+                descripcion: {
+                    titulo: "About the event",
+                },
+                info: {
+                    fecha: "Date",
+                    hora: "Time",
+                    lugar: "Venue",
+                    horaValor: "{hora} · Doors {puertas}",
+                },
+                pestanas: {
+                    descripcion: "Description",
+                    comoLlegar: "Getting there",
+                    politicas: "Policies",
+                },
+                mapa: { titulo: "Venue map" },
+                relacionados: { titulo: "You may also like" },
             },
             noEncontrado: {
                 contenido: {

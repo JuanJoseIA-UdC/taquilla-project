@@ -223,3 +223,55 @@ export async function obtenerPaginaEventos(
         paginacion,
     };
 }
+
+export async function obtenerDetalleEvento(signal, slug) {
+    const respuesta = await fetch(`${API}/${encodeURIComponent(slug)}`, {
+        signal,
+    });
+
+    if (respuesta.status === 404) {
+        const contenido = await respuesta.json();
+
+        if (contenido?.error?.codigo === "no_encontrado") {
+            return null;
+        }
+    }
+
+    if (!respuesta.ok) {
+        throw new Error(`HTTP ${respuesta.status}`);
+    }
+
+    const evento = await respuesta.json();
+
+    if (!esTexto(evento?.titulo) || !esTexto(evento?.descripcion)) {
+        throw new Error(
+            "El detalle del evento no contiene título o descripción.",
+        );
+    }
+
+    return evento;
+}
+
+export async function obtenerEventosRelacionados(signal, slug) {
+    const respuesta = await fetch(
+        `${API}/${encodeURIComponent(slug)}/relacionados`,
+        { signal },
+    );
+
+    if (!respuesta.ok) {
+        throw new Error(`HTTP ${respuesta.status}`);
+    }
+
+    const contenido = await respuesta.json();
+
+    if (
+        !Array.isArray(contenido?.datos) ||
+        !contenido.datos.every(esEventoValido)
+    ) {
+        throw new Error(
+            "La respuesta de relacionados contiene datos inválidos.",
+        );
+    }
+
+    return contenido.datos.slice(0, 4);
+}

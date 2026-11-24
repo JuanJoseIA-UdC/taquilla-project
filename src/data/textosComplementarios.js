@@ -19,6 +19,7 @@ export const TEXTOS_COMPLEMENTARIOS = {
                     activos: "Filtros activos",
                 },
             },
+            detalle: { atras: "Atrás", compartir: "Compartir" },
         },
     },
     en: {
@@ -39,6 +40,7 @@ export const TEXTOS_COMPLEMENTARIOS = {
                     activos: "Active filters",
                 },
             },
+            detalle: { atras: "Back", compartir: "Share" },
         },
     },
 };

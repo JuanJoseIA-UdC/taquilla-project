@@ -1,0 +1,157 @@
+.portada-evento {
+    box-sizing: border-box;
+    display: grid;
+    gap: 20px;
+    width: 100%;
+    max-width: 1440px;
+    margin-inline: auto;
+    padding: 32px 80px 0;
+}
+
+.portada-evento-ruta {
+    font-size: 0.875rem;
+    line-height: 20px;
+}
+
+.portada-evento-ruta ol {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--espacio-2);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.portada-evento-ruta li {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--espacio-2);
+    min-width: 0;
+}
+
+.portada-evento-ruta a,
+.portada-evento-ruta svg {
+    color: var(--texto-secundario);
+}
+
+.portada-evento-ruta a {
+    text-decoration: none;
+}
+
+.portada-evento-ruta a:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.portada-evento-ruta a:focus-visible {
+    outline: 2px solid var(--texto-principal);
+    outline-offset: 3px;
+}
+
+.portada-evento-ruta svg {
+    flex-shrink: 0;
+    width: 14px;
+    height: 14px;
+}
+
+.portada-evento-ruta [aria-current="page"] {
+    color: var(--texto-principal);
+    font-weight: 500;
+    overflow-wrap: anywhere;
+}
+
+.portada-evento-afiche {
+    position: relative;
+    height: 360px;
+    overflow: hidden;
+    border-radius: var(--radio-lg);
+    background: linear-gradient(135deg,
+            var(--afiche-inicio) 0%,
+            var(--afiche-fin) 71.43%);
+}
+
+.portada-evento-afiche::before,
+.portada-evento-afiche::after {
+    position: absolute;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    content: "";
+}
+
+.portada-evento-afiche::before {
+    top: 35%;
+    left: 50%;
+    width: 70%;
+    transform: translateY(-50%);
+    background-color: #ffffff1f;
+}
+
+.portada-evento-afiche::after {
+    bottom: 9%;
+    left: -12%;
+    width: 45%;
+    transform: translateY(50%);
+    background-color: #00000026;
+}
+
+.portada-evento-acciones {
+    display: none;
+}
+
+@media (width < 1280px) {
+    .portada-evento {
+        padding: 0;
+    }
+
+    .portada-evento-ruta {
+        display: none;
+    }
+
+    .portada-evento-afiche {
+        height: 280px;
+        border-radius: 0;
+    }
+
+    .portada-evento-acciones {
+        position: absolute;
+        z-index: 1;
+        top: 52px;
+        left: 20px;
+        right: 68px;
+        display: flex;
+        justify-content: space-between;
+        pointer-events: none;
+    }
+
+    .portada-evento-boton {
+        display: grid;
+        place-items: center;
+        width: 40px;
+        height: 40px;
+        padding: 0;
+        border: 0;
+        border-radius: 50%;
+        background-color: #fff;
+        color: #161616;
+        pointer-events: auto;
+    }
+
+    .portada-evento-boton svg {
+        width: 18px;
+        height: 18px;
+    }
+
+    .portada-evento-boton:enabled {
+        cursor: pointer;
+    }
+
+    .portada-evento-boton:disabled {
+        opacity: 1;
+    }
+
+    .portada-evento-boton:focus-visible {
+        outline: 2px solid currentColor;
+        outline-offset: 3px;
+    }
+}
