@@ -37,6 +37,7 @@ export function useConsulta(cargar, clave = "") {
                         intento,
                         datos: null,
                         error: true,
+                        codigoError: error?.codigo ?? "generico",
                     });
                 }
             } finally {
@@ -57,6 +58,8 @@ export function useConsulta(cargar, clave = "") {
         datos: corresponde ? resultado.datos : null,
         cargando: !corresponde,
         error: corresponde ? resultado.error : false,
+        codigoError:
+            corresponde && resultado.error ? resultado.codigoError : null,
         recargar: () => setIntento((valor) => valor + 1),
     };
 }

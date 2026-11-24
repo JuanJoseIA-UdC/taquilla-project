@@ -34,6 +34,15 @@ function esEventoValido(evento) {
     );
 }
 
+async function leerErrorApi(respuesta) {
+    const contenido = await respuesta.json().catch(() => null);
+    const codigo = contenido?.error?.codigo;
+    const error = new Error(`HTTP ${respuesta.status}`);
+
+    error.codigo = esTexto(codigo) ? codigo : "generico";
+    return error;
+}
+
 export async function obtenerEventosDestacados(signal) {
     const respuesta = await fetch(`${API}/destacados`, { signal });
 
@@ -184,7 +193,7 @@ export async function obtenerPaginaEventos(
     const respuesta = await fetch(`${API}?${parametros}`, { signal });
 
     if (!respuesta.ok) {
-        throw new Error(`HTTP ${respuesta.status}`);
+        throw await leerErrorApi(respuesta);
     }
 
     const contenido = await respuesta.json();
@@ -229,16 +238,14 @@ export async function obtenerDetalleEvento(signal, slug) {
         signal,
     });
 
-    if (respuesta.status === 404) {
-        const contenido = await respuesta.json();
+    if (!respuesta.ok) {
+        const error = await leerErrorApi(respuesta);
 
-        if (contenido?.error?.codigo === "no_encontrado") {
+        if (respuesta.status === 404 && error.codigo === "no_encontrado") {
             return null;
         }
-    }
 
-    if (!respuesta.ok) {
-        throw new Error(`HTTP ${respuesta.status}`);
+        throw error;
     }
 
     const evento = await respuesta.json();
@@ -259,7 +266,7 @@ export async function obtenerEventosRelacionados(signal, slug) {
     );
 
     if (!respuesta.ok) {
-        throw new Error(`HTTP ${respuesta.status}`);
+        throw await leerErrorApi(respuesta);
     }
 
     const contenido = await respuesta.json();
