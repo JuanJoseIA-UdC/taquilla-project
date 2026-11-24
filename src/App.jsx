@@ -35,7 +35,9 @@ export default function App() {
                 />
                 <Route
                     path="/eventos/:slug"
-                    element={<DetalleEvento textos={datos.textos} />}
+                    element={
+                        <DetalleEvento textos={datos.textos} idioma={idioma} />
+                    }
                 />
                 <Route
                     path="/ingresar"

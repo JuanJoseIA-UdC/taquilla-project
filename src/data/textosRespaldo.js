@@ -172,6 +172,12 @@ export const TEXTOS_RESPALDO = {
                 descripcion: {
                     titulo: "Sobre el evento",
                 },
+                info: {
+                    fecha: "Fecha",
+                    hora: "Hora",
+                    lugar: "Lugar",
+                    horaValor: "{hora} · Puertas {puertas}",
+                },
             },
             noEncontrado: {
                 contenido: {
@@ -442,6 +448,12 @@ export const TEXTOS_RESPALDO = {
                 },
                 descripcion: {
                     titulo: "About the event",
+                },
+                info: {
+                    fecha: "Date",
+                    hora: "Time",
+                    lugar: "Venue",
+                    horaValor: "{hora} · Doors {puertas}",
                 },
             },
             noEncontrado: {
