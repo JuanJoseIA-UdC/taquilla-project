@@ -32,8 +32,8 @@ export default function ContenidoEvento({
 
     const horaVisible = aperturaConfirmada
         ? textos.info.horaValor
-              .replace("{hora}", hora)
-              .replace("{puertas}", "7:00")
+            .replace("{hora}", hora)
+            .replace("{puertas}", "7:00")
         : hora;
 
     const { nombre, ciudad, direccion } = evento.recinto;
@@ -112,6 +112,22 @@ export default function ContenidoEvento({
                     </div>
                 </div>
             </header>
+
+            <nav
+                className="contenido-evento-pestanas"
+                aria-labelledby="detalle-evento-titulo"
+                >
+                    <a href="#detalle-descripcion-titulo" aria-current="location">
+                       {textos.pestanas.descripcion} 
+                    </a>
+                    <button type="button" disabled>
+                        {textos.pestanas.comoLlegar}
+                    </button>
+                    <button type="button" disabled>
+                        {textos.pestanas.politicas}
+                    </button>
+
+            </nav>
 
             <section
                 className="contenido-evento-descripcion"

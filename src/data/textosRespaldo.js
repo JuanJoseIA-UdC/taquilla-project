@@ -178,6 +178,11 @@ export const TEXTOS_RESPALDO = {
                     lugar: "Lugar",
                     horaValor: "{hora} · Puertas {puertas}",
                 },
+                pestanas: {
+                    descripcion: "Descripción",
+                    comoLlegar: "Cómo llegar",
+                    politicas: "Políticas",
+                },
             },
             noEncontrado: {
                 contenido: {
@@ -454,6 +459,11 @@ export const TEXTOS_RESPALDO = {
                     hora: "Time",
                     lugar: "Venue",
                     horaValor: "{hora} · Doors {puertas}",
+                },
+                pestanas: {
+                    descripcion: "Description",
+                    comoLlegar: "Getting there",
+                    politicas: "Policies",
                 },
             },
             noEncontrado: {

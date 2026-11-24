@@ -111,6 +111,44 @@
     display: none;
 }
 
+.contenido-evento-pestanas {
+    display: flex;
+    align-items: stretch;
+    gap: 32px;
+    min-height: 40px;
+    border-bottom: 1px solid var(--borde-sutil);
+}
+
+.contenido-evento-pestanas> :is(a, button) {
+    display: inline-flex;
+    align-items: flex-start;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--texto-secundario);
+    font: inherit;
+    font-weight: 500;
+    line-height: 24px;
+    text-decoration: none;
+}
+
+.contenido-evento-pestanas [aria-current="location"] {
+    border-bottom: 2px solid currentColor;
+    color: var(--texto-principal);
+    font-weight: 600;
+}
+
+.contenido-evento-pestanas button:disabled {
+    opacity: 1;
+}
+
+.contenido-evento-pestanas a:focus-visible {
+    outline: 2px solid var(--texto-principal);
+    outline-offset: 3px;
+}
+
 @media (width < 1280px) {
     .contenido-evento {
         gap: 20px;
@@ -164,5 +202,9 @@
 
     .contenido-evento-dato-secundario {
         display: block;
+    }
+
+    .contenido-evento-pestanas {
+        display: none;
     }
 }
