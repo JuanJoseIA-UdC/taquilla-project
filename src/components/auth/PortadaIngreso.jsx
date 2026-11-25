@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import Icono from "../ui/Icono.jsx";
 import "./PortadaIngreso.css";
 
@@ -6,14 +7,25 @@ export default function PortadaIngreso({ textos }) {
 
     return (
         <aside className="portada-ingreso">
-            <img src="/logos/logo-inverso.svg" alt="Taquilla" width="109" height="32" />
+            <Link to="/" className="portada-ingreso-marca">
+                <img
+                    src="/logos/logo-inverso.svg"
+                    alt="Taquilla"
+                    width="109"
+                    height="32"
+                />
+            </Link>
 
-            <div>
-                <p className="portada-ingreso-lema">{textos.lema}</p>
+            <div className="portada-ingreso-presentacion">
+                <p className="portada-ingreso-lema titular-display">
+                    {textos.lema}
+                </p>
                 <ul>
                     {[descubre, filtra, consulta].map((beneficio) => (
-                        <li key={beneficio}>
-                            <span><Icono nombre="check" /></span>
+                        <li key={beneficio} className="cuerpo-g">
+                            <span>
+                                <Icono nombre="check" />
+                            </span>
                             {beneficio}
                         </li>
                     ))}
@@ -21,4 +33,4 @@ export default function PortadaIngreso({ textos }) {
             </div>
         </aside>
     );
-} 
+}

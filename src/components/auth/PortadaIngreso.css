@@ -2,24 +2,33 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    gap: 48px;
+    gap: var(--espacio-12);
     padding: 56px;
     background: var(--fondo-inverso);
     color: var(--texto-inverso);
 }
 
+.portada-ingreso-marca {
+    align-self: flex-start;
+}
+
+.portada-ingreso-marca img {
+    display: block;
+}
+
+.portada-ingreso-presentacion {
+    display: grid;
+    gap: var(--espacio-6);
+}
+
 .portada-ingreso-lema {
     margin: 0;
-    font-size: 3.25rem;
-    font-weight: 600;
-    line-height: 1.08;
-    letter-spacing: -0.025em;
 }
 
 .portada-ingreso ul {
     display: grid;
-    gap: 24px;
-    margin: 24px 0 0;
+    gap: var(--espacio-6);
+    margin: 0;
     padding: 0;
     list-style: none;
 }
@@ -27,8 +36,7 @@
 .portada-ingreso li {
     display: flex;
     align-items: center;
-    gap: 12px;
-    font-size: 1.125rem;
+    gap: var(--espacio-3);
 }
 
 .portada-ingreso li span {
@@ -36,13 +44,13 @@
     flex: 0 0 28px;
     height: 28px;
     place-items: center;
-    border-radius: 50%;
-    background: #ffffff33;
+    border-radius: var(--radio-completo);
+    background: color-mix(in srgb, var(--fondo-superficie) 22%, transparent);
 }
 
 .portada-ingreso li svg {
-    width: 16px;
-    height: 16px;
+    width: 14px;
+    height: 14px;
 }
 
 @media (width < 1280px) {
