@@ -6,6 +6,7 @@ export default function Campo({
     id,
     type = "text",
     error,
+    accion,
     className = "",
     "aria-describedby": descripcion,
     "aria-invalid": invalido,
@@ -19,21 +20,30 @@ export default function Campo({
         [descripcion, tieneError ? errorId : null].filter(Boolean).join(" ") ||
         undefined;
 
+    const entrada = (
+        <input
+            {...props}
+            id={campoId}
+            type={type}
+            className={["campo-entrada", className].filter(Boolean).join(" ")}
+            aria-invalid={tieneError ? true : invalido}
+            aria-describedby={descripcionId}
+        />
+    );
+
     return (
         <div className="campo">
             <label className="campo-etiqueta" htmlFor={campoId}>
                 {etiqueta}
             </label>
-            <input
-                {...props}
-                id={campoId}
-                type={type}
-                className={["campo-entrada", className]
-                    .filter(Boolean)
-                    .join(" ")}
-                aria-invalid={tieneError ? true : invalido}
-                aria-describedby={descripcionId}
-            />
+            {accion ? (
+                <div className="campo-control">
+                    {entrada}
+                    {accion}
+                </div>
+            ) : (
+                entrada
+            )}
             {tieneError && (
                 <p id={errorId} className="campo-error">
                     {error}
