@@ -36,11 +36,24 @@ export default function App() {
                 />
                 <Route
                     path="/eventos/:slug"
-                    element={<DetalleEvento textos={datos.textos} idioma={idioma} />}
+                    element={
+                        <DetalleEvento textos={datos.textos} idioma={idioma} />
+                    }
                 />
                 <Route
                     path="/ingresar"
                     element={<Ingresar textos={datos.textos} />}
+                />
+                <Route
+                    path="/recuperar-clave"
+                    element={
+                        <h1>
+                            {
+                                datos.textos.paginas.ingresar.formulario.enlaces
+                                    .olvidasteClave
+                            }
+                        </h1>
+                    }
                 />
                 <Route
                     path="/registro"
