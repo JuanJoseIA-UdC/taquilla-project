@@ -5,6 +5,7 @@ import Icono from "../ui/Icono.jsx";
 import SelectorIdioma from "../language/SelectorIdioma.jsx";
 import "../ui/Boton.css";
 import "./MenuMovil.css";
+import ResumenUsuario from "../auth/ResumenUsuario.jsx";
 
 export default function MenuMovil({
     id,
@@ -140,10 +141,7 @@ export default function MenuMovil({
 
             <div className="menu-movil-sesion">
                 {usuario ? (
-                    <div>
-                        <p className="cuerpo-p-fuerte">{usuario.nombre}</p>
-                        <p className="detalle-nota">{usuario.correo}</p>
-                    </div>
+                    <ResumenUsuario usuario={usuario} />
                 ) : (
                     <>
                         <Link
