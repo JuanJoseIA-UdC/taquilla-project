@@ -3,7 +3,7 @@ import PortadaIngreso from "../components/auth/PortadaIngreso.jsx";
 import FormularioIngreso from "../components/auth/FormularioIngreso.jsx";
 import "./Ingresar.css";
 
-export default function Ingresar({ textos }) {
+export default function Ingresar({ textos, onIngresar }) {
     const ingreso = textos.paginas.ingresar;
 
     return (
@@ -22,6 +22,7 @@ export default function Ingresar({ textos }) {
                     <FormularioIngreso
                         textos={ingreso.formulario}
                         errores={ingreso.errores}
+                        onIngresar={onIngresar}
                     />
                 </div>
             </div>

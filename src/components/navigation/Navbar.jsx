@@ -13,6 +13,7 @@ export default function Navbar({
     idiomas,
     cambiarIdioma,
     onAbrirAccesibilidad,
+    usuario,
 }) {
     const campoBusquedaRef = useRef(null);
     const [menuAbierto, setMenuAbierto] = useState(false);
@@ -95,9 +96,11 @@ export default function Navbar({
                         <Icono nombre="buscar" />
                     </Link>
 
-                    <Link to="/ingresar" className="navbar-movil-ingresar">
-                        {nav.botones.ingresar}
-                    </Link>
+                    {!usuario && (
+                        <Link to="/ingresar" className="navbar-movil-ingresar">
+                            {nav.botones.ingresar}
+                        </Link>
+                    )}
 
                     <button
                         type="button"
@@ -155,19 +158,25 @@ export default function Navbar({
                         textos={textos.idioma}
                     />
 
-                    <Link
-                        to="/ingresar"
-                        className="boton boton--secundario boton--m navbar-cuenta"
-                    >
-                        {nav.botones.ingresar}
-                    </Link>
+                    {usuario ? (
+                        <span className="navbar-cuenta">{usuario.nombre}</span>
+                    ) : (
+                        <>
+                            <Link
+                                to="/ingresar"
+                                className="boton boton--secundario boton--m navbar-cuenta"
+                            >
+                                {nav.botones.ingresar}
+                            </Link>
 
-                    <Link
-                        to="/registro"
-                        className="boton boton--primario boton--m navbar-cuenta"
-                    >
-                        {nav.botones.crearCuenta}
-                    </Link>
+                            <Link
+                                to="/registro"
+                                className="boton boton--primario boton--m navbar-cuenta"
+                            >
+                                {nav.botones.crearCuenta}
+                            </Link>
+                        </>
+                    )}
                 </div>
             </div>
             <MenuMovil
@@ -179,6 +188,7 @@ export default function Navbar({
                 idiomas={idiomas}
                 cambiarIdioma={cambiarIdioma}
                 onAbrirAccesibilidad={onAbrirAccesibilidad}
+                usuario={usuario}
             />
         </header>
     );

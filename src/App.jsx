@@ -2,6 +2,7 @@ import { useIdiomas } from "./hooks/useIdiomas.js";
 import { usePreferencias } from "./hooks/usePreferencias.js";
 import { Route, Routes } from "react-router";
 import { useTextos } from "./hooks/useTextos.js";
+import { useSesion } from "./hooks/useSesion.js";
 import LayoutPublico from "./components/layout/LayoutPublico.jsx";
 import NoEncontrado from "./pages/NoEncontrado.jsx";
 import Inicio from "./pages/Inicio.jsx";
@@ -16,6 +17,7 @@ export default function App() {
 
     const datos = useTextos(idioma);
     const nav = datos.textos?.navbar;
+    const sesion = useSesion();
 
     return (
         <LayoutPublico
@@ -24,6 +26,7 @@ export default function App() {
             idiomas={idiomas}
             cambiarIdioma={cambiarIdioma}
             preferencias={preferencias}
+            usuario={sesion.usuario}
         >
             <Routes>
                 <Route
@@ -42,7 +45,12 @@ export default function App() {
                 />
                 <Route
                     path="/ingresar"
-                    element={<Ingresar textos={datos.textos} />}
+                    element={
+                        <Ingresar
+                            textos={datos.textos}
+                            onIngresar={sesion.ingresar}
+                        />
+                    }
                 />
                 <Route
                     path="/recuperar-clave"

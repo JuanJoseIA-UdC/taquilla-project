@@ -1,19 +1,30 @@
-import { useId, useState } from "react";
-import { Link } from "react-router";
+import { useId, useState, useRef, useEffect } from "react";
+import { Link, useNavigate } from "react-router";
 import Ojo from "../../assets/iconos/eye.svg?react";
 import Boton from "../ui/Boton.jsx";
 import Campo from "../ui/Campo.jsx";
 import Casilla from "../ui/Casilla.jsx";
 import "./FormularioIngreso.css";
 
-export default function FormularioIngreso({ textos, errores }) {
+export default function FormularioIngreso({ textos, errores, onIngresar }) {
     const [faltantes, setFaltantes] = useState({});
     const [claveVisible, setClaveVisible] = useState(false);
     const claveId = useId();
     const hayErrores = faltantes.correo || faltantes.clave;
 
-    function enviar(evento) {
+    const [enviando, setEnviando] = useState(false);
+    const [fallo, setFallo] = useState(null);
+    const peticionRef = useRef(null);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        return () => peticionRef.current?.abort();
+    }, []);
+
+    async function enviar(evento) {
         evento.preventDefault();
+
+        if (peticionRef.current) return;
 
         const formulario = evento.currentTarget;
         const datos = new FormData(formulario);
@@ -26,11 +37,39 @@ export default function FormularioIngreso({ textos, errores }) {
         };
 
         setFaltantes(nuevosFaltantes);
+        setFallo(null);
 
         if (nuevosFaltantes.correo) {
             formulario.elements.namedItem("correo").focus();
-        } else if (nuevosFaltantes.clave) {
+            return;
+        }
+
+        if (nuevosFaltantes.clave) {
             formulario.elements.namedItem("clave").focus();
+            return;
+        }
+
+        const controlador = new AbortController();
+        peticionRef.current = controlador;
+        setEnviando(true);
+
+        const limite = setTimeout(() => controlador.abort(), 12000);
+
+        try {
+            await onIngresar({ correo, clave }, controlador.signal);
+            navigate("/", { replace: true });
+        } catch (error) {
+            if (peticionRef.current === controlador) {
+                setFallo(
+                    error.codigo === "credenciales_invalidas"
+                        ? "credenciales"
+                        : "conexion",
+                );
+            }
+        } finally {
+            clearTimeout(limite);
+            peticionRef.current = null;
+            setEnviando(false);
         }
     }
 
@@ -40,10 +79,18 @@ export default function FormularioIngreso({ textos, errores }) {
             <p className="formulario-ingreso-subtitulo cuerpo-m">
                 {textos.subtitulo}
             </p>
+
             {hayErrores && (
                 <div className="formulario-ingreso-aviso" role="alert">
                     <strong>{errores.camposObligatorios.titulo}</strong>
                     <p>{errores.camposObligatorios.texto}</p>
+                </div>
+            )}
+
+            {fallo && (
+                <div className="formulario-ingreso-aviso" role="alert">
+                    <strong>{errores[fallo].titulo}</strong>
+                    <p>{errores[fallo].texto}</p>
                 </div>
             )}
 
@@ -55,6 +102,7 @@ export default function FormularioIngreso({ textos, errores }) {
                 autoComplete="username"
                 required
                 error={faltantes.correo ? errores.correoObligatorio : undefined}
+                disabled={enviando}
             />
 
             <Campo
@@ -87,10 +135,15 @@ export default function FormularioIngreso({ textos, errores }) {
                         )}
                     </button>
                 }
+                disabled={enviando}
             />
 
             <div className="formulario-ingreso-opciones">
-                <Casilla name="mantenerSesion" defaultChecked>
+                <Casilla
+                    name="mantenerSesion"
+                    defaultChecked
+                    disabled={enviando}
+                >
                     {textos.etiquetas.mantenerSesion}
                 </Casilla>
                 <Link to="/recuperar-clave" className="cuerpo-p-fuerte">
@@ -98,8 +151,12 @@ export default function FormularioIngreso({ textos, errores }) {
                 </Link>
             </div>
 
-            <Boton type="submit" tamano="g">
-                {textos.botones.ingresar}
+            <Boton type="submit" tamano="g" disabled={enviando}>
+                <span role="status">
+                    {enviando
+                        ? textos.mensajes.ingresando
+                        : textos.botones.ingresar}
+                </span>
             </Boton>
 
             <p className="formulario-ingreso-registro cuerpo-p">

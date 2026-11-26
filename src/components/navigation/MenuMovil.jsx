@@ -15,6 +15,7 @@ export default function MenuMovil({
     idiomas,
     cambiarIdioma,
     onAbrirAccesibilidad,
+    usuario,
 }) {
     const dialogoRef = useDialogo(abierto);
     const nav = textos.navbar;
@@ -138,21 +139,30 @@ export default function MenuMovil({
             </div>
 
             <div className="menu-movil-sesion">
-                <Link
-                    to="/ingresar"
-                    className="boton boton--primario boton--m"
-                    onClick={onCerrar}
-                >
-                    {nav.botones.ingresar}
-                </Link>
+                {usuario ? (
+                    <div>
+                        <p className="cuerpo-p-fuerte">{usuario.nombre}</p>
+                        <p className="detalle-nota">{usuario.correo}</p>
+                    </div>
+                ) : (
+                    <>
+                        <Link
+                            to="/ingresar"
+                            className="boton boton--primario boton--m"
+                            onClick={onCerrar}
+                        >
+                            {nav.botones.ingresar}
+                        </Link>
 
-                <Link
-                    to="/registro"
-                    className="boton boton--secundario boton--m"
-                    onClick={onCerrar}
-                >
-                    {nav.botones.crearCuenta}
-                </Link>
+                        <Link
+                            to="/registro"
+                            className="boton boton--secundario boton--m"
+                            onClick={onCerrar}
+                        >
+                            {nav.botones.crearCuenta}
+                        </Link>
+                    </>
+                )}
             </div>
         </dialog>
     );

@@ -14,6 +14,7 @@ export default function LayoutPublico({
     cambiarIdioma,
     preferencias,
     children,
+    usuario,
 }) {
     const accesibilidad = useAccesibilidad();
     const [panelAbierto, setPanelAbierto] = useState(false);
@@ -29,7 +30,13 @@ export default function LayoutPublico({
     }, []);
 
     return (
-        <div className={enDetalleEvento ? "layout-publico layout-publico--detalle" : "layout-publico"}>
+        <div
+            className={
+                enDetalleEvento
+                    ? "layout-publico layout-publico--detalle"
+                    : "layout-publico"
+            }
+        >
             <a className="saltar-contenido" href="#contenido">
                 {datos.textos.general.aria.saltarAlContenido}
             </a>
@@ -40,6 +47,7 @@ export default function LayoutPublico({
                     idiomas={idiomas}
                     cambiarIdioma={cambiarIdioma}
                     onAbrirAccesibilidad={abrirAccesibilidad}
+                    usuario={usuario}
                 />
             )}
 
@@ -69,7 +77,7 @@ export default function LayoutPublico({
                     onAccesibilidad={abrirAccesibilidad}
                 />
             )}
-            
+
             {datos.textos && (
                 <PanelAccesibilidad
                     abierto={panelAbierto}
@@ -79,6 +87,6 @@ export default function LayoutPublico({
                 />
             )}
             <GestorCookies textos={datos.textos} preferencias={preferencias} />
-        </div >
+        </div>
     );
 }
