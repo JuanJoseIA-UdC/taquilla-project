@@ -1,10 +1,11 @@
 import { useCallback, useEffect, useId, useRef, useState } from "react";
 import { Link, NavLink, useLocation, useNavigate } from "react-router";
-import Icono from "../ui/Icono.jsx";
-import SelectorIdioma from "../language/SelectorIdioma.jsx";
-import MenuMovil from "./MenuMovil.jsx";
 import { crearRutaExplorar, leerFiltrosExplorar } from "../../utils/rutas.js";
+import SelectorIdioma from "../language/SelectorIdioma.jsx";
 import "../ui/Boton.css";
+import Icono from "../ui/Icono.jsx";
+import MenuCuenta from "./MenuCuenta.jsx";
+import MenuMovil from "./MenuMovil.jsx";
 import "./Navbar.css";
 
 export default function Navbar({
@@ -159,7 +160,11 @@ export default function Navbar({
                     />
 
                     {usuario ? (
-                        <span className="navbar-cuenta">{usuario.nombre}</span>
+                        <MenuCuenta
+                            key={claveUbicacion}
+                            usuario={usuario}
+                            textos={nav.usuario}
+                        />
                     ) : (
                         <>
                             <Link
