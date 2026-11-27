@@ -1,10 +1,11 @@
 import { useCallback, useEffect, useId, useRef, useState } from "react";
 import { Link, NavLink, useLocation, useNavigate } from "react-router";
-import Icono from "../ui/Icono.jsx";
-import SelectorIdioma from "../language/SelectorIdioma.jsx";
-import MenuMovil from "./MenuMovil.jsx";
 import { crearRutaExplorar, leerFiltrosExplorar } from "../../utils/rutas.js";
+import SelectorIdioma from "../language/SelectorIdioma.jsx";
 import "../ui/Boton.css";
+import Icono from "../ui/Icono.jsx";
+import MenuCuenta from "./MenuCuenta.jsx";
+import MenuMovil from "./MenuMovil.jsx";
 import "./Navbar.css";
 
 export default function Navbar({
@@ -13,6 +14,10 @@ export default function Navbar({
     idiomas,
     cambiarIdioma,
     onAbrirAccesibilidad,
+    usuario,
+    onCerrarSesion,
+    cerrandoSesion,
+    errorCierreSesion,
 }) {
     const campoBusquedaRef = useRef(null);
     const [menuAbierto, setMenuAbierto] = useState(false);
@@ -49,6 +54,18 @@ export default function Navbar({
                 pagina: 1,
             }),
         );
+    }
+
+    async function cerrarSesionDesdeMenu() {
+        const cerrada = await onCerrarSesion();
+
+        if (!cerrada) return;
+
+        cerrarMenu();
+
+        requestAnimationFrame(() => {
+            document.getElementById("contenido")?.focus();
+        });
     }
 
     if (!nav) return null;
@@ -95,9 +112,11 @@ export default function Navbar({
                         <Icono nombre="buscar" />
                     </Link>
 
-                    <Link to="/ingresar" className="navbar-movil-ingresar">
-                        {nav.botones.ingresar}
-                    </Link>
+                    {!usuario && (
+                        <Link to="/ingresar" className="navbar-movil-ingresar">
+                            {nav.botones.ingresar}
+                        </Link>
+                    )}
 
                     <button
                         type="button"
@@ -155,19 +174,33 @@ export default function Navbar({
                         textos={textos.idioma}
                     />
 
-                    <Link
-                        to="/ingresar"
-                        className="boton boton--secundario boton--m navbar-cuenta"
-                    >
-                        {nav.botones.ingresar}
-                    </Link>
+                    {usuario ? (
+                        <MenuCuenta
+                            key={claveUbicacion}
+                            usuario={usuario}
+                            textos={nav.usuario}
+                            estados={textos.estados}
+                            onCerrarSesion={cerrarSesionDesdeMenu}
+                            cerrandoSesion={cerrandoSesion}
+                            errorCierreSesion={errorCierreSesion}
+                        />
+                    ) : (
+                        <>
+                            <Link
+                                to="/ingresar"
+                                className="boton boton--secundario boton--m navbar-cuenta"
+                            >
+                                {nav.botones.ingresar}
+                            </Link>
 
-                    <Link
-                        to="/registro"
-                        className="boton boton--primario boton--m navbar-cuenta"
-                    >
-                        {nav.botones.crearCuenta}
-                    </Link>
+                            <Link
+                                to="/registro"
+                                className="boton boton--primario boton--m navbar-cuenta"
+                            >
+                                {nav.botones.crearCuenta}
+                            </Link>
+                        </>
+                    )}
                 </div>
             </div>
             <MenuMovil
@@ -179,6 +212,10 @@ export default function Navbar({
                 idiomas={idiomas}
                 cambiarIdioma={cambiarIdioma}
                 onAbrirAccesibilidad={onAbrirAccesibilidad}
+                usuario={usuario}
+                onCerrarSesion={cerrarSesionDesdeMenu}
+                cerrandoSesion={cerrandoSesion}
+                errorCierreSesion={errorCierreSesion}
             />
         </header>
     );

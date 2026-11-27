@@ -1,0 +1,16 @@
+.avatar-usuario {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radio-completo);
+    background-color: var(--fondo-sutil);
+    color: var(--texto-principal);
+}
+
+.avatar-usuario--inverso {
+    background-color: var(--fondo-inverso);
+    color: var(--texto-inverso);
+}

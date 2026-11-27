@@ -1,0 +1,60 @@
+.portada-ingreso {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: var(--espacio-12);
+    padding: 56px;
+    background: var(--fondo-inverso);
+    color: var(--texto-inverso);
+}
+
+.portada-ingreso-marca {
+    align-self: flex-start;
+}
+
+.portada-ingreso-marca img {
+    display: block;
+}
+
+.portada-ingreso-presentacion {
+    display: grid;
+    gap: var(--espacio-6);
+}
+
+.portada-ingreso-lema {
+    margin: 0;
+}
+
+.portada-ingreso ul {
+    display: grid;
+    gap: var(--espacio-6);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.portada-ingreso li {
+    display: flex;
+    align-items: center;
+    gap: var(--espacio-3);
+}
+
+.portada-ingreso li span {
+    display: grid;
+    flex: 0 0 28px;
+    height: 28px;
+    place-items: center;
+    border-radius: var(--radio-completo);
+    background: color-mix(in srgb, var(--fondo-superficie) 22%, transparent);
+}
+
+.portada-ingreso li svg {
+    width: 14px;
+    height: 14px;
+}
+
+@media (width < 1280px) {
+    .portada-ingreso {
+        display: none;
+    }
+}

@@ -1,0 +1,101 @@
+.formulario-ingreso {
+    display: grid;
+    gap: 20px;
+    width: 100%;
+    min-width: 0;
+}
+
+.formulario-ingreso h1,
+.formulario-ingreso p {
+    margin: 0;
+}
+
+.formulario-ingreso-subtitulo,
+.formulario-ingreso-registro {
+    color: var(--texto-secundario);
+}
+
+.formulario-ingreso-registro {
+    text-align: center;
+}
+
+.formulario-ingreso a {
+    text-decoration: underline;
+    text-decoration-skip-ink: auto;
+}
+
+.formulario-ingreso .campo,
+.formulario-ingreso > .boton {
+    width: 100%;
+}
+
+.formulario-ingreso > .boton {
+    min-height: 52px;
+}
+
+.formulario-ingreso-opciones {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    row-gap: var(--espacio-3);
+}
+
+.formulario-ingreso .campo-control {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) var(--espacio-12);
+    align-items: center;
+}
+
+.formulario-ingreso-clave {
+    grid-area: 1 / 1 / 2 / 3;
+    padding-inline-end: var(--espacio-12);
+}
+
+.formulario-ingreso-visibilidad {
+    position: relative;
+    grid-area: 1 / 2;
+    justify-self: center;
+    display: grid;
+    width: var(--espacio-8);
+    height: var(--espacio-8);
+    place-items: center;
+    padding: 0;
+    border: 0;
+    border-radius: var(--radio-sm);
+    background: transparent;
+    color: var(--texto-secundario);
+}
+
+.formulario-ingreso-visibilidad:focus-visible {
+    outline: 2px solid var(--texto-principal);
+}
+
+.formulario-ingreso-ojo-tachado {
+    position: absolute;
+    width: var(--espacio-4);
+    height: 2px;
+    background: currentColor;
+    box-shadow: 0 -1px var(--fondo-superficie);
+    transform: rotate(45deg);
+}
+
+.formulario-ingreso-aviso {
+    display: grid;
+    gap: var(--espacio-1);
+    padding: var(--espacio-3) var(--espacio-4);
+    border: 1px solid var(--estado-error);
+    border-radius: var(--radio-md);
+    background: var(--estado-error-suave);
+    font-size: 0.875rem;
+    line-height: 1.5;
+}
+
+@media (width < 1280px) {
+    .formulario-ingreso-opciones {
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+}

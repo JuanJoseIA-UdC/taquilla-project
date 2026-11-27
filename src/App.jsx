@@ -2,11 +2,13 @@ import { useIdiomas } from "./hooks/useIdiomas.js";
 import { usePreferencias } from "./hooks/usePreferencias.js";
 import { Route, Routes } from "react-router";
 import { useTextos } from "./hooks/useTextos.js";
+import { useSesion } from "./hooks/useSesion.js";
 import LayoutPublico from "./components/layout/LayoutPublico.jsx";
 import NoEncontrado from "./pages/NoEncontrado.jsx";
 import Inicio from "./pages/Inicio.jsx";
 import Explorar from "./pages/Explorar.jsx";
 import DetalleEvento from "./pages/DetalleEvento.jsx";
+import Ingresar from "./pages/Ingresar.jsx";
 
 export default function App() {
     const { idiomas } = useIdiomas();
@@ -15,6 +17,7 @@ export default function App() {
 
     const datos = useTextos(idioma);
     const nav = datos.textos?.navbar;
+    const sesion = useSesion();
 
     return (
         <LayoutPublico
@@ -23,6 +26,10 @@ export default function App() {
             idiomas={idiomas}
             cambiarIdioma={cambiarIdioma}
             preferencias={preferencias}
+            usuario={sesion.usuario}
+            onCerrarSesion={sesion.cerrar}
+            cerrandoSesion={sesion.cerrando}
+            errorCierreSesion={sesion.errorCierre}
         >
             <Routes>
                 <Route
@@ -41,7 +48,23 @@ export default function App() {
                 />
                 <Route
                     path="/ingresar"
-                    element={<h1>{nav?.botones.ingresar}</h1>}
+                    element={
+                        <Ingresar
+                            textos={datos.textos}
+                            onIngresar={sesion.ingresar}
+                        />
+                    }
+                />
+                <Route
+                    path="/recuperar-clave"
+                    element={
+                        <h1>
+                            {
+                                datos.textos.paginas.ingresar.formulario.enlaces
+                                    .olvidasteClave
+                            }
+                        </h1>
+                    }
                 />
                 <Route
                     path="/registro"

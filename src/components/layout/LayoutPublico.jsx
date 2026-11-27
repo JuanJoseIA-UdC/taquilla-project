@@ -14,10 +14,15 @@ export default function LayoutPublico({
     cambiarIdioma,
     preferencias,
     children,
+    usuario,
+    onCerrarSesion,
+    cerrandoSesion,
+    errorCierreSesion,
 }) {
     const accesibilidad = useAccesibilidad();
     const [panelAbierto, setPanelAbierto] = useState(false);
     const enDetalleEvento = useMatch("/eventos/:slug");
+    const enIngreso = useMatch("/ingresar");
 
     const abrirAccesibilidad = useCallback(() => {
         setPanelAbierto(true);
@@ -28,17 +33,29 @@ export default function LayoutPublico({
     }, []);
 
     return (
-        <div className={enDetalleEvento ? "layout-publico layout-publico--detalle" : "layout-publico"}>
+        <div
+            className={
+                enDetalleEvento
+                    ? "layout-publico layout-publico--detalle"
+                    : "layout-publico"
+            }
+        >
             <a className="saltar-contenido" href="#contenido">
                 {datos.textos.general.aria.saltarAlContenido}
             </a>
-            <Navbar
-                textos={datos.textos}
-                idioma={idioma}
-                idiomas={idiomas}
-                cambiarIdioma={cambiarIdioma}
-                onAbrirAccesibilidad={abrirAccesibilidad}
-            />
+            {!enIngreso && (
+                <Navbar
+                    textos={datos.textos}
+                    idioma={idioma}
+                    idiomas={idiomas}
+                    cambiarIdioma={cambiarIdioma}
+                    onAbrirAccesibilidad={abrirAccesibilidad}
+                    usuario={usuario}
+                    onCerrarSesion={onCerrarSesion}
+                    cerrandoSesion={cerrandoSesion}
+                    errorCierreSesion={errorCierreSesion}
+                />
+            )}
 
             <main id="contenido" tabIndex={-1}>
                 {datos.cargando && (
@@ -60,10 +77,12 @@ export default function LayoutPublico({
                 {children}
             </main>
 
-            <Footer
-                textos={datos.textos}
-                onAccesibilidad={abrirAccesibilidad}
-            />
+            {!enIngreso && (
+                <Footer
+                    textos={datos.textos}
+                    onAccesibilidad={abrirAccesibilidad}
+                />
+            )}
 
             {datos.textos && (
                 <PanelAccesibilidad
@@ -74,6 +93,6 @@ export default function LayoutPublico({
                 />
             )}
             <GestorCookies textos={datos.textos} preferencias={preferencias} />
-        </div >
+        </div>
     );
 }

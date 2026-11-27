@@ -3,6 +3,8 @@ import { Link, NavLink } from "react-router";
 import { useDialogo } from "../../hooks/useDialogo.js";
 import Icono from "../ui/Icono.jsx";
 import SelectorIdioma from "../language/SelectorIdioma.jsx";
+import ResumenUsuario from "../auth/ResumenUsuario.jsx";
+import CierreSesion from "../auth/CierreSesion.jsx";
 import "../ui/Boton.css";
 import "./MenuMovil.css";
 
@@ -15,6 +17,10 @@ export default function MenuMovil({
     idiomas,
     cambiarIdioma,
     onAbrirAccesibilidad,
+    usuario,
+    onCerrarSesion,
+    cerrandoSesion,
+    errorCierreSesion,
 }) {
     const dialogoRef = useDialogo(abierto);
     const nav = textos.navbar;
@@ -138,21 +144,37 @@ export default function MenuMovil({
             </div>
 
             <div className="menu-movil-sesion">
-                <Link
-                    to="/ingresar"
-                    className="boton boton--primario boton--m"
-                    onClick={onCerrar}
-                >
-                    {nav.botones.ingresar}
-                </Link>
+                {usuario ? (
+                    <>
+                        <ResumenUsuario usuario={usuario} />
 
-                <Link
-                    to="/registro"
-                    className="boton boton--secundario boton--m"
-                    onClick={onCerrar}
-                >
-                    {nav.botones.crearCuenta}
-                </Link>
+                        <CierreSesion
+                            etiqueta={nav.usuario.cerrarSesion}
+                            estados={textos.estados}
+                            cerrando={cerrandoSesion}
+                            error={errorCierreSesion}
+                            onCerrarSesion={onCerrarSesion}
+                        />
+                    </>
+                ) : (
+                    <>
+                        <Link
+                            to="/ingresar"
+                            className="boton boton--primario boton--m"
+                            onClick={onCerrar}
+                        >
+                            {nav.botones.ingresar}
+                        </Link>
+
+                        <Link
+                            to="/registro"
+                            className="boton boton--secundario boton--m"
+                            onClick={onCerrar}
+                        >
+                            {nav.botones.crearCuenta}
+                        </Link>
+                    </>
+                )}
             </div>
         </dialog>
     );

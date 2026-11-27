@@ -1,0 +1,25 @@
+.resumen-usuario {
+    display: flex;
+    align-items: center;
+    gap: var(--espacio-3);
+    min-width: 0;
+}
+
+.resumen-usuario-datos {
+    flex: 1;
+    min-width: 0;
+}
+
+.resumen-usuario-nombre,
+.resumen-usuario-correo {
+    margin: 0;
+    overflow-wrap: anywhere;
+}
+
+.resumen-usuario-nombre {
+    color: var(--texto-principal);
+}
+
+.resumen-usuario-correo {
+    color: var(--texto-secundario);
+}
