@@ -27,6 +27,9 @@ export default function App() {
             cambiarIdioma={cambiarIdioma}
             preferencias={preferencias}
             usuario={sesion.usuario}
+            onCerrarSesion={sesion.cerrar}
+            cerrandoSesion={sesion.cerrando}
+            errorCierreSesion={sesion.errorCierre}
         >
             <Routes>
                 <Route

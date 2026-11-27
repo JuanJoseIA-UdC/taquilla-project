@@ -1,9 +1,17 @@
 import { useEffect, useId, useRef, useState } from "react";
 import AvatarUsuario from "../auth/AvatarUsuario.jsx";
 import ResumenUsuario from "../auth/ResumenUsuario.jsx";
+import CierreSesion from "../auth/CierreSesion.jsx";
 import "./MenuCuenta.css";
 
-export default function MenuCuenta({ usuario, textos }) {
+export default function MenuCuenta({
+    usuario,
+    textos,
+    estados,
+    onCerrarSesion,
+    cerrandoSesion,
+    errorCierreSesion,
+}) {
     const [abierto, setAbierto] = useState(false);
     const contenedorRef = useRef(null);
     const botonRef = useRef(null);
@@ -74,6 +82,14 @@ export default function MenuCuenta({ usuario, textos }) {
                 hidden={!abierto}
             >
                 <ResumenUsuario usuario={usuario} inverso />
+                <CierreSesion
+                    etiqueta={textos.cerrarSesion}
+                    estados={estados}
+                    cerrando={cerrandoSesion}
+                    error={errorCierreSesion}
+                    onCerrarSesion={onCerrarSesion}
+                    enMenu
+                />
             </div>
         </div>
     );

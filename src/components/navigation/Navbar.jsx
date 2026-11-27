@@ -15,6 +15,9 @@ export default function Navbar({
     cambiarIdioma,
     onAbrirAccesibilidad,
     usuario,
+    onCerrarSesion,
+    cerrandoSesion,
+    errorCierreSesion,
 }) {
     const campoBusquedaRef = useRef(null);
     const [menuAbierto, setMenuAbierto] = useState(false);
@@ -51,6 +54,18 @@ export default function Navbar({
                 pagina: 1,
             }),
         );
+    }
+
+    async function cerrarSesionDesdeMenu() {
+        const cerrada = await onCerrarSesion();
+
+        if (!cerrada) return;
+
+        cerrarMenu();
+
+        requestAnimationFrame(() => {
+            document.getElementById("contenido")?.focus();
+        });
     }
 
     if (!nav) return null;
@@ -164,6 +179,10 @@ export default function Navbar({
                             key={claveUbicacion}
                             usuario={usuario}
                             textos={nav.usuario}
+                            estados={textos.estados}
+                            onCerrarSesion={cerrarSesionDesdeMenu}
+                            cerrandoSesion={cerrandoSesion}
+                            errorCierreSesion={errorCierreSesion}
                         />
                     ) : (
                         <>
@@ -194,6 +213,9 @@ export default function Navbar({
                 cambiarIdioma={cambiarIdioma}
                 onAbrirAccesibilidad={onAbrirAccesibilidad}
                 usuario={usuario}
+                onCerrarSesion={cerrarSesionDesdeMenu}
+                cerrandoSesion={cerrandoSesion}
+                errorCierreSesion={errorCierreSesion}
             />
         </header>
     );

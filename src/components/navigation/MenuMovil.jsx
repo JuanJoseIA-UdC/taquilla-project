@@ -3,9 +3,10 @@ import { Link, NavLink } from "react-router";
 import { useDialogo } from "../../hooks/useDialogo.js";
 import Icono from "../ui/Icono.jsx";
 import SelectorIdioma from "../language/SelectorIdioma.jsx";
+import ResumenUsuario from "../auth/ResumenUsuario.jsx";
+import CierreSesion from "../auth/CierreSesion.jsx";
 import "../ui/Boton.css";
 import "./MenuMovil.css";
-import ResumenUsuario from "../auth/ResumenUsuario.jsx";
 
 export default function MenuMovil({
     id,
@@ -17,6 +18,9 @@ export default function MenuMovil({
     cambiarIdioma,
     onAbrirAccesibilidad,
     usuario,
+    onCerrarSesion,
+    cerrandoSesion,
+    errorCierreSesion,
 }) {
     const dialogoRef = useDialogo(abierto);
     const nav = textos.navbar;
@@ -141,7 +145,17 @@ export default function MenuMovil({
 
             <div className="menu-movil-sesion">
                 {usuario ? (
-                    <ResumenUsuario usuario={usuario} />
+                    <>
+                        <ResumenUsuario usuario={usuario} />
+
+                        <CierreSesion
+                            etiqueta={nav.usuario.cerrarSesion}
+                            estados={textos.estados}
+                            cerrando={cerrandoSesion}
+                            error={errorCierreSesion}
+                            onCerrarSesion={onCerrarSesion}
+                        />
+                    </>
                 ) : (
                     <>
                         <Link

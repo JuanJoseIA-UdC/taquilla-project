@@ -15,6 +15,9 @@ export default function LayoutPublico({
     preferencias,
     children,
     usuario,
+    onCerrarSesion,
+    cerrandoSesion,
+    errorCierreSesion,
 }) {
     const accesibilidad = useAccesibilidad();
     const [panelAbierto, setPanelAbierto] = useState(false);
@@ -48,6 +51,9 @@ export default function LayoutPublico({
                     cambiarIdioma={cambiarIdioma}
                     onAbrirAccesibilidad={abrirAccesibilidad}
                     usuario={usuario}
+                    onCerrarSesion={onCerrarSesion}
+                    cerrandoSesion={cerrandoSesion}
+                    errorCierreSesion={errorCierreSesion}
                 />
             )}
 
