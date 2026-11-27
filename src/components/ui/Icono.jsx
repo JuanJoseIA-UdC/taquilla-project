@@ -20,6 +20,7 @@ import ChevronIzquierda from "../../assets/iconos/chevl.svg?react";
 import Compartir from "../../assets/iconos/share.svg?react";
 import Reloj from "../../assets/iconos/clock.svg?react";
 import Salir from "../../assets/iconos/logout.svg?react";
+import Alerta from "../../assets/iconos/alerta.svg?react";
 
 const ICONOS = {
     buscar: Buscar,
@@ -44,6 +45,7 @@ const ICONOS = {
     compartir: Compartir,
     reloj: Reloj,
     salir: Salir,
+    alerta: Alerta,
 };
 
 export default function Icono({ nombre, className }) {
