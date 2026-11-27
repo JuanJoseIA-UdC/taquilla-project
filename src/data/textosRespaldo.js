@@ -29,6 +29,9 @@ export const TEXTOS_RESPALDO = {
                 idioma: "Cambiar idioma",
                 accesibilidad: "Abrir el panel de accesibilidad",
             },
+            usuario: {
+                menu: "Menú de la cuenta de {nombre}",
+            },
         },
         cookies: {
             banner: {
@@ -375,6 +378,9 @@ export const TEXTOS_RESPALDO = {
             aria: {
                 idioma: "Change language",
                 accesibilidad: "Open the accessibility panel",
+            },
+            usuario: {
+                menu: "Account menu for {nombre}",
             },
         },
         cookies: {
