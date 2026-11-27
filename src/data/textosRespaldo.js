@@ -31,6 +31,7 @@ export const TEXTOS_RESPALDO = {
             },
             usuario: {
                 menu: "Menú de la cuenta de {nombre}",
+                cerrarSesion: "Cerrar sesión",
             },
         },
         cookies: {
@@ -381,6 +382,7 @@ export const TEXTOS_RESPALDO = {
             },
             usuario: {
                 menu: "Account menu for {nombre}",
+                cerrarSesion: "Log out",
             },
         },
         cookies: {

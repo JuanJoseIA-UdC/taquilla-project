@@ -17,6 +17,8 @@ const CAMPOS_REQUERIDOS = [
     "navbar.aria.accesibilidad",
     "navbar.botones.ingresar",
     "navbar.botones.crearCuenta",
+    "navbar.usuario.menu",
+    "navbar.usuario.cerrarSesion",
 
     "cookies.banner.titulo",
     "cookies.banner.texto",
