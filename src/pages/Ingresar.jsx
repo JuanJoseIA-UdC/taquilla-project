@@ -22,6 +22,7 @@ export default function Ingresar({ textos, onIngresar }) {
                     <FormularioIngreso
                         textos={ingreso.formulario}
                         errores={ingreso.errores}
+                        estados={textos.estados}
                         onIngresar={onIngresar}
                     />
                 </div>

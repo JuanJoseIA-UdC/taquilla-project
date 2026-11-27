@@ -82,13 +82,65 @@
 
 .formulario-ingreso-aviso {
     display: grid;
-    gap: var(--espacio-1);
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: start;
+    gap: var(--espacio-3);
     padding: var(--espacio-3) var(--espacio-4);
     border: 1px solid var(--estado-error);
     border-radius: var(--radio-md);
     background: var(--estado-error-suave);
     font-size: 0.875rem;
     line-height: 1.5;
+}
+
+.formulario-ingreso-aviso-icono {
+    display: block;
+}
+
+.formulario-ingreso-aviso-contenido {
+    display: grid;
+    gap: var(--espacio-1);
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+.formulario-ingreso-aviso-contenido > strong {
+    font-weight: 500;
+    color: var(--texto-principal);
+}
+
+.formulario-ingreso-aviso-contenido > p {
+    color: var(--texto-secundario);
+}
+
+.formulario-ingreso > .boton.formulario-ingreso-enviando:disabled {
+    background-color: var(--marca-primario);
+    color: var(--texto-inverso);
+    cursor: wait;
+}
+
+.formulario-ingreso-indicador {
+    display: inline-block;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    width: var(--espacio-4);
+    height: var(--espacio-4);
+    border: 2px solid currentColor;
+    border-right-color: transparent;
+    border-radius: var(--radio-completo);
+    animation: formulario-ingreso-girar 800ms linear infinite;
+}
+
+@keyframes formulario-ingreso-girar {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .formulario-ingreso-indicador {
+        animation: none;
+    }
 }
 
 @media (width < 1280px) {

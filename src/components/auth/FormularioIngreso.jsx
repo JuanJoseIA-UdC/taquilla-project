@@ -5,8 +5,14 @@ import Boton from "../ui/Boton.jsx";
 import Campo from "../ui/Campo.jsx";
 import Casilla from "../ui/Casilla.jsx";
 import "./FormularioIngreso.css";
+import Icono from "../ui/Icono.jsx";
 
-export default function FormularioIngreso({ textos, errores, onIngresar }) {
+export default function FormularioIngreso({
+    textos,
+    errores,
+    estados,
+    onIngresar,
+}) {
     const [faltantes, setFaltantes] = useState({});
     const [claveVisible, setClaveVisible] = useState(false);
     const claveId = useId();
@@ -17,14 +23,66 @@ export default function FormularioIngreso({ textos, errores, onIngresar }) {
     const peticionRef = useRef(null);
     const navigate = useNavigate();
 
+    const [bloqueadoHasta, setBloqueadoHasta] = useState(null);
+    const [segundosRestantes, setSegundosRestantes] = useState(0);
+
+    const bloqueado = segundosRestantes > 0;
+    const deshabilitado = enviando || bloqueado;
+
+    const aviso = fallo === "generico" ? estados.error : errores[fallo];
+
+    const textoBoton = enviando
+        ? textos.mensajes.ingresando
+        : fallo === "conexion"
+          ? errores.conexion.botones.reintentar
+          : textos.botones.ingresar;
+
     useEffect(() => {
-        return () => peticionRef.current?.abort();
+        return () => {
+            peticionRef.current?.abort();
+            peticionRef.current = null;
+        };
     }, []);
+
+    useEffect(() => {
+        if (bloqueadoHasta === null) return;
+
+        function actualizarEspera() {
+            const restantes = Math.max(
+                0,
+                Math.ceil((bloqueadoHasta - Date.now()) / 1000),
+            );
+
+            setSegundosRestantes(restantes);
+
+            if (restantes === 0) {
+                setBloqueadoHasta(null);
+                setFallo((actual) =>
+                    actual === "demasiadosIntentos" ? null : actual,
+                );
+            }
+        }
+
+        const intervalo = setInterval(actualizarEspera, 250);
+
+        document.addEventListener("visibilitychange", actualizarEspera);
+
+        return () => {
+            clearInterval(intervalo);
+            document.removeEventListener("visibilitychange", actualizarEspera);
+        };
+    }, [bloqueadoHasta]);
 
     async function enviar(evento) {
         evento.preventDefault();
 
-        if (peticionRef.current) return;
+        if (
+            peticionRef.current ||
+            segundosRestantes > 0 ||
+            (bloqueadoHasta !== null && Date.now() < bloqueadoHasta)
+        ) {
+            return;
+        }
 
         const formulario = evento.currentTarget;
         const datos = new FormData(formulario);
@@ -57,19 +115,48 @@ export default function FormularioIngreso({ textos, errores, onIngresar }) {
 
         try {
             await onIngresar({ correo, clave }, controlador.signal);
-            navigate("/", { replace: true });
-        } catch (error) {
+
             if (peticionRef.current === controlador) {
-                setFallo(
-                    error.codigo === "credenciales_invalidas"
-                        ? "credenciales"
-                        : "conexion",
-                );
+                navigate("/", { replace: true });
+            }
+        } catch (error) {
+            if (peticionRef.current !== controlador) return;
+
+            if (
+                error.estado === 401 &&
+                error.codigo === "credenciales_invalidas"
+            ) {
+                setFallo("credenciales");
+            } else if (
+                error.estado === 429 &&
+                error.codigo === "demasiadas_peticiones"
+            ) {
+                const hasta = error.reintentarDesde;
+
+                if (Number.isFinite(hasta) && hasta > Date.now()) {
+                    setBloqueadoHasta(hasta);
+                    setSegundosRestantes(
+                        Math.ceil((hasta - Date.now()) / 1000),
+                    );
+                    setFallo("demasiadosIntentos");
+                } else {
+                    setFallo("generico");
+                }
+            } else if (
+                error instanceof TypeError ||
+                error.name === "AbortError"
+            ) {
+                setFallo("conexion");
+            } else {
+                setFallo("generico");
             }
         } finally {
             clearTimeout(limite);
-            peticionRef.current = null;
-            setEnviando(false);
+
+            if (peticionRef.current === controlador) {
+                peticionRef.current = null;
+                setEnviando(false);
+            }
         }
     }
 
@@ -82,15 +169,39 @@ export default function FormularioIngreso({ textos, errores, onIngresar }) {
 
             {hayErrores && (
                 <div className="formulario-ingreso-aviso" role="alert">
-                    <strong>{errores.camposObligatorios.titulo}</strong>
-                    <p>{errores.camposObligatorios.texto}</p>
+                    <Icono
+                        nombre="alerta"
+                        className="formulario-ingreso-aviso-icono"
+                    />
+
+                    <div className="formulario-ingreso-aviso-contenido">
+                        <strong>{errores.camposObligatorios.titulo}</strong>
+                        <p>{errores.camposObligatorios.texto}</p>
+                    </div>
                 </div>
             )}
 
-            {fallo && (
+            {aviso && (
                 <div className="formulario-ingreso-aviso" role="alert">
-                    <strong>{errores[fallo].titulo}</strong>
-                    <p>{errores[fallo].texto}</p>
+                    <Icono
+                        nombre="alerta"
+                        className="formulario-ingreso-aviso-icono"
+                    />
+
+                    <div className="formulario-ingreso-aviso-contenido">
+                        <strong>{aviso.titulo}</strong>
+
+                        {fallo === "demasiadosIntentos" ? (
+                            <p role="timer" aria-live="off">
+                                {aviso.texto.replace(
+                                    "{segundos}",
+                                    String(segundosRestantes),
+                                )}
+                            </p>
+                        ) : (
+                            <p>{aviso.texto}</p>
+                        )}
+                    </div>
                 </div>
             )}
 
@@ -102,7 +213,7 @@ export default function FormularioIngreso({ textos, errores, onIngresar }) {
                 autoComplete="username"
                 required
                 error={faltantes.correo ? errores.correoObligatorio : undefined}
-                disabled={enviando}
+                disabled={deshabilitado}
             />
 
             <Campo
@@ -118,6 +229,7 @@ export default function FormularioIngreso({ textos, errores, onIngresar }) {
                     <button
                         className="formulario-ingreso-visibilidad"
                         type="button"
+                        disabled={deshabilitado}
                         aria-controls={claveId}
                         aria-label={
                             claveVisible
@@ -135,14 +247,14 @@ export default function FormularioIngreso({ textos, errores, onIngresar }) {
                         )}
                     </button>
                 }
-                disabled={enviando}
+                disabled={deshabilitado}
             />
 
             <div className="formulario-ingreso-opciones">
                 <Casilla
                     name="mantenerSesion"
                     defaultChecked
-                    disabled={enviando}
+                    disabled={deshabilitado}
                 >
                     {textos.etiquetas.mantenerSesion}
                 </Casilla>
@@ -151,12 +263,19 @@ export default function FormularioIngreso({ textos, errores, onIngresar }) {
                 </Link>
             </div>
 
-            <Boton type="submit" tamano="g" disabled={enviando}>
-                <span role="status">
-                    {enviando
-                        ? textos.mensajes.ingresando
-                        : textos.botones.ingresar}
-                </span>
+            <Boton
+                type="submit"
+                tamano="g"
+                disabled={deshabilitado}
+                className={enviando ? "formulario-ingreso-enviando" : ""}
+            >
+                {enviando && (
+                    <span
+                        className="formulario-ingreso-indicador"
+                        aria-hidden="true"
+                    />
+                )}
+                <span role="status">{textoBoton}</span>
             </Boton>
 
             <p className="formulario-ingreso-registro cuerpo-p">
