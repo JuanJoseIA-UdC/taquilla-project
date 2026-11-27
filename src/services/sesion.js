@@ -33,3 +33,28 @@ export async function iniciarSesion({ correo, clave }, signal) {
 
     return contenido;
 }
+
+export async function cerrarSesion(token, signal) {
+    const respuesta = await fetch(API, {
+        method: "DELETE",
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+        signal,
+    });
+
+    if (respuesta.status === 204) return;
+
+    const contenido = await respuesta.json().catch(() => null);
+
+    if (
+        respuesta.status === 401 &&
+        contenido?.error?.codigo === "no_autenticado"
+    ) {
+        return;
+    }
+
+    const error = new Error(`HTTP ${respuesta.status}`);
+    error.codigo = contenido?.error?.codigo ?? "generico";
+    throw error;
+}
